@@ -1,0 +1,218 @@
+---
+import OptimizedImage from './OptimizedImage.astro';
+
+interface Props {
+  label?: string;
+  titleHtml: string;
+  subtitleHtml: string;
+  imageDesktop?: string;
+  imageMobile?: string;
+  primaryButtonText?: string;
+  primaryButtonLink?: string;
+  bgColor?: string;
+}
+
+const {
+  label = "SOFTWARE DE GESTIÓN PARA CONTADORES Y PYMES",
+  titleHtml,
+  subtitleHtml,
+  imageDesktop = "/images/hero-bg-desktop-2.jpg",
+  imageMobile = "/images/hero-bg-mobile-2.jpg",
+  primaryButtonText = "Prueba 15 días Gratis",
+  primaryButtonLink = "/contacto",
+  bgColor = "#f8f2f6"
+} = Astro.props;
+---
+<div class="hero-redesign">
+  <section class="kontrolo-hero-single animate-on-scroll animate-fade-up" style={`background-color: ${bgColor};`}>
+    <!-- Background Image Container -->
+    <div class="kontrolo-bg-container" style={`background-color: ${bgColor};`}>
+      <picture>
+        <source media="(max-width: 991px)" srcset={imageMobile}>
+        <OptimizedImage class="kontrolo-bg-image" src={imageDesktop} alt="Kontrolo Hero Background" />
+      </picture>
+    </div>
+
+    <!-- Content Container -->
+    <div class="kontrolo-content-wrapper">
+      <div class="kontrolo-content-column animate-on-scroll animate-fade-up">
+        {label && <div class="kontrolo-label">{label}</div>}
+        <h1 class="kontrolo-hero-title" set:html={titleHtml}></h1>
+        <p class="kontrolo-hero-subtitle" set:html={subtitleHtml}></p>
+        
+        {primaryButtonText && (
+          <div class="kontrolo-btn-group">
+            <a href={primaryButtonLink} class="kontrolo-btn kontrolo-btn-primary">{primaryButtonText}</a>
+          </div>
+        )}
+        
+        <div class="kontrolo-trust-badges">
+          <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> 100% avalado ante la DIAN</span>
+          <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg> Sin tarjeta de crédito</span>
+          <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Sin contrato de permanencia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style is:global>
+  /* Base reset and fonts for the hero */
+  .hero-redesign {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .kontrolo-hero-single {
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 80px;
+    min-height: 750px;
+    display: flex;
+    align-items: center;
+  }
+
+  .kontrolo-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .kontrolo-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right bottom;
+  }
+
+  .kontrolo-content-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .kontrolo-content-column {
+    max-width: 55%;
+    z-index: 2;
+  }
+
+  .kontrolo-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .kontrolo-hero-title {
+    font-size: 52px;
+    line-height: 1.15;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+
+  .kontrolo-hero-subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #475569;
+    margin-bottom: 30px;
+  }
+
+  .kontrolo-primary-text {
+    color: #131ddf;
+  }
+
+  .kontrolo-btn-group {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .kontrolo-btn {
+    padding: 16px 28px;
+    border-radius: 42px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .kontrolo-btn-primary {
+    background-color: #131ddf;
+    color: white;
+  }
+
+  .kontrolo-btn-primary:hover {
+    background-color: #0e15a8;
+  }
+
+  .kontrolo-btn-outline {
+    background-color: white;
+    color: #1e293b;
+    border: 1px solid #cbd5e1;
+    border-radius: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .kontrolo-btn-outline:hover {
+    background-color: #f8fafc;
+  }
+
+  .kontrolo-trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 12px;
+    color: #64748b;
+  }
+  
+  .kontrolo-trust-badges span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  @media (max-width: 991px) {
+    .kontrolo-hero-single {
+      padding-top: 100px; 
+      padding-bottom: 400px;
+      min-height: auto; 
+      align-items: flex-start; 
+    }
+    .kontrolo-bg-container {
+      top: auto;
+      bottom: 0;
+      height: 400px;
+    }
+    .kontrolo-content-column {
+      max-width: 100%; 
+    }
+    .kontrolo-hero-title {
+      font-size: 34px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .kontrolo-hero-subtitle {
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+    .kontrolo-btn-group {
+      flex-direction: column;
+    }
+    .kontrolo-bg-image {
+      object-fit: cover; 
+      object-position: center bottom; 
+    }
+  }
+</style>

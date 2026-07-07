@@ -1,0 +1,38 @@
+---
+import OptimizedImage from '../OptimizedImage.astro';
+
+interface Props {
+  headline: string;
+  subheadline: string;
+  imageUrl: string;
+  clientCount?: string;
+  rating?: string;
+}
+
+const { headline, subheadline, imageUrl, clientCount, rating } = Astro.props;
+---
+<section class="section pb-0" style="padding-top: 120px;">
+  <div class="w-layout-blockcontainer container w-container">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+      <div>
+        <h1 class="title-heading" style="font-size: 48px; line-height: 1.1; margin-bottom: 24px;">{headline}</h1>
+        <p class="title-paragraph black" style="font-size: 18px; margin-bottom: 32px;">{subheadline}</p>
+        <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 32px;">
+          <a href="#" class="primary-button w-button">Pruébalo Gratis</a>
+          <a href="#" class="secondary-button w-button">Hablar con Asesor</a>
+        </div>
+        {(clientCount || rating) && (
+          <div style="display: flex; align-items: center; gap: 16px; font-size: 14px; color: #555;">
+            {clientCount && <span>🔥 Únete a {clientCount}</span>}
+            {rating && <span>⭐ Rating {rating}/5</span>}
+          </div>
+        )}
+      </div>
+      <div>
+        <div style="position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+          <OptimizedImage src={imageUrl || 'images/gallery-img-04.jpg'} alt={headline || 'Kontrolo'} style="width: 100%; height: auto; display: block;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

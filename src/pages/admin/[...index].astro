@@ -1,0 +1,28 @@
+﻿---
+export function getStaticPaths() {
+  return [
+    { params: { index: undefined } },
+    { params: { index: 'intent' } },
+    { params: { index: 'desk' } },
+  ];
+}
+import SanityStudio from '../../components/SanityStudio.jsx';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sanity Studio</title>
+    <style is:global>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <SanityStudio client:only="react" />
+  </body>
+</html>

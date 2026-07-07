@@ -1,0 +1,41 @@
+﻿---
+import OptimizedImage from '../OptimizedImage.astro';
+
+interface Testimonial {
+  authorName: string;
+  authorRole: string;
+  companyName: string;
+  quote: string;
+  rating: number;
+  avatar: { asset: { url: string } };
+}
+
+interface Props {
+  testimonials: Testimonial[];
+}
+const { testimonials } = Astro.props;
+---
+<section class="section" style="background: #111; color: #fff;">
+  <div class="container w-container">
+    <div style="text-align: center; margin-bottom: 60px;">
+      <h2 class="title-heading" style="color: #fff;">Historias de éxito en tu sector</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+      {testimonials && testimonials.map((test) => (
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 40px;">
+          <div style="color: #FFD700; margin-bottom: 20px;">{'★'.repeat(test.rating || 5)}</div>
+          <p style="font-size: 18px; line-height: 1.6; margin-bottom: 30px; font-style: italic;">"{test.quote}"</p>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            {test.avatar && test.avatar.asset && (
+              <OptimizedImage src={test.avatar.asset.url} alt={test.authorName} style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" />
+            )}
+            <div>
+              <div style="font-weight: 700; font-size: 16px;">{test.authorName}</div>
+              <div style="font-size: 14px; color: rgba(255,255,255,0.6);">{test.authorRole}, {test.companyName}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

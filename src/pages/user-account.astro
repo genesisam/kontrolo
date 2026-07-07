@@ -1,0 +1,65 @@
+﻿---
+import MainLayout from '../layouts/MainLayout.astro';
+import Footer from '../components/Footer.astro';
+
+const seo = {
+  title: "User Account - Kontrolo | Software ERP y Facturación DIAN",
+  description: "Descubre Kontrolo, el software integral que centraliza PMS, ERP y POS con facturación electrónica DIAN. Agenda tu demo gratis."
+};
+---
+<MainLayout seo={seo}>
+<div class="page-wrap">
+<section class="title-section">
+<div class="w-layout-blockcontainer container w-container">
+<h2 class="title-heading animate-on-scroll animate-fade-up">User Account</h2>
+</div>
+</section>
+</div>
+<section class="section to-top">
+<div class="w-layout-blockcontainer container w-container">
+<div class="w-users-useraccountwrapper user-account-wrapper" data-wf-collection="site.siteUser" data-wf-user-account="true" >
+<div>
+<div class="w-users-blockheader block-header">
+<h4>My Account</h4>
+</div>
+<div class="w-users-blockcontent">
+<div>
+<form data-wf-user-form-type="userAccount" method="post">
+<div class="field-wrap">
+<div><label class="regular-font color-secondary" for="Email">Email</label><input autocomplete="username" class="text-field email w-input w-input-disabled" data-wf-user-form-input-type="email" disabled="" id="wf-user-account-email" name="Email" placeholder="" required="" type="email"/></div>
+<div><label class="regular-font color-secondary" for="Name">Name</label><input class="text-field w-input" data-name="" data-wf-user-field="wf-user-field-name" fieldtype="data-wf-user-field-type" id="wf-user-account-name" maxlength="256" name="" placeholder="" required="" type="text"/></div>
+<div>
+<h4>Password settings</h4>
+<a class="connect-link w-inline-block" href="/reset-password">Reset password</a>
+</div><label class="w-checkbox"><input class="w-checkbox-input" data-name="" data-wf-user-field="wf-user-field-accept-communications" id="wf-user-account-accept-communications" name="" placeholder="" type="checkbox"/><span class="w-form-label">I consent to receive marketing emails.</span></label>
+<div><input class="w-users-useraccountformsavebutton primary-button w-button" data-wait="Saving..." type="submit" value="Save Changes"/><input class="w-users-useraccountformcancelbutton secondary-button w-button" type="reset" value="Cancel"/></div>
+</div>
+</form>
+<div class="w-users-userformsuccessstate w-form-success" tabindex="-1">
+<p>Your account was updated successfully.</p>
+</div>
+<div class="w-form-fail" data-wf-user-form-error="true" style="display:none">
+<div class="user-form-error-msg" wf-account-update-form-general-error-error="There was an error updating your account. Please try again, or contact us if you continue to have problems." wf-account-update-form-validation-failed-error="There was an error in some of the information provided.">There was an error updating your account. Please try again, or contact us if you continue to have problems.</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="w-users-blockheader block-header">
+<h4>Subscriptions</h4>
+</div>
+<div class="w-users-blockcontent block-content">
+<div data-wf-user-subscriptions-list="true">
+<script is:inline id="wf-template-66ea7e50e4924baf156ff00e00000000002d" type="text/x-wf-template">%3Cdiv%20role%3D%22listitem%22%20class%3D%22w-users-useraccountsubscriptionlistitem%20subscription%22%3E%3Cimg%20src%3D%22%22%20alt%3D%22%22%20class%3D%22w-commerce-commercecartitemimage%20d-none%22%2F%3E%3Cdiv%20class%3D%22w-commerce-commercecartiteminfo%20cart-info%22%3E%3Cdiv%20class%3D%22w-commerce-commercecartproductname%20body-large%20color-secondary%22%3E%3C%2Fdiv%3E%3Cdiv%20class%3D%22w-users-gridrow%20body-small%22%3E%3Cdiv%3EPurchased%20on%3A%20%3C%2Fdiv%3E%3Cdiv%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%3Cdiv%20class%3D%22w-users-gridrow%20body-small%22%3E%3Cdiv%3ENext%20billing%3A%20%3C%2Fdiv%3E%3Cdiv%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%3Cdiv%20class%3D%22w-users-gridrow%20body-small%22%3E%3Cdiv%3ECanceled%20on%3A%20%3C%2Fdiv%3E%3Cdiv%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%3Cdiv%20class%3D%22w-users-flexcolumn%22%3E%3Cdiv%20class%3D%22color-secondary%22%3E%3C%2Fdiv%3E%3Cbutton%20class%3D%22w-users-useraccountsubscriptioncancelbutton%20connect-link%22%20type%3D%22button%22%20data-wf-user-subscription-cancel%3D%22true%22%3ECancel%3C%2Fbutton%3E%3C%2Fdiv%3E%3C%2Fdiv%3E</script>
+<div class="w-users-useraccountsubscriptionlist subscriptions-list" data-wf-collection="database.userSubscriptions" data-wf-template-id="wf-template-66ea7e50e4924baf156ff00e00000000002d" role="list"></div>
+<div data-wf-user-subscriptions-empty="true" style="display:none">
+<div>No subscriptions</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</MainLayout>
+

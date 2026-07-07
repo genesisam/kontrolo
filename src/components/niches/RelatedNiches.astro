@@ -1,0 +1,43 @@
+---
+import OptimizedImage from '../OptimizedImage.astro';
+
+interface RelatedNiche {
+  slug: string;
+  industryName: string;
+  industryType: string;
+  heroImageUrl: string;
+}
+
+interface Props {
+  niches: RelatedNiche[];
+}
+const { niches } = Astro.props;
+---
+<section class="section" style="background: #f9f9fb; border-top: 1px solid #eaeaea;">
+  <div class="container w-container">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <h2 class="title-heading" style="font-size: 32px;">Kontrolo impulsa otras industrias</h2>
+      <p style="color: #666; font-size: 16px;">Descubre cómo adaptamos nuestra tecnología a otros modelos de negocio.</p>
+    </div>
+    <div class="div-block" style="justify-content: center;">
+      {niches.map((niche) => (
+        <a class="blog-card w-inline-block" href={`/${niche.industryType}/${niche.slug}`} style="max-width: 400px; text-align: left;">
+          <div class="blog-thumb">
+            <OptimizedImage alt={niche.industryName} class="cover-image" loading="lazy" src={niche.heroImageUrl || 'images/gallery-img-04.jpg'} />
+          </div>
+          <div class="blog-content">
+            <div class="blog-outer">
+              <div class="blog-inner">
+                <div class="body-small">Kontrolo</div>
+                <div class="body-small">-</div>
+                <div class="body-small" style="color: #131ddf; font-weight: 600;">Software {niche.industryType.toUpperCase()}</div>
+              </div>
+              <h5 style="font-size: 20px; font-weight: 700; color: #111; margin-top: 10px;">{niche.industryName}</h5>
+            </div>
+            <div class="learn-more" style="color: #131ddf; font-weight: 600;">Ver industria</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import { sanityClient } from "sanity:client";
+import OptimizedImage from '../../../components/OptimizedImage.astro';
+
+export async function getStaticPaths() {
+  const resources = await sanityClient.fetch(`*[_type == "resource"]{
+    "slug": slug.current,
+    title,
+    description,
+    category,
+    "imageUrl": coverImage.asset->url,
+    "fileUrl": fileAttachment.asset->url
+  }`);
+
+  return resources.map((resource) => ({
+    params: { slug: resource.slug },
+    props: { resource },
+  }));
+}
+
+const { resource } = Astro.props;
+
+const seo = {
+  title: `Descargar: ${resource.title} | Kontrolo`,
+  description: resource.description,
+  image: resource.imageUrl,
+};
+---
+
+<MainLayout seo={seo}>
+  <div class="page-wrap">
+    <section class="section" style="padding-top: 140px; padding-bottom: 100px; background: #fff;">
+      <div class="container w-container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+          
+          <!-- Lado Izquierdo: Información del Recurso -->
+          <div>
+            <div style="display: inline-block; background: #0056ff; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+              {resource.category}
+            </div>
+            <h1 class="title-heading" style="font-size: 48px; line-height: 1.1; margin-bottom: 24px;">{resource.title}</h1>
+            <p class="title-paragraph black" style="font-size: 18px; margin-bottom: 32px; color: #444;">{resource.description}</p>
+            
+            <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); margin-top: 40px;">
+              <OptimizedImage src={resource.imageUrl || 'images/gallery-img-04.jpg'} alt={resource.title} style="width: 100%; height: auto; display: block;" />
+            </div>
+          </div>
+
+          <!-- Lado Derecho: Formulario (Gated Content) -->
+          <div style="background: #f4f4f6; padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+            <h3 style="font-size: 24px; margin-bottom: 16px;">Descarga gratuita</h3>
+            <p style="color: #666; margin-bottom: 32px; font-size: 14px;">Completa este breve formulario para acceder inmediatamente al material.</p>
+            
+            <div class="w-form">
+              <form id="resource-form" class="footer-form" action="https://api.web3forms.com/submit" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+                <input type="hidden" name="redirect" value={resource.fileUrl || '/recursos/contadores'} />
+                <input type="hidden" name="subject" value={`Nuevo Lead: Descarga de ${resource.title}`} />
+                
+                <input class="footer-field w-input" style="width: 100%; background: #fff; border: 1px solid #ddd; color: #111;" type="text" name="Nombre" placeholder="Tu Nombre Completo" required />
+                <input class="footer-field w-input" style="width: 100%; background: #fff; border: 1px solid #ddd; color: #111;" type="email" name="Email" placeholder="Tu Correo Electrónico" required />
+                <input class="footer-field w-input" style="width: 100%; background: #fff; border: 1px solid #ddd; color: #111;" type="tel" name="WhatsApp" placeholder="Número de WhatsApp" required />
+                
+                <button type="submit" class="primary-button w-button" style="width: 100%; margin-top: 16px; justify-content: center;">
+                  Descargar Ahora
+                </button>
+              </form>
+            </div>
+            <p style="font-size: 12px; color: #999; margin-top: 20px; text-align: center;">Al descargar este recurso aceptas nuestra Política de Privacidad.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>

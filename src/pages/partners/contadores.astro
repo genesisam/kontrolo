@@ -1,0 +1,190 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import HeroDynamic from '../../components/niches/HeroDynamic.astro';
+import TrustBar from '../../components/niches/TrustBar.astro';
+import FeatureZigZag from '../../components/niches/FeatureZigZag.astro';
+import PainPointsGrid from '../../components/niches/PainPointsGrid.astro';
+import FaqAccordion from '../../components/niches/FaqAccordion.astro';
+import TestimonialCarousel from '../../components/niches/TestimonialCarousel.astro';
+
+const seo = {
+  title: 'Programa de Partners para Contadores | Kontrolo',
+  description: 'Gana comisiones recurrentes recomendando el mejor software POS, ERP y PMS con facturación electrónica a tus clientes.',
+};
+
+const trustImages = [
+  { url: "/images/logo-dian-dark.png", alt: "Certificado por la DIAN" },
+  { url: "/images/alegra-logo.svg", alt: "Exportable a Alegra" },
+  { url: "/images/siigo-logo.png", alt: "Exportable a SIIGO" },
+  { url: "/images/loggro-logo.svg", alt: "Exportable a Loggro" }
+];
+
+const painPoints = [
+  "Pierdes horas pidiendo los soportes de facturación a tus clientes al final del mes.",
+  "Los sistemas de tus clientes no se integran con la DIAN y te toca digitar todo a mano.",
+  "Tus clientes usan hojas de cálculo y tienen un desorden contable terrible."
+];
+
+const features = [
+  {
+    featureTitle: "Panel Multi-Empresa Exclusivo",
+    featureDescription: "Como partner, tendrás acceso gratuito a un panel centralizado donde podrás ver las métricas, ventas y facturas electrónicas de todos tus clientes referidos en tiempo real. Se acabó el pedir reportes por WhatsApp.",
+    isReversed: false,
+    featureImage: { asset: { url: "/images/dashboard-preview.png" } }
+  },
+  {
+    featureTitle: "Comisiones Recurrentes",
+    featureDescription: "No te pagamos una sola vez. Recibe hasta un 20% de comisión mes a mes mientras tu cliente siga usando Kontrolo. Convierte tu base de clientes en una fuente de ingresos pasivos.",
+    isReversed: true,
+    featureImage: { asset: { url: "/images/revenue-chart.png" } }
+  },
+  {
+    featureTitle: "Soporte Prioritario DIAN",
+    featureDescription: "Tus clientes referidos, y tú, tendrán línea directa con nuestro equipo de soporte nivel 3 para resolver cualquier inconsistencia, rechazo o contingencia con la DIAN en minutos.",
+    isReversed: false,
+    featureImage: { asset: { url: "/images/support-team.png" } }
+  }
+];
+
+const faqs = [
+  { question: "¿Tiene algún costo unirme al programa?", answer: "No, ser Partner de Kontrolo es 100% gratuito. Solo necesitas ser contador público certificado o tener una firma contable." },
+  { question: "¿Cómo se pagan las comisiones?", answer: "Las comisiones se liquidan los primeros 5 días de cada mes directamente a tu cuenta bancaria registrada." },
+  { question: "¿Kontrolo genera los archivos XML para mi software contable?", answer: "Sí, Kontrolo genera reportes compatibles y archivos XML que puedes subir fácilmente a SIIGO, Alegra o Loggro." }
+];
+
+const testimonials = [
+  {
+    quote: "Desde que todos mis clientes del sector gastronómico usan Kontrolo, mi tiempo de conciliación a fin de mes bajó de 4 días a solo 1 mañana. Y lo mejor, recibo comisiones todos los meses.",
+    name: "Carolina Mendoza",
+    role: "Contadora Pública Independiente",
+    image: { asset: { url: "/images/testimonial-1.jpg" } }
+  },
+  {
+    quote: "Es el único sistema que realmente facilita la vida del contador. Su conexión directa a la DIAN y el panel de agencias me permiten llevar 30 clientes sin estresarme.",
+    name: "Felipe Ramírez",
+    role: "Director de Ramírez Auditores",
+    image: { asset: { url: "/images/testimonial-2.jpg" } }
+  }
+];
+---
+
+<MainLayout seo={seo}>
+  <div class="page-wrap">
+    
+    <!-- Hero Section -->
+    <HeroDynamic 
+      headline="El Programa de Partners diseñado por y para Contadores"
+      subheadline="Recomienda Kontrolo a tus clientes. Ayúdales a organizar su facturación electrónica, despídete del desorden a fin de mes, y gana comisiones recurrentes del 20%."
+      imageUrl="/images/accountant-hero.jpg"
+      clientCount="500+ Contadores"
+    />
+
+    <!-- Trust Bar -->
+    <div style="margin-top: -20px; position: relative; z-index: 10;">
+      <TrustBar images={trustImages} title="Compatible con los softwares que ya usas" />
+    </div>
+
+    <!-- Pain Points (El título está dentro del componente, hemos quitado los márgenes extra) -->
+    <div style="margin-top: 40px;">
+      <PainPointsGrid points={painPoints} />
+    </div>
+
+    <!-- How it works (Step by Step) -->
+    <section class="section" style="background: #111; color: #fff; padding: 100px 0;">
+      <div class="container w-container">
+        <div style="text-align: center; margin-bottom: 60px;">
+          <h2 class="title-heading" style="color: #fff; font-size: 40px;">Cómo Funciona el Programa</h2>
+          <p style="color: #aaa; font-size: 18px;">Empieza a rentabilizar tu cartera de clientes en 3 simples pasos</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+          <!-- Step 1 -->
+          <div style="background: #1a1a1a; padding: 40px; border-radius: 20px; position: relative; overflow: hidden;">
+            <div style="font-size: 80px; font-weight: 800; color: rgba(255,255,255,0.05); position: absolute; top: -10px; right: 20px;">1</div>
+            <h3 style="font-size: 24px; margin-bottom: 16px; color: #fff;">Refieres a tu cliente</h3>
+            <p style="color: #bbb; line-height: 1.6;">Nos compartes el contacto de los clientes que necesiten organizar su inventario o facturación electrónica DIAN.</p>
+          </div>
+          <!-- Step 2 -->
+          <div style="background: #1a1a1a; padding: 40px; border-radius: 20px; position: relative; overflow: hidden;">
+            <div style="font-size: 80px; font-weight: 800; color: rgba(255,255,255,0.05); position: absolute; top: -10px; right: 20px;">2</div>
+            <h3 style="font-size: 24px; margin-bottom: 16px; color: #fff;">Nosotros Vendemos</h3>
+            <p style="color: #bbb; line-height: 1.6;">Nuestro equipo comercial se encarga de darles la demostración, cerrar la venta y realizar toda la migración y onboarding gratis.</p>
+          </div>
+          <!-- Step 3 -->
+          <div style="background: #1a1a1a; padding: 40px; border-radius: 20px; position: relative; overflow: hidden;">
+            <div style="font-size: 80px; font-weight: 800; color: rgba(255,255,255,0.05); position: absolute; top: -10px; right: 20px;">3</div>
+            <h3 style="font-size: 24px; margin-bottom: 16px; color: #fff;">Cobras tu Comisión</h3>
+            <p style="color: #bbb; line-height: 1.6;">Recibes el 20% del valor del plan que haya adquirido tu cliente, mes a mes, mientras él siga usando Kontrolo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <FeatureZigZag features={features} />
+
+    <!-- Testimonios -->
+    <section style="padding: 60px 0;">
+      <TestimonialCarousel testimonials={testimonials} />
+    </section>
+
+    <!-- Lead Capture Form (Rediseño UI Premium) -->
+    <section class="section" style="background: #f4f4f6; padding: 100px 0;">
+      <div class="container w-container">
+        <div style="max-width: 900px; margin: 0 auto; background: #fff; border-radius: 32px; box-shadow: 0 40px 80px rgba(0,0,0,0.08); display: flex; overflow: hidden; flex-direction: row; align-items: stretch; flex-wrap: wrap;">
+          
+          <div style="flex: 1; min-width: 300px; background: #0056ff; padding: 60px 40px; color: #fff; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="font-size: 36px; line-height: 1.2; margin-bottom: 20px; color: #fff;">Únete al programa de afiliados hoy</h3>
+            <p style="opacity: 0.9; margin-bottom: 30px; font-size: 16px; line-height: 1.5;">Miles de contadores ya están aumentando sus ingresos pasivos mientras reducen su estrés laboral. ¿Qué esperas para unirte al futuro de la gestión financiera?</p>
+            <ul style="list-style: none; padding: 0; margin: 0; opacity: 0.9; font-size: 14px; line-height: 2;">
+              <li>✓ Registro 100% gratuito</li>
+              <li>✓ Panel de métricas exclusivo</li>
+              <li>✓ Soporte VIP DIAN</li>
+            </ul>
+          </div>
+          
+          <div style="flex: 1.2; min-width: 320px; padding: 60px 40px;">
+            <div class="w-form">
+              <form action="https://api.web3forms.com/submit" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+                <input type="hidden" name="subject" value="Nuevo Partner: Contador" />
+                <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+                
+                <div>
+                  <label style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #888; font-weight: 700; margin-bottom: 8px; display: block;">Nombre Completo</label>
+                  <input class="w-input" style="border: 0; border-bottom: 2px solid #eee; border-radius: 0; background: transparent; padding: 12px 0; font-size: 16px; transition: border-color 0.3s;" type="text" name="Nombre" placeholder="Ej. Juan Pérez" required onfocus="this.style.borderBottomColor='#0056ff'" onblur="this.style.borderBottomColor='#eee'" />
+                </div>
+                
+                <div>
+                  <label style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #888; font-weight: 700; margin-bottom: 8px; display: block;">Correo de Contacto</label>
+                  <input class="w-input" style="border: 0; border-bottom: 2px solid #eee; border-radius: 0; background: transparent; padding: 12px 0; font-size: 16px; transition: border-color 0.3s;" type="email" name="Email" placeholder="juan@estudiocontable.com" required onfocus="this.style.borderBottomColor='#0056ff'" onblur="this.style.borderBottomColor='#eee'" />
+                </div>
+                
+                <div>
+                  <label style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #888; font-weight: 700; margin-bottom: 8px; display: block;">Volumen de Clientes Actuales</label>
+                  <select class="w-select" style="border: 0; border-bottom: 2px solid #eee; border-radius: 0; background: transparent; padding: 12px 0; font-size: 16px;" name="Volumen_Clientes" required>
+                    <option value="" disabled selected>Selecciona una opción...</option>
+                    <option value="1-10">1 a 10 clientes</option>
+                    <option value="11-50">11 a 50 clientes</option>
+                    <option value="50+">Más de 50 clientes</option>
+                  </select>
+                </div>
+                
+                <button type="submit" class="primary-button w-button" style="width: 100%; margin-top: 20px; font-size: 16px; padding: 16px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0, 86, 255, 0.3);">
+                  Aplicar al Programa
+                </button>
+              </form>
+              <div class="w-form-done" style="background: #e6f6ee; color: #00a854; padding: 20px; border-radius: 12px; margin-top: 20px; text-align: center;">
+                <div>¡Gracias! Hemos recibido tu solicitud. Nos contactaremos muy pronto.</div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <FaqAccordion faqs={faqs} />
+  </div>
+</MainLayout>

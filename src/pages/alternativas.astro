@@ -1,0 +1,299 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
+
+const seo = {
+  title: "Alternativas a Siigo, Alegra y Loggro en 2025 | Kontrolo",
+  description: "Descubre por qué cientos de pymes y contadores en Colombia están migrando a Kontrolo. Compara características, precios y soporte. Migración gratuita.",
+};
+---
+
+<MainLayout seo={seo}>
+  <div class="page-wrap">
+    
+    <!-- Hero Section -->
+    <section class="section" style="background: linear-gradient(135deg, #05192D 0%, #131ddf 100%); color: white; padding: 120px 20px 80px; text-align: center;">
+      <div class="container w-container" style="max-width: 900px;">
+        <div style="display: inline-block; background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 24px;">
+          ⚖️ COMPARATIVA 2025
+        </div>
+        <h1 style="font-size: 52px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; color: white;">
+          ¿Buscando una mejor alternativa para tu negocio?
+        </h1>
+        <p style="font-size: 20px; color: rgba(255,255,255,0.8); margin-bottom: 40px; line-height: 1.5; max-width: 700px; margin-left: auto; margin-right: auto;">
+          Descubre por qué las pymes y contadores que prueban Kontrolo ya no regresan a su software anterior. Elige con quién quieres compararnos hoy:
+        </p>
+      </div>
+    </section>
+
+    <!-- Tabs Navegación -->
+    <section class="section" style="padding: 0 20px; margin-top: -30px;">
+      <div class="container w-container" style="max-width: 800px;">
+        <div class="tabs-container" style="display: flex; justify-content: center; background: white; border-radius: 50px; padding: 10px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); gap: 10px;">
+          <button class="tab-btn active" data-target="siigo">vs Siigo</button>
+          <button class="tab-btn" data-target="alegra">vs Alegra</button>
+          <button class="tab-btn" data-target="loggro">vs Loggro</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tablas Comparativas -->
+    <section class="section" style="padding: 80px 20px; background: #f8f9fa;">
+      <div class="container w-container" style="max-width: 1000px;">
+
+        <!-- VS SIIGO -->
+        <div id="siigo" class="compare-content active">
+          <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 32px; font-weight: 800; color: #111;">Kontrolo vs Siigo</h2>
+            <p style="color: #666; font-size: 16px;">La diferencia entre un software pesado y uno ágil que trabaja por ti.</p>
+          </div>
+          <div class="compare-table-wrapper">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Característica</th>
+                  <th class="kontrolo-col">Kontrolo 🚀</th>
+                  <th class="competitor-col">Siigo ❌</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Facturación Electrónica</td>
+                  <td class="kontrolo-col"><strong>Ilimitada</strong> desde el plan básico</td>
+                  <td class="competitor-col">Paquetes de facturas con límite</td>
+                </tr>
+                <tr>
+                  <td>Soporte Técnico</td>
+                  <td class="kontrolo-col">Inmediato y personalizado por humanos</td>
+                  <td class="competitor-col">Lento, a través de bots y tickets</td>
+                </tr>
+                <tr>
+                  <td>Curva de Aprendizaje</td>
+                  <td class="kontrolo-col">Intuitiva. Dominas el sistema en 1 hora</td>
+                  <td class="competitor-col">Compleja. Requiere múltiples capacitaciones</td>
+                </tr>
+                <tr>
+                  <td>Módulo PMS (Hoteles)</td>
+                  <td class="kontrolo-col">Nativo e integrado al 100%</td>
+                  <td class="competitor-col">No disponible nativamente</td>
+                </tr>
+                <tr>
+                  <td>Costos de Implementación</td>
+                  <td class="kontrolo-col">Gratis y guiada paso a paso</td>
+                  <td class="competitor-col">Cobros adicionales frecuentes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- VS ALEGRA -->
+        <div id="alegra" class="compare-content">
+          <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 32px; font-weight: 800; color: #111;">Kontrolo vs Alegra</h2>
+            <p style="color: #666; font-size: 16px;">¿Necesitas más que contabilidad básica? Mira esto.</p>
+          </div>
+          <div class="compare-table-wrapper">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Característica</th>
+                  <th class="kontrolo-col">Kontrolo 🚀</th>
+                  <th class="competitor-col">Alegra ❌</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Hardware POS Físico</td>
+                  <td class="kontrolo-col">Integración total con impresoras y gavetas</td>
+                  <td class="competitor-col">Limitado. Más enfocado en contabilidad web</td>
+                </tr>
+                <tr>
+                  <td>Módulos de Industria</td>
+                  <td class="kontrolo-col">Soluciones específicas (Hoteles, Restaurantes, Ferreterías)</td>
+                  <td class="competitor-col">Solución genérica para todos</td>
+                </tr>
+                <tr>
+                  <td>Control de Inventarios Avanzado</td>
+                  <td class="kontrolo-col">Recetas, insumos, y múltiples bodegas en tiempo real</td>
+                  <td class="competitor-col">Inventario estándar simplificado</td>
+                </tr>
+                <tr>
+                  <td>Programa para Contadores</td>
+                  <td class="kontrolo-col">Comisiones altas y software gratuito de por vida</td>
+                  <td class="competitor-col">Beneficios menos agresivos</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- VS LOGGRO -->
+        <div id="loggro" class="compare-content">
+          <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 32px; font-weight: 800; color: #111;">Kontrolo vs Loggro</h2>
+            <p style="color: #666; font-size: 16px;">Velocidad y modernidad frente a los sistemas tradicionales.</p>
+          </div>
+          <div class="compare-table-wrapper">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Característica</th>
+                  <th class="kontrolo-col">Kontrolo 🚀</th>
+                  <th class="competitor-col">Loggro ❌</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Velocidad de Carga</td>
+                  <td class="kontrolo-col">Arquitectura moderna. Carga en milisegundos</td>
+                  <td class="competitor-col">Más lento en bases de datos grandes</td>
+                </tr>
+                <tr>
+                  <td>Interfaz de Usuario (UX)</td>
+                  <td class="kontrolo-col">Diseño limpio de última generación (2025)</td>
+                  <td class="competitor-col">Interfaz tradicional estilo escritorio</td>
+                </tr>
+                <tr>
+                  <td>Ecosistema Todo en Uno</td>
+                  <td class="kontrolo-col">POS, ERP y PMS sin necesidad de puentes</td>
+                  <td class="competitor-col">Mayormente enfocado en ERP empresarial</td>
+                </tr>
+                <tr>
+                  <td>Planes Pyme</td>
+                  <td class="kontrolo-col">Precios ultra competitivos desde $0 de instalación</td>
+                  <td class="competitor-col">Orientado a empresas medianas/grandes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Migración Section -->
+    <section class="section" style="padding: 80px 20px; background: white;">
+      <div class="container w-container" style="max-width: 900px; text-align: center; background: #f4f6fa; border-radius: 30px; padding: 60px 40px;">
+        <h2 style="font-size: 36px; font-weight: 800; color: #111; margin-bottom: 20px;">¿Miedo a cambiar de sistema?</h2>
+        <p style="font-size: 18px; color: #555; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Sabemos que migrar inventarios, clientes y contabilidad suena como una pesadilla. Por eso, en Kontrolo **hacemos todo el trabajo de migración por ti**, totalmente gratis.
+        </p>
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+          <a href="#" class="primary-button w-button">Empezar Migración Gratis</a>
+          <a href="/contacto" class="secondary-button w-button" style="background: transparent; color: var(--primary); border: 2px solid var(--primary);">Hablar con un Asesor</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <style>
+    .tab-btn {
+      flex: 1;
+      padding: 15px 20px;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      font-weight: 700;
+      color: #666;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .tab-btn.active {
+      background: #131ddf;
+      color: white;
+      box-shadow: 0 4px 15px rgba(19, 29, 223, 0.3);
+    }
+    .tab-btn:hover:not(.active) {
+      background: #f0f4ff;
+      color: #131ddf;
+    }
+    
+    .compare-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    .compare-content.active {
+      display: block;
+    }
+
+    .compare-table-wrapper {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      overflow-x: auto;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .compare-table th, .compare-table td {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .compare-table th {
+      font-size: 18px;
+      color: #111;
+      font-weight: 800;
+    }
+    .compare-table td {
+      font-size: 15px;
+      color: #555;
+    }
+    
+    .kontrolo-col {
+      background: #f0f4ff;
+      border-radius: 8px;
+      color: #131ddf !important;
+    }
+    .competitor-col {
+      color: #888 !important;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .tabs-container {
+        flex-direction: column;
+        border-radius: 20px !important;
+      }
+      .tab-btn {
+        border-radius: 12px;
+      }
+      .compare-table th, .compare-table td {
+        padding: 15px 10px;
+        font-size: 14px;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.compare-content');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remover clase active de todos los tabs y contenidos
+          tabs.forEach(t => t.classList.remove('active'));
+          contents.forEach(c => c.classList.remove('active'));
+
+          // Agregar clase active al tab clickeado
+          tab.classList.add('active');
+
+          // Mostrar contenido correspondiente
+          const targetId = tab.getAttribute('data-target');
+          document.getElementById(targetId).classList.add('active');
+        });
+      });
+    });
+  </script>
+</MainLayout>

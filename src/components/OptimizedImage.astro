@@ -1,0 +1,41 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+export interface Props {
+  src: string;
+  alt?: string;
+  class?: string;
+  loading?: "lazy" | "eager";
+  width?: number;
+  height?: number;
+}
+const { src, alt = "", class: className, loading = "lazy", width, height } = Astro.props;
+
+// Load all images from src/assets/images
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/**/*.{jpeg,jpg,png,gif,webp,svg}');
+
+let cleanPath = src.split('?')[0]; 
+let filename = cleanPath.split('/').pop() || '';
+let imagePath = `/src/assets/images/${filename}`;
+
+let ImageComponent = null;
+
+if (!images[imagePath]) {
+  console.warn(`[OptimizedImage] Missing image: ${imagePath}`);
+} else {
+  ImageComponent = images[imagePath];
+}
+
+const isSvg = filename.toLowerCase().endsWith('.svg');
+---
+
+{ImageComponent ? (
+  isSvg ? (
+    <img src={`/images/${filename}`} alt={alt} class={className} loading={loading} width={width} height={height} />
+  ) : (
+    <Image src={ImageComponent()} alt={alt} class={className} loading={loading} width={width} height={height} />
+  )
+) : (
+  <img src={src} alt={alt} class={className} loading={loading} width={width} height={height} />
+)}

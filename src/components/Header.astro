@@ -1,0 +1,302 @@
+---
+import OptimizedImage from './OptimizedImage.astro';
+import { sanityClient } from "sanity:client";
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+let niches = [];
+try {
+  niches = await sanityClient.fetch(`*[_type == "niche"]{ "slug": slug.current, industryName, industryType } | order(_createdAt asc)`);
+} catch (error) {
+  console.error("Sanity fetch error in Header:", error.message);
+}
+---
+<div class="header-wrapper">
+  <div class="top-announcement-bar">
+    <p>🎉 <strong>25% OFF</strong> en tu primer año de Kontrolo pagando anual. Hablemos: <strong>+57 (316) 697-3362</strong></p>
+  </div>
+  
+  <header class="main-navbar">
+    <div class="navbar-container">
+      <div class="nav-left">
+        <a href="/" class="main-brand-link">
+          <OptimizedImage src="/images/Logo-7.svg" alt="Kontrolo Logo" width="160" />
+        </a>
+      </div>
+      
+      <nav class="nav-center">
+        <!-- Mega Menu: Soluciones -->
+        <div class="nav-item has-mega-menu">
+          <a href="#" class="nav-link">Soluciones <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="mega-menu">
+            <div class="mega-menu-inner">
+              <div class="mega-column">
+                <div class="mega-title">PRODUCTOS KONTROLO</div>
+                <a href="/software-pms-para-hoteles" class="mega-link">
+                  <div class="mega-link-icon">🏨</div>
+                  <div>
+                    <div class="mega-link-title">Software PMS</div>
+                    <div class="mega-link-desc">Gestión hotelera todo en uno</div>
+                  </div>
+                </a>
+                <a href="/software-erp" class="mega-link">
+                  <div class="mega-link-icon">🏢</div>
+                  <div>
+                    <div class="mega-link-title">Software ERP</div>
+                    <div class="mega-link-desc">Facturación, inventario y nómina</div>
+                  </div>
+                </a>
+                <a href="/software-pos" class="mega-link">
+                  <div class="mega-link-icon">🛒</div>
+                  <div>
+                    <div class="mega-link-title">Software POS</div>
+                    <div class="mega-link-desc">Punto de venta súper rápido</div>
+                  </div>
+                </a>
+              </div>
+              <div class="mega-column mega-column-bg">
+                <div class="mega-title">SOLUCIONES POR INDUSTRIA</div>
+                <div class="niche-grid">
+                  {niches.length > 0 ? niches.map((niche: any) => (
+                    <a href={"/" + niche.industryType + "/" + niche.slug} class="niche-link">{niche.industryName}</a>
+                  )) : (
+                    <p style="font-size: 13px; color: #666;">No hay industrias publicadas.</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mega Menu: Recursos & Partners -->
+        <div class="nav-item has-mega-menu">
+          <a href="#" class="nav-link">Aprende y Gana <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="mega-menu mega-menu-small">
+            <div class="mega-menu-inner" style="grid-template-columns: 1fr;">
+              <div class="mega-column">
+                <div class="mega-title">RECURSOS</div>
+                <a href="/calendario-tributario" class="mega-link">
+                  <div class="mega-link-icon">📅</div>
+                  <div>
+                    <div class="mega-link-title">Calendario Tributario</div>
+                    <div class="mega-link-desc">Vencimientos DIAN por NIT</div>
+                  </div>
+                </a>
+                <a href="/recursos/contadores" class="mega-link">
+                  <div class="mega-link-icon">📁</div>
+                  <div>
+                    <div class="mega-link-title">Hub de Herramientas</div>
+                    <div class="mega-link-desc">Plantillas y guías gratuitas</div>
+                  </div>
+                </a>
+                <a href="/blog" class="mega-link">
+                  <div class="mega-link-icon">📝</div>
+                  <div>
+                    <div class="mega-link-title">Blog Kontrolo</div>
+                    <div class="mega-link-desc">Noticias DIAN y tips de negocio</div>
+                  </div>
+                </a>
+                
+                <div class="mega-title" style="margin-top: 20px;">PARTNERS</div>
+                <a href="/partners/contadores" class="mega-link">
+                  <div class="mega-link-icon">🤝</div>
+                  <div>
+                    <div class="mega-link-title">Programa para Contadores</div>
+                    <div class="mega-link-desc">Gana comisiones referenciando</div>
+                  </div>
+                </a>
+                
+                <div class="mega-title" style="margin-top: 20px;">COMPARATIVA</div>
+                <a href="/alternativas" class="mega-link">
+                  <div class="mega-link-icon">🆚</div>
+                  <div>
+                    <div class="mega-link-title">Competidores</div>
+                    <div class="mega-link-desc">Kontrolo vs Otras Opciones</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/por-que-kontrolo" class="nav-link">Por qué Kontrolo</a>
+        </div>
+      </nav>
+      
+      <div class="nav-right">
+        <a href="https://kontrololatam.com/my/LOGINEMPRESA/" target="_blank" rel="noopener noreferrer" class="nav-link-text">Ingresa</a>
+        <a href="/contacto" class="btn-primary-teal">Empieza gratis</a>
+      </div>
+      
+      <div class="mobile-menu-toggle" id="openMobileMenu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenu" style="display: none;">
+    <div class="mobile-menu-header">
+      <OptimizedImage src="/images/Logo-7.svg" alt="Kontrolo Logo" width="120" />
+      <div class="mobile-header-right">
+        <button class="mobile-close-btn" id="closeMobileMenu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu-content">
+      <div class="mobile-dropdown">
+        <button class="mobile-dropdown-toggle">Soluciones <svg width="12" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor"><path d="M1 1L5 5L9 1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="mobile-dropdown-content">
+          <div class="mobile-dropdown-title">PRODUCTOS</div>
+          <a href="/software-pms-para-hoteles">Software PMS</a>
+          <a href="/software-erp">Software ERP</a>
+          <a href="/software-pos">Software POS</a>
+          
+          <div class="mobile-dropdown-title" style="margin-top: 15px;">INDUSTRIAS</div>
+          {niches.length > 0 ? niches.map((niche: any) => (
+            <a href={"/" + niche.industryType + "/" + niche.slug}>{niche.industryName}</a>
+          )) : null}
+        </div>
+      </div>
+      
+      <div class="mobile-dropdown">
+        <button class="mobile-dropdown-toggle">Aprende y Gana <svg width="12" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor"><path d="M1 1L5 5L9 1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="mobile-dropdown-content">
+          <div class="mobile-dropdown-title">RECURSOS</div>
+          <a href="/calendario-tributario">Calendario Tributario</a>
+          <a href="/recursos/contadores">Hub de Herramientas</a>
+          <a href="/blog">Blog Kontrolo</a>
+          <div class="mobile-dropdown-title" style="margin-top: 15px;">COMPARATIVA</div>
+          <a href="/alternativas">Competidores</a>
+          <div class="mobile-dropdown-title" style="margin-top: 15px;">PARTNERS</div>
+          <a href="/partners/contadores">Programa para Contadores</a>
+        </div>
+      </div>
+      
+      <a href="/por-que-kontrolo" class="mobile-link">Por qué Kontrolo</a>
+      <a href="/contacto" class="mobile-link">Contacto</a>
+      <a href="https://kontrololatam.com/my/LOGINEMPRESA/" target="_blank" rel="noopener noreferrer" class="mobile-link" style="color: #131ddf;">Ingresar al Sistema</a>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .header-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+  }
+  .top-announcement-bar {
+    background: linear-gradient(90deg, #05192D 0%, #131ddf 100%);
+    color: white;
+    text-align: center;
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+  .top-announcement-bar p { margin: 0; }
+  .main-navbar { border-bottom: 1px solid #f0f0f0; position: relative; }
+  .navbar-container {
+    max-width: 1200px; margin: 0 auto; padding: 0 20px;
+    display: flex; justify-content: space-between; align-items: center; height: 70px;
+  }
+  .nav-left { display: flex; align-items: center; }
+  .nav-center { display: flex; align-items: center; gap: 30px; height: 100%; }
+  
+  .nav-item { position: relative; height: 100%; display: flex; align-items: center; }
+  .nav-link {
+    color: #4a4a4a; text-decoration: none; font-size: 15px; font-weight: 500;
+    display: flex; align-items: center; gap: 6px; transition: color 0.3s;
+  }
+  .nav-link:hover { color: #131ddf; }
+  
+  /* Mega Menu CSS */
+  .mega-menu {
+    position: absolute; top: 70px; left: 50%; transform: translateX(-50%) translateY(10px);
+    background: white; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border: 1px solid #f0f0f0; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+    width: 800px; padding: 0; overflow: hidden;
+  }
+  .mega-menu-small { width: 350px; }
+  .has-mega-menu:hover .mega-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  
+  .mega-menu-inner { display: grid; grid-template-columns: 1fr 1fr; }
+  .mega-column { padding: 30px; }
+  .mega-column-bg { background: #f8f9fa; border-left: 1px solid #f0f0f0; }
+  
+  .mega-title { font-size: 11px; font-weight: 700; color: #888; letter-spacing: 1px; margin-bottom: 15px; }
+  
+  .mega-link {
+    display: flex; align-items: flex-start; gap: 12px; padding: 12px; border-radius: 8px;
+    text-decoration: none; color: #111; transition: background 0.2s; margin-bottom: 5px;
+  }
+  .mega-link:hover { background: #f0f4ff; }
+  .mega-link-icon { font-size: 20px; background: #fff; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+  .mega-link-title { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+  .mega-link-desc { font-size: 13px; color: #666; }
+  
+  .niche-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .niche-link { display: block; font-size: 14px; color: #444; text-decoration: none; padding: 8px 12px; border-radius: 6px; transition: background 0.2s, color 0.2s; }
+  .niche-link:hover { background: #131ddf; color: #fff; }
+
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .nav-link-text { color: #4a4a4a; text-decoration: none; font-size: 15px; font-weight: 600; transition: color 0.3s; }
+  .nav-link-text:hover { color: #131ddf; }
+  .btn-primary-teal { background-color: #131ddf; color: white; padding: 10px 24px; border-radius: 42px; text-decoration: none; font-weight: 600; font-size: 14px; transition: background 0.3s; }
+  .btn-primary-teal:hover { background-color: #0e15a8; }
+  
+  .mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+  .mobile-menu-toggle span { width: 24px; height: 2px; background: #111; border-radius: 2px; }
+
+  /* Mobile */
+  .mobile-menu-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: white; z-index: 2000;
+    transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; display: flex; flex-direction: column;
+  }
+  .mobile-menu-overlay.active { transform: translateX(0); }
+  .mobile-menu-header { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #f0f0f0; }
+  .mobile-close-btn { background: none; border: none; cursor: pointer; color: #111; }
+  .mobile-menu-content { padding: 0 20px 40px; display: flex; flex-direction: column; }
+  .mobile-link { font-size: 16px; font-weight: 600; color: #111; text-decoration: none; padding: 18px 0; border-bottom: 1px solid #f0f0f0; }
+  .mobile-dropdown { border-bottom: 1px solid #f0f0f0; }
+  .mobile-dropdown-toggle { width: 100%; display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 600; color: #111; background: none; border: none; padding: 18px 0; cursor: pointer; }
+  .mobile-dropdown.active .mobile-dropdown-toggle svg { transform: rotate(180deg); }
+  .mobile-dropdown-content { display: none; flex-direction: column; padding-bottom: 15px; }
+  .mobile-dropdown.active .mobile-dropdown-content { display: flex; }
+  .mobile-dropdown-title { font-size: 11px; font-weight: 700; color: #888; margin: 15px 0 5px; }
+  .mobile-dropdown-content a { font-size: 15px; color: #555; text-decoration: none; padding: 10px 0; }
+
+  @media (max-width: 991px) {
+    .nav-center, .nav-right { display: none; }
+    .mobile-menu-toggle { display: flex; }
+  }
+</style>
+
+<script>
+  const openBtn = document.getElementById('openMobileMenu');
+  const closeBtn = document.getElementById('closeMobileMenu');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+
+  if (openBtn && closeBtn && mobileMenu) {
+    openBtn.addEventListener('click', () => {
+      mobileMenu.style.display = 'flex';
+      setTimeout(() => mobileMenu.classList.add('active'), 10);
+      document.body.style.overflow = 'hidden';
+    });
+    closeBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => mobileMenu.style.display = 'none', 300);
+    });
+  }
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      toggle.parentElement.classList.toggle('active');
+    });
+  });
+</script>

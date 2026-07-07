@@ -1,0 +1,64 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { sanityClient } from "sanity:client";
+import HeroDynamic from '../../components/niches/HeroDynamic.astro';
+import TrustBar from '../../components/niches/TrustBar.astro';
+import PainPointsGrid from '../../components/niches/PainPointsGrid.astro';
+import FeatureZigZag from '../../components/niches/FeatureZigZag.astro';
+import TestimonialCarousel from '../../components/niches/TestimonialCarousel.astro';
+import FaqAccordion from '../../components/niches/FaqAccordion.astro';
+import StickyCtaBar from '../../components/niches/StickyCtaBar.astro';
+import RelatedNiches from '../../components/niches/RelatedNiches.astro';
+
+export async function getStaticPaths() {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+  const allNiches = await sanityClient.fetch(`*[_type == "niche"]{
+    "slug": slug.current, industryName, industryType, "heroImageUrl": heroImage.asset->url
+  }`);
+
+  const currentTypeNiches = await sanityClient.fetch(`*[_type == "niche" && industryType == "pos"]{
+    "slug": slug.current,
+    seoTitle, seoDescription, industryName, heroHeadline, heroSubheadline, 
+    "heroImageUrl": heroImage.asset->url, clientCount, rating, painPoints,
+    features[]{ featureTitle, featureDescription, featureImage{ asset->{url} }, isReversed },
+    testimonials[]->{ authorName, authorRole, companyName, quote, rating, avatar{ asset->{url} } },
+    faqs[]{ question, answer }
+  }`);
+
+  return currentTypeNiches.map((niche) => {
+    const related = allNiches.filter(n => n.slug !== niche.slug).slice(0, 3);
+    return {
+      params: { nicho: niche.slug },
+      props: { niche, relatedNiches: related }
+    };
+  });
+}
+
+const { niche, relatedNiches } = Astro.props;
+const seo = {
+  title: niche.seoTitle || niche.heroHeadline || 'Kontrolo',
+  description: niche.seoDescription || niche.heroSubheadline,
+  image: niche.heroImageUrl,
+};
+---
+
+<MainLayout seo={seo}>
+  <div class="page-wrap">
+    <HeroDynamic 
+      headline={niche.heroHeadline} 
+      subheadline={niche.heroSubheadline} 
+      imageUrl={niche.heroImageUrl} 
+      clientCount={niche.clientCount} 
+      rating={niche.rating} 
+    />
+    <TrustBar />
+    {niche.painPoints && niche.painPoints.length > 0 && <PainPointsGrid points={niche.painPoints} />}
+    {niche.features && niche.features.length > 0 && <FeatureZigZag features={niche.features} />}
+    {niche.testimonials && niche.testimonials.length > 0 && <TestimonialCarousel testimonials={niche.testimonials} />}
+    {niche.faqs && niche.faqs.length > 0 && <FaqAccordion faqs={niche.faqs} />}
+    
+    {relatedNiches && relatedNiches.length > 0 && <RelatedNiches niches={relatedNiches} />}
+    
+    <StickyCtaBar industryName={niche.industryName} />
+  </div>
+</MainLayout>

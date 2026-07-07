@@ -1,0 +1,32 @@
+---
+import OptimizedImage from '../OptimizedImage.astro';
+
+interface Feature {
+  featureTitle: string;
+  featureDescription: string;
+  featureImage: { asset: { url: string } };
+  isReversed: boolean;
+}
+
+interface Props {
+  features: Feature[];
+}
+const { features } = Astro.props;
+---
+<section class="section">
+  <div class="container w-container">
+    {features.map((feature, index) => (
+      <div style={`display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; ${feature.isReversed ? 'direction: rtl;' : ''}`}>
+        <div style="direction: ltr;">
+          <h3 class="title-heading" style="font-size: 32px; margin-bottom: 20px;">{feature.featureTitle}</h3>
+          <p class="title-paragraph black">{feature.featureDescription}</p>
+        </div>
+        <div style="direction: ltr; border-radius: 20px; overflow: hidden; background: #f4f4f6; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+          {feature.featureImage && feature.featureImage.asset && (
+            <OptimizedImage src={feature.featureImage.asset.url} alt={feature.featureTitle} style="width: 100%; height: auto;" />
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

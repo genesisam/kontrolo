@@ -1,0 +1,35 @@
+﻿---
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  type?: string;
+  structuredData?: any;
+}
+
+const {
+  title = "Kontrolo | PMS, ERP y POS en la nube para Colombia",
+  description = "Centraliza tu negocio con Kontrolo: suite en la nube de PMS, ERP y POS. Gestiona reservas, ventas, inventarios y contabilidad con DIAN, pagos e informes en tiempo real.",
+  image = "https://cdn.prod.website-files.com/66869ac3531cbbc25af599a2/66f283020c816c8b6114e006_og-image.jpg",
+  canonical = Astro.url.href,
+  type = "website",
+  structuredData,
+} = Astro.props;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:type" content={type} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image} />
+<link rel="canonical" href={canonical} />
+
+{structuredData && (
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
+)}

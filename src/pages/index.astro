@@ -1,0 +1,599 @@
+---
+import OptimizedImage from '../components/OptimizedImage.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import Testimonial from '../components/Testimonial.astro';
+import Hero from '../components/Hero.astro';
+
+const seo = {
+  title: "Kontrolo | PMS, ERP y POS en la nube para Colombia",
+  description: "Centraliza tu negocio con Kontrolo: suite en la nube de PMS, ERP y POS. Gestiona reservas, ventas, inventarios y contabilidad con DIAN, pagos e informes en tiempo real.",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Kontrolo",
+    "operatingSystem": "Cloud-based",
+    "applicationCategory": "BusinessApplication",
+    "description": "Suite en la nube de PMS, ERP y POS para hoteles y restaurantes en Colombia.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "COP"
+    }
+  }
+};
+---
+<MainLayout seo={seo}>
+<Hero 
+  label="SOFTWARE DE GESTIÓN PARA CONTADORES Y PYMES"
+  titleHtml="Toma el control de tu negocio <span class='kontrolo-primary-text'>con Kontrolo</span>"
+  subtitleHtml="La suite definitiva en la nube que integra <strong>PMS, ERP y POS</strong> en un solo lugar. Automatiza tu contabilidad, controla tu inventario y emite <strong>facturación electrónica avalada por la DIAN</strong> sin complicaciones."
+  primaryButtonText="Prueba 15 días Gratis"
+  primaryButtonLink="/contacto"
+/>
+<div class="page-wrap">
+<section class="section brand" style="padding-bottom: 30px;">
+<div class="w-layout-blockcontainer container w-container">
+<style is:global>
+  .brand-slider {
+    overflow: hidden;
+    padding: 30px 0;
+    width: 100%;
+    position: relative;
+    /* Efecto de desvanecimiento elegante en los bordes */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  }
+  .brand-track {
+    display: inline-flex;
+    width: max-content;
+    animation: scrollLogos 30s linear infinite;
+  }
+  .brand-track:hover {
+    animation-play-state: paused;
+  }
+  .brand-set {
+    display: flex;
+    align-items: center;
+    gap: 120px;
+    padding-right: 120px; /* Mismo espacio del gap para mantener el ritmo */
+  }
+  .brand-set img {
+    height: 85px; /* Tamaño mucho más grande para logos alargados */
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.5); /* Sutil y elegante */
+    transition: filter 0.4s ease;
+    cursor: pointer;
+  }
+  .brand-set img:hover {
+    filter: grayscale(0%) opacity(1);
+  }
+  @keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @media (max-width: 768px) {
+    .brand-set { gap: 80px; padding-right: 80px; }
+    .brand-set img { height: 50px; }
+    .brand-slider {
+      -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    }
+  }
+</style>
+
+<div class="brand-wrap" style="width: 100%; text-align: center; overflow: hidden;">
+<p style="opacity:1; margin-bottom: 10px; font-size: 13px; color: #64748b;">Más de 1 000 negocios en Colombia usan Kontrolo</p>
+
+<div class="brand-slider">
+  <div class="brand-track">
+    <!-- Grupo Original -->
+    <div class="brand-set">
+      <OptimizedImage alt="La Gran Via" loading="lazy" src="/images/la-gran-via.png" />
+      <OptimizedImage alt="Hotel Anapoima" loading="lazy" src="/images/hotel-anapoima.png" />
+      <OptimizedImage alt="Hotel Dubai" loading="lazy" src="/images/hotel-dubai.png" />
+      <OptimizedImage alt="La Gran Via" loading="lazy" src="/images/la-gran-via.png" />
+      <OptimizedImage alt="Hotel Anapoima" loading="lazy" src="/images/hotel-anapoima.png" />
+      <OptimizedImage alt="Hotel Dubai" loading="lazy" src="/images/hotel-dubai.png" />
+    </div>
+    <!-- Grupo Duplicado (Para el loop perfecto) -->
+    <div class="brand-set">
+      <OptimizedImage alt="La Gran Via" loading="lazy" src="/images/la-gran-via.png" />
+      <OptimizedImage alt="Hotel Anapoima" loading="lazy" src="/images/hotel-anapoima.png" />
+      <OptimizedImage alt="Hotel Dubai" loading="lazy" src="/images/hotel-dubai.png" />
+      <OptimizedImage alt="La Gran Via" loading="lazy" src="/images/la-gran-via.png" />
+      <OptimizedImage alt="Hotel Anapoima" loading="lazy" src="/images/hotel-anapoima.png" />
+      <OptimizedImage alt="Hotel Dubai" loading="lazy" src="/images/hotel-dubai.png" />
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</section>
+<section class="section black-section">
+<div class="w-layout-blockcontainer container w-container">
+<div class="section-inner">
+<div class="title-wrap">
+<div class="title-inner">
+<div class="subtitle-black" >
+<div class="caption">Suite PMS · ERP · POS en la nube</div>
+</div>
+<h2 class="title-heading animate-on-scroll animate-fade-up color-white" >¿Por qué elegir Kontrolo?</h2>
+</div>
+<p class="title-paragraph" >Elige la suite que impulsa tu negocio con soluciones en la nube diseñadas para optimizar operaciones, reducir errores y mejorar la rentabilidad de cada área.</p>
+</div>
+<div class="choose-wrap" >
+<div class="choose-card"><OptimizedImage alt="Característica de software Kontrolo" class="choose-icon" loading="lazy" src="/images/hotel-1.svg"/>
+<div class="data-inner animate-on-scroll animate-fade-up">
+<h4 class="color-white">Software PMS</h4>
+<p>Administra reservas, check-in y check-out, housekeeping y facturación digital desde un solo panel. Aumenta tus reservas y mejora la experiencia del huésped.</p>
+</div>
+</div>
+<div class="choose-card"><OptimizedImage alt="Característica de software Kontrolo" class="choose-icon" loading="lazy" src="/images/erp-1.svg"/>
+<div class="data-inner animate-on-scroll animate-fade-up">
+<h4 class="color-white">Software ERP</h4>
+<p>Centraliza contabilidad, ventas, gastos, inventarios y nómina en un mismo sistema. Optimiza recursos, elimina errores y toma decisiones precisas en tiempo real.</p>
+</div>
+</div>
+<div class="choose-card"><OptimizedImage alt="Característica de software Kontrolo" class="choose-icon" loading="lazy" src="/images/cubierta-de-alimentos-1.svg"/>
+<div class="data-inner animate-on-scroll animate-fade-up">
+<h4 class="color-white">Software POS</h4>
+<p><strong>Gestiona mesas, cocina e inventarios en tiempo real con facturación electrónica integrada. Reduce tiempos de espera y aumenta la rentabilidad de tu restaurante.</strong></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="w-layout-blockcontainer container w-container">
+<div class="section-inner">
+<div class="title-wrap">
+<div class="title-inner">
+<div class="subtitle">
+<div class="caption">Resultados reales: automatización, control y crecimiento</div>
+</div>
+<h2 class="title-heading animate-on-scroll animate-fade-up">Beneficios que transforman la <br/>‍<span class="title-span">gestión de tu negocio</span></h2>
+</div>
+<p class="title-paragraph black">Kontrolo es la suite de software en la nube para hoteles, restaurantes y empresas en Colombia que centraliza tus operaciones, automatiza procesos y potencia la rentabilidad.</p>
+</div>
+<div class="feature-outer">
+<div class="feature-card animate-on-scroll animate-fade-up">
+<div class="feature-img"><OptimizedImage alt="Característica de software Kontrolo" class="cover-image" loading="eager" src="/images/kontrol-card-1.jpg"/></div>
+<div class="data-inner animate-on-scroll animate-fade-up">
+<h4>Automatización total de tu operación</h4>
+<p>Reduce tareas manuales y elimina errores con un software ERP y PMS en la nube que integra contabilidad, inventarios, ventas y reservas. Ahorra hasta un 30 % del tiempo administrativo y mejora la productividad del equipo.</p>
+</div>
+</div>
+<div class="feature-card animate-on-scroll animate-fade-up" id="w-node-_6e320c0a-4a24-79f3-ac6a-7d92730ffa63-730ffa5a">
+<div class="feature-img"><OptimizedImage alt="Característica de software Kontrolo" class="cover-image" loading="eager" src="/images/kontrol-card-2.jpg"/></div>
+<div class="data-inner animate-on-scroll animate-fade-up">
+<h4>Control centralizado desde cualquier lugar</h4>
+<p>Gestiona tu negocio en tiempo real con una plataforma de gestión empresarial todo en uno. Supervisa ventas, gastos, reservas y stock desde cualquier dispositivo con conexión a internet.</p>
+</div>
+</div>
+<div class="feature-card animate-on-scroll animate-fade-up flex" id="w-node-_6e320c0a-4a24-79f3-ac6a-7d92730ffa6b-730ffa5a">
+<div class="feature-img"><OptimizedImage alt="Característica de software Kontrolo" class="cover-image" loading="eager" src="/images/kontrol-card-3.jpg"/></div>
+<div class="data-inner animate-on-scroll animate-fade-up small">
+<h4>Decisiones basadas en datos reales</h4>
+<p>Obtén reportes automáticos y dashboards intuitivos con métricas de ventas, rentabilidad y desempeño. El software Kontrolo convierte tus datos en información estratégica para tomar mejores decisiones empresariales.</p>
+</div>
+</div>
+<div class="feature-flex" id="w-node-_6e320c0a-4a24-79f3-ac6a-7d92730ffa73-730ffa5a">
+<div class="fill-block">
+<div class="feature-card animate-on-scroll animate-fade-up">
+<div class="feature-img large"><OptimizedImage alt="Característica de software Kontrolo" class="cover-image" loading="lazy" src="/images/kontrol-card-4-1.jpg"/></div>
+<div class="data-inner animate-on-scroll animate-fade-up">
+<h4>Ahorro de tiempo y recursos operativos</h4>
+<p>Optimiza procesos y reduce costos con herramientas inteligentes de facturación electrónica, inventarios y nómina.Tu empresa gana eficiencia sin aumentar la carga operativa.</p>
+</div>
+</div>
+</div>
+<div class="fill-block">
+<div class="feature-card animate-on-scroll animate-fade-up">
+<div class="feature-img large"><OptimizedImage alt="Característica de software Kontrolo" class="cover-image" loading="lazy" src="/images/kontrol-card-5-1-1.jpg"/></div>
+<div class="data-inner animate-on-scroll animate-fade-up">
+<h4>Seguridad y cumplimiento garantizado</h4>
+<p>Cumple con la DIAN y las normativas locales con un sistema respaldado por encriptación avanzada y copias automáticas en la nube.Tus datos están seguros las 24 horas del día.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section white-bg">
+<div class="w-layout-blockcontainer container w-container">
+<div class="section-wrap">
+<div class="data-wrap">
+<div class="fill-block">
+<div class="data-content">
+<div class="title-inner align-left">
+<div class="subtitle bg-white">
+<div class="caption">INNOVACIÓN EN GESTIÓN EMPRESARIAL</div>
+</div>
+<h2 class="title-heading animate-on-scroll animate-fade-up">Lideramos la innovación <span class="title-span">en <strong class="bold-text-6">software de gestión</strong></span></h2>
+</div>
+<p >Kontrolo es la <strong>suite en la nube (PMS, ERP y POS)</strong> para <strong>hoteles, restaurantes y retail</strong> en Colombia. Actualizamos de forma continua para que tu operación gane <strong>eficiencia, automatización</strong> y <strong>escalabilidad</strong> sin fricción.</p>
+<div class="pricing-detail w-richtext">
+<ul role="list" >
+<li><strong>Operación más rápida</strong> con datos en <strong>tiempo real</strong> para ventas, reservas e inventarios.</li>
+<li><strong>Nuevas funciones constantes</strong> en <strong>PMS, ERP y POS</strong> sin instalaciones ni costos ocultos.</li>
+<li><strong>Experiencia intuitiva</strong>: adopción ágil para equipos no técnicos y <strong>gestión empresarial</strong> sin curva de aprendizaje.</li>
+</ul>
+</div>
+<div class="data-button" >
+<a class="primary-button w-button" href="/software-pms-para-hoteles">Solicitar demo</a>
+</div>
+</div>
+</div>
+<div class="fill-block">
+<div class="data-img"><OptimizedImage alt="Data Image 01" class="cover-image" loading="lazy" src="/images/data-image-01.jpg" width="598"/></div>
+<div class="card-top" ><OptimizedImage alt="Card Image 01" class="cover-image" loading="lazy" src="/images/card-wrap-01.jpg"/></div>
+</div>
+</div>
+<div class="data-wrap swap">
+<div class="fill-block">
+<div class="data-content">
+<div class="title-inner align-left">
+<div class="subtitle bg-white">
+<div class="caption">ANÁLITICA Y SEGURIDAD EN TIEMPO REAL</div>
+</div>
+<h2 class="title-heading animate-on-scroll animate-fade-up"><span class="title-span">Mantente al día con datos</span> y seguridad de nivel empresarial</h2>
+</div>
+<p >Con Kontrolo, tu información está protegida con <strong>cifrado avanzado</strong>, <strong>backups automáticos</strong> y <strong>control de accesos</strong>. Cumple con <strong>DIAN</strong> y toma decisiones informadas con <strong>dashboards</strong> y <strong>alertas</strong> en vivo.</p>
+<div class="pricing-detail w-richtext">
+<ul role="list" >
+<li><strong>Continuidad operativa</strong>: encriptación, copias en la nube y alta disponibilidad 24/7.</li>
+<li><strong>Cumplimiento normativo</strong>: trazabilidad, auditoría y documentos electrónicos para <strong>facturación</strong> y reportes oficiales.</li>
+<li><strong>Mejores decisiones</strong>: <strong>analítica en tiempo real</strong>, indicadores clave y alertas sobre riesgos operativos o financieros.</li>
+</ul>
+</div>
+<div class="data-button" >
+<a class="primary-button w-button" href="/software-pms-para-hoteles">Ver cómo funciona</a>
+</div>
+</div>
+</div>
+<div class="fill-block">
+<div class="data-img"><OptimizedImage alt="Data Image 02" class="cover-image" loading="lazy" src="/images/data-image-02.jpg" width="598"/></div>
+<div class="card-bottom" ><OptimizedImage alt="Card Image 02" class="cover-image" loading="lazy" src="/images/card-wrap-02.jpg"/></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section black-section">
+<div class="w-layout-blockcontainer container w-container">
+<div class="section-inner">
+<div class="title-wrap">
+<div class="title-inner">
+<div class="subtitle-black">
+<div class="caption">INTEGRACIONES Y ALIANZAS</div>
+</div>
+<h2 class="title-heading animate-on-scroll animate-fade-up integration">Integraciones <span class="title-span">sin fricción</span> con tus sistemas actuales<br/></h2>
+</div>
+<p class="title-paragraph">Kontrolo se integra de forma nativa con facturación DIAN, CRM, pasarelas de pago y sistemas bancarios. Además, ofrece conectividad con las principales OTAs, canales de venta y herramientas de análisis, convirtiéndose en una suite integral para hoteles, restaurantes y empresas que buscan crecer sin fricciones.</p>
+</div>
+<div class="integration-outer" >
+<div class="auto-scroll">
+<div class="auto-scroller">
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-01.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-02.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-03.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-04.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-05.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-06.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-07.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-08.svg"/></div>
+</div>
+<div class="auto-scroller">
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-01.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-02.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-03.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-04.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-05.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-06.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-07.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-08.svg"/></div>
+</div>
+<div class="auto-scroller">
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-01.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-02.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-03.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-04.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-05.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-06.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-07.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-08.svg"/></div>
+</div>
+<div class="auto-scroller">
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-01.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-02.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-03.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-04.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-05.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-06.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-07.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-08.svg"/></div>
+</div>
+</div>
+<div class="auto-scroll">
+<div class="auto-scroller">
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-09.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-10.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-11.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-12.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-13.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-14.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-15.svg"/></div>
+</div>
+<div class="auto-scroller">
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-09.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-10.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-11.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-12.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-13.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-14.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-15.svg"/></div>
+</div>
+<div class="auto-scroller">
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-09.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-10.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-11.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-12.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-13.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-14.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-15.svg"/></div>
+</div>
+<div class="auto-scroller">
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-09.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-10.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-11.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-12.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-13.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-14.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-15.svg"/></div>
+</div>
+<div class="auto-scroller">
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-09.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-10.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-11.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-12.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-13.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-14.svg"/></div>
+<div class="icon-wrap"><OptimizedImage alt="Integration Icon" class="integration-icon" loading="lazy" src="/images/integration-icon-15.svg"/></div>
+</div>
+</div>
+</div>
+<div class="button-wrap" >
+<a class="default-button w-button" href="/integraciones">Explorar integraciones</a>
+</div>
+</div>
+</div>
+</section>
+<section class="section white-bg none">
+<div class="w-layout-blockcontainer container w-container">
+<div class="section-inner">
+<div class="title-wrap">
+<div class="title-inner">
+<div class="subtitle">
+<div class="caption">pricing</div>
+</div>
+<h2 class="title-heading animate-on-scroll animate-fade-up pricing-width">Flexible <span class="title-span">Plans</span> to Meet Your Needs</h2>
+</div>
+<p class="title-paragraph">Each plan is designed to offer the features and support you need to maximize your financial analytics and reporting.</p>
+</div>
+<div class="w-dyn-list">
+<div class="pricing-wrap w-dyn-items" role="list">
+<div class="w-dyn-item" role="listitem">
+<div class="procing-card">
+<div class="pricing-data">
+<div class="price-subtitle bg-white">
+<div class="caption"></div>
+</div>
+<div class="pricing-inner">
+<div class="price-inner">
+<h3 class="price"></h3>
+<h3 class="price-slash">/</h3>
+<p class="price-month">Month</p>
+</div>
+<p class="body-small"></p>
+</div>
+</div>
+<div class="pricing-detail w-richtext"></div>
+<a class="secondary-button w-button" href="#">Get Started</a>
+</div>
+<div class="procing-card bg-secondary">
+<div class="pricing-data">
+<div class="price-subtitle dark">
+<div class="caption color-white"></div>
+</div>
+<div class="pricing-inner">
+<div class="price-inner">
+<h3 class="price color-white"></h3>
+<h3 class="price-slash color-white">/</h3>
+<p class="price-month color-white">Month</p>
+</div>
+<p class="body-small"></p>
+</div>
+</div>
+<div class="pricing-detail-dark w-richtext"></div>
+<a class="default-button w-button" href="#">Get Started</a>
+</div>
+</div>
+</div>
+<div class="empty-state w-dyn-empty">
+<div>No pricing plans found.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<Testimonial /></div>
+
+<section class="section white-bg">
+<div class="w-layout-blockcontainer container w-container">
+<div class="section-inner">
+<div class="title-wrap">
+<div class="title-inner">
+<div class="subtitle bg-white">
+<div class="caption">Blog</div>
+</div>
+<h2 class="title-heading animate-on-scroll animate-fade-up integration-width">Mantente informado sobre las <span class="title-span">últimas tendencias</span></h2>
+</div>
+<p class="title-paragraph">Our blog offers valuable information on financial management, industry trends, and how to make the most of our platform.</p>
+</div>
+<div class="w-dyn-list" >
+<div class="blog-wrap w-dyn-items" role="list">
+<div class="w-dyn-item" role="listitem">
+<a class="blog-card w-inline-block" href="#">
+<div class="blog-thumb"><OptimizedImage alt="Característica de software Kontrolo" class="cover-image w-dyn-bind-empty" loading="lazy" src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"/></div>
+<div class="blog-content">
+<div class="blog-outer">
+<div class="blog-inner">
+<div class="body-small w-dyn-bind-empty"></div>
+<div class="body-small">-</div>
+<div class="body-small w-dyn-bind-empty"></div>
+</div>
+<h5 class="w-dyn-bind-empty"></h5>
+</div>
+<div class="learn-more">Lear more</div>
+</div>
+</a>
+</div>
+</div>
+<div class="empty-state w-dyn-empty">
+<div>No blogs found.</div>
+</div>
+</div>
+<div class="button-wrap" >
+<a class="primary-button w-button" href="/blog">View All</a>
+</div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="w-layout-blockcontainer container w-container">
+<div class="section-inner">
+<div class="title-wrap">
+<div class="title-inner">
+<div class="subtitle">
+<div class="caption">FAQ</div>
+</div>
+<h2 class="title-heading animate-on-scroll animate-fade-up integration-width">Preguntas Frecuentes</h2>
+</div>
+<p class="title-paragraph black">Resuelve tus dudas sobre Kontrolo, la suite de gestión empresarial que integra PMS, ERP, POS y Konta 360. Si necesitas más información, nuestro equipo de soporte está disponible para asesorarte en todo momento.</p>
+</div>
+<div class="faq-wrap">
+<div class="faq-content">
+<div class="faq w-dropdown" data-hover="false">
+<div class="question-block w-dropdown-toggle">
+<h6 class="heading-21">¿Qué es Kontrolo?</h6>
+<div class="faq-icon">
+<div class="vertical-line"></div>
+<div class="horizontal-line"></div>
+</div>
+</div>
+<nav class="answer-block w-dropdown-list">
+<div class="faq-answer">
+<p>Kontrolo es una suite de software en la nube que integra PMS, ERP, POS y Konta 360. Permite gestionar operaciones, finanzas y facturación electrónica con DIAN, conectando todas las áreas de tu negocio en una sola plataforma eficiente y segura.</p>
+</div>
+</nav>
+</div>
+<div class="faq w-dropdown" data-hover="false">
+<div class="question-block w-dropdown-toggle">
+<h6 class="heading-22">¿Kontrolo incluye facturación electrónica DIAN?</h6>
+<div class="faq-icon">
+<div class="vertical-line"></div>
+<div class="horizontal-line"></div>
+</div>
+</div>
+<nav class="answer-block w-dropdown-list">
+<div class="faq-answer">
+<p>Sí, Kontrolo cumple con los estándares de la DIAN y permite emitir facturas electrónicas automáticas y seguras. Incluye validación fiscal, firma digital y envío al cliente en segundos, asegurando cumplimiento normativo en Colombia sin procesos manuales.</p>
+</div>
+</nav>
+</div>
+<div class="faq w-dropdown" data-hover="false">
+<div class="question-block w-dropdown-toggle">
+<h6 class="heading-23">¿Puedo probar Kontrolo antes de contratarlo?</h6>
+<div class="faq-icon">
+<div class="vertical-line"></div>
+<div class="horizontal-line"></div>
+</div>
+</div>
+<nav class="answer-block w-dropdown-list">
+<div class="faq-answer">
+<p>Ofrecemos una versión demo personalizada donde puedes explorar todos los módulos: PMS, ERP, POS y Konta 360. No se requiere tarjeta de crédito. Nuestro equipo te guía para configurar tu entorno y conocer el potencial completo del sistema.</p>
+</div>
+</nav>
+</div>
+<div class="faq w-dropdown" data-hover="false">
+<div class="question-block w-dropdown-toggle">
+<h6 class="heading-24">¿Kontrolo se integra con otros sistemas?</h6>
+<div class="faq-icon">
+<div class="vertical-line"></div>
+<div class="horizontal-line"></div>
+</div>
+</div>
+<nav class="answer-block w-dropdown-list">
+<div class="faq-answer">
+<p>Sí, Kontrolo se conecta fácilmente con herramientas externas como RoomCloud, myHotel, Omnibees, Power BI y WooCommerce. Además, cuenta con API abierta para integrar CRM, contabilidad o comercio electrónico, sin perder trazabilidad ni duplicar información operativa.</p>
+</div>
+</nav>
+</div>
+<div class="faq w-dropdown" data-hover="false">
+<div class="question-block w-dropdown-toggle">
+<h6 class="heading-25">¿Cómo protege Kontrolo la información de mi empresa?</h6>
+<div class="faq-icon">
+<div class="vertical-line"></div>
+<div class="horizontal-line"></div>
+</div>
+</div>
+<nav class="answer-block w-dropdown-list">
+<div class="faq-answer">
+<p>Toda la información se almacena en la nube con cifrado SSL y copias automáticas diarias. Realizamos auditorías de seguridad constantes y cumplimos con RGPD, asegurando que tus datos financieros, contables y de clientes estén siempre protegidos y disponibles.</p>
+</div>
+</nav>
+</div>
+<div class="faq w-dropdown" data-hover="false">
+<div class="question-block w-dropdown-toggle">
+<h6 class="heading-26">¿Kontrolo sirve solo para hoteles y restaurantes?</h6>
+<div class="faq-icon">
+<div class="vertical-line"></div>
+<div class="horizontal-line"></div>
+</div>
+</div>
+<nav class="answer-block w-dropdown-list">
+<div class="faq-answer">
+<p>No. Kontrolo está diseñado para adaptarse a diferentes industrias: hoteles, restaurantes, retail, contabilidad, coworkings y empresas de servicios. Su arquitectura modular permite personalizar cada solución según las necesidades operativas de tu negocio.</p>
+</div>
+</nav>
+</div>
+</div>
+<div class="faq-img"><OptimizedImage alt="Preguntas Frecuentes" class="cover-image" loading="lazy" src="/images/faq-cover.jpg" style="border-radius: 20px;" /></div>
+</div>
+
+</div>
+</div>
+</section>
+<section class="section cta">
+<div class="w-layout-blockcontainer container w-container">
+<div class="cta-wrap">
+<div class="title-wrap">
+<div class="title-inner">
+<div class="subtitle bg-white">
+<div class="caption">COMIENZA HOY</div>
+</div>
+<h2 class="title-heading animate-on-scroll animate-fade-up"><span class="title-span">Activa Kontrolo </span>y centraliza tu operación en la nube</h2>
+</div>
+<p class="cta-paragraph">Transforma tu negocio con Kontrolo, la suite de gestión empresarial que integra PMS, ERP y POS con facturación electrónica DIAN, pagos y CRM. Automatiza procesos, reduce errores y toma decisiones con datos en tiempo real.</p>
+</div>
+<a class="primary-button w-button" href="#">Solicitar demo gratuita</a>
+</div>
+</div>
+</section>
+
+</MainLayout>
+

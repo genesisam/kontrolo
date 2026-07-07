@@ -1,0 +1,65 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import { sanityClient } from "sanity:client";
+import ResourceCard from '../../../components/resources/ResourceCard.astro';
+
+// Fetch all resources from Sanity
+const resources = await sanityClient.fetch(`*[_type == "resource"] | order(_createdAt desc){
+  "slug": slug.current,
+  title,
+  description,
+  category,
+  "imageUrl": coverImage.asset->url
+}`);
+
+const seo = {
+  title: 'Recursos y Herramientas para Contadores | Kontrolo',
+  description: 'Descarga gratis plantillas, guías de la DIAN y ebooks exclusivos para optimizar la gestión contable de tus clientes con Kontrolo.',
+};
+---
+
+<MainLayout seo={seo}>
+  <div class="page-wrap">
+    
+    <section class="section" style="padding-top: 140px; padding-bottom: 60px; background: #f4f4f6;">
+      <div class="container w-container">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <h1 class="title-heading" style="font-size: 56px; line-height: 1.1; margin-bottom: 24px;">Centro de <span style="color: #0056ff;">Recursos para Contadores</span></h1>
+          <p class="title-paragraph black" style="font-size: 20px; margin-bottom: 0;">Herramientas gratuitas diseñadas para ahorrarte horas de trabajo manual y ayudarte a dominar la facturación electrónica DIAN.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container w-container">
+        {resources.length === 0 ? (
+          <div style="text-align: center; padding: 60px 0; color: #666;">
+            <h3>Aún no hay recursos publicados.</h3>
+            <p>Vuelve pronto para descubrir nuevas plantillas y guías.</p>
+          </div>
+        ) : (
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 40px;">
+            {resources.map((resource: any) => (
+              <ResourceCard 
+                title={resource.title} 
+                slug={resource.slug} 
+                description={resource.description} 
+                category={resource.category} 
+                imageUrl={resource.imageUrl} 
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <section class="section" style="background: #111; color: #fff; padding: 80px 20px;">
+      <div class="container w-container" style="text-align: center;">
+        <h2 style="font-size: 40px; margin-bottom: 20px; color: #fff;">¿Quieres ganar dinero recomendando Kontrolo?</h2>
+        <p style="font-size: 18px; color: #aaa; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Únete a nuestro Programa de Partners para Contadores y recibe atractivas comisiones por cada cliente que refieras.</p>
+        <a href="/partners/contadores" class="primary-button w-button" style="display: inline-block; padding: 16px 36px; font-weight: 700; border-radius: 50px; text-decoration: none; max-width: max-content; margin: 0 auto; min-width: 250px;">Descubrir el Programa de Partners</a>
+      </div>
+    </section>
+
+  </div>
+</MainLayout>
