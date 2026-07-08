@@ -11,8 +11,9 @@ const { points } = Astro.props;
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
       {points.map((pt) => {
-        const isString = typeof pt === 'string';
-        const text = isString ? pt : pt.point;
+        if (!pt) return null;
+        const isString = pt.isString || typeof pt === 'string';
+        const text = isString ? (pt.value || pt) : pt.point;
         const iconUrl = isString ? null : pt.iconUrl;
 
         return (
