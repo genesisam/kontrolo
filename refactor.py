@@ -1,31 +1,18 @@
----
-import MainLayout from '../layouts/MainLayout.astro';
-import OptimizedImage from '../components/OptimizedImage.astro';
+import re
+import json
 
-const seo = {
-  title: "Calendario Tributario 2026 Colombia | Kontrolo",
-  description: "Consulta las fechas de vencimiento de la DIAN para 2026. Ingresa tu NIT y descubre cuándo te toca declarar Renta, IVA y Retefuente. ¡No pagues sanciones!",
-};
----
+with open("src/pages/calendario-tributario.astro", "r", encoding="utf-8") as f:
+    content = f.read()
 
-<MainLayout seo={seo}>
-  <div class="page-wrap">
-    
-    <!-- Hero Section con Buscador -->
-    <section class="section" style="background: linear-gradient(135deg, #05192D 0%, #131ddf 100%); color: white; padding: 100px 20px 60px;">
-      <div class="container w-container" style="max-width: 800px; text-align: center;">
-        <div style="display: inline-block; background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px;">
-          📅 ACTUALIZADO 2026
-        </div>
-        <h1 style="font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; color: white;">
-          Calendario Tributario DIAN
-        </h1>
-        <p style="font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 40px;">
-          No dejes que los vencimientos te tomen por sorpresa. Ingresa los últimos 2 dígitos de tu NIT y averigua al instante tus fechas límite de pago.
-        </p>
+# 1. Reemplazar la caja de búsqueda
+html_target = """        <div class="nit-search-box">
+          <input type="number" id="nitInput" class="nit-input" placeholder="Últimos 2 dígitos (Ej. 89)" max="99" min="0" />
+          <button id="btnBuscar" class="primary-button w-button nit-btn">
+            Consultar
+          </button>
+        </div>"""
 
-        <!-- Filtro Interactivo -->
-        <div class="nit-search-box" style="grid-template-columns: auto 1fr auto !important; padding-left: 0;">
+html_replace = """        <div class="nit-search-box" style="grid-template-columns: auto 1fr auto !important; padding-left: 0;">
           <select id="tipoContribuyente" class="nit-input" style="padding-left: 20px; border-right: 1px solid #eee; cursor: pointer; max-width: 200px;">
             <option value="natural">Persona Natural</option>
             <option value="juridica">Persona Jurídica</option>
@@ -35,147 +22,17 @@ const seo = {
           <button id="btnBuscar" class="primary-button w-button nit-btn">
             Consultar
           </button>
-        </div>
-        <div id="errorMsg" style="color: #ffb4b4; font-size: 14px; margin-top: 15px; display: none;">Por favor ingresa 1 o 2 dígitos válidos.</div>
-      </div>
-    </section>
+        </div>"""
 
-    <!-- Resultados -->
-    <section class="section" style="padding: 60px 20px; background: #f8f9fa;">
-      <div class="container w-container" style="max-width: 900px;">
-        <div id="resultadosHeader" style="display: none; text-align: center; margin-bottom: 40px;">
-          <h3 style="font-size: 28px; color: #111;">Vencimientos para el NIT terminado en <span id="nitDisplay" style="color: #131ddf; font-weight: 800;"></span></h3>
-          <p style="color: #666;">Basado en el Decreto Oficial de la DIAN para 2026.</p>
-        </div>
+content = content.replace(html_target, html_replace)
 
-        <div id="defaultMsg" style="text-align: center; padding: 40px; color: #888;">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          <h4>Ingresa tu NIT arriba para ver tus fechas exactas</h4>
-        </div>
+# 2. Vaciar las tarjetas hardcodeadas
+tarjetas_target = re.search(r'(<div id="tarjetasContainer".*?>).*?(</div>\s*</div>\s*</section>)', content, re.DOTALL)
+if tarjetas_target:
+    content = content[:tarjetas_target.start(0)] + tarjetas_target.group(1) + "\n" + tarjetas_target.group(2) + content[tarjetas_target.end(0):]
 
-        <!-- Tarjetas de Vencimientos (Ocultas inicialmente) -->
-        <div id="tarjetasContainer" style="display: none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-</div>
-      </div>
-    </section>
-
-    <!-- Lead Capture / CTA -->
-    <section class="section" style="padding: 80px 20px; background: white;">
-      <div class="container w-container" style="max-width: 1100px;">
-        
-        <!-- Fila 1: Imagen | Texto -->
-        <div class="lead-grid" style="margin-bottom: 100px;">
-          <div>
-            <OptimizedImage src="/images/calendario-mujer.jpg" alt="Contador automatizando procesos con Kontrolo" class="rounded-feature-image" />
-          </div>
-          <div class="lead-content">
-            <h2 style="font-size: 36px; font-weight: 800; color: #111; margin-bottom: 20px;">¿Cansado de calcular fechas a mano?</h2>
-            <p style="font-size: 16px; color: #555; margin-bottom: 30px; line-height: 1.6;">
-              Únete a cientos de contadores que ya centralizan su operación con Kontrolo. Nuestro software ERP te alerta automáticamente de los vencimientos DIAN y genera los archivos XML en segundos.
-            </p>
-            <ul class="lead-list" style="list-style: none; padding: 0; margin-bottom: 30px;">
-              <li style="margin-bottom: 10px;">✅ Alertas automáticas de vencimientos</li>
-              <li style="margin-bottom: 10px;">✅ Integración directa con SIIGO y Alegra</li>
-              <li style="margin-bottom: 10px;">✅ Facturación electrónica ilimitada</li>
-            </ul>
-            <a href="/partners/contadores" class="primary-button w-button">Descubre el Programa para Contadores</a>
-          </div>
-        </div>
-
-        <!-- Fila 2: Formulario | Imagen -->
-        <div class="lead-grid">
-          <div style="background: #f4f6fa; padding: 40px; border-radius: 24px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-            <h3 style="font-size: 24px; margin-bottom: 15px; font-weight: 700; color: #111;">Descarga el Calendario en PDF</h3>
-            <p style="font-size: 14px; color: #666; margin-bottom: 25px;">Obtén la versión completa para imprimir y pegar en tu oficina.</p>
-            <form class="w-form" style="display: flex; flex-direction: column; gap: 15px;">
-              <input type="email" placeholder="Tu correo electrónico" required style="padding: 15px; border-radius: 8px; border: 1px solid #ddd; width: 100%; outline: none;" />
-              <button type="button" class="primary-button w-button" style="width: 100%; border: none; cursor: pointer; margin-top: 0;">Descargar PDF Gratis</button>
-            </form>
-            <div style="font-size: 12px; color: #888; margin-top: 20px;">No enviamos SPAM. Solo herramientas útiles.</div>
-          </div>
-          <div>
-            <OptimizedImage src="/images/calendario-hombre.jpg" alt="Calendario Tributario PDF" class="rounded-feature-image" />
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <style>
-      .rounded-feature-image {
-        width: 100%;
-        border-radius: 22px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        display: block;
-      }
-      .nit-search-box {
-        background: white;
-        padding: 6px 6px 6px 20px;
-        border-radius: 50px;
-        display: grid !important;
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        max-width: 480px;
-        width: 100% !important;
-        margin: 0 auto;
-        box-sizing: border-box;
-      }
-      .nit-input {
-        border: none;
-        outline: none;
-        padding: 10px 0;
-        font-size: 16px;
-        color: #111;
-        background: transparent;
-        width: 100%;
-      }
-      .nit-btn {
-        background: #131ddf !important;
-        color: white !important;
-        border-radius: 40px;
-        margin-top: 0;
-        padding: 12px 28px;
-        white-space: nowrap;
-        border: none;
-        font-weight: 600;
-        cursor: pointer;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-      }
-
-      .lead-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: center;
-      }
-
-      @media (max-width: 768px) {
-        .nit-search-box {
-          padding: 6px 6px 6px 15px;
-        }
-        .nit-btn {
-          padding: 10px 20px;
-          font-size: 14px;
-        }
-
-        .lead-grid {
-          grid-template-columns: 1fr;
-          text-align: center;
-          gap: 40px;
-        }
-        .lead-list {
-          text-align: left;
-          display: inline-block;
-        }
-      }
-    </style>
-
-  </div>
-
-    <script>
+# 3. Nuevo Script JS
+new_script = """  <script>
     document.addEventListener('DOMContentLoaded', () => {
       const btn = document.getElementById('btnBuscar');
       const input = document.getElementById('nitInput');
@@ -327,5 +184,11 @@ const seo = {
         if (e.key === 'Enter') btn.click();
       });
     });
-  </script>
-</MainLayout>
+  </script>"""
+
+content = re.sub(r'<script>.*?</script>', new_script, content, flags=re.DOTALL)
+
+with open("src/pages/calendario-tributario.astro", "w", encoding="utf-8") as f:
+    f.write(content)
+
+print("Astro file fully refactored!")
