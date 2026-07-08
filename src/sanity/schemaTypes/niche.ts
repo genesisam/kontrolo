@@ -19,7 +19,16 @@
       name: 'painPoints',
       title: 'Puntos de Dolor (Pain Points)',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'point', title: 'Punto de Dolor', type: 'string' },
+            { name: 'icon', title: 'Icono Personalizado (Opcional)', type: 'image', options: { hotspot: true } }
+          ]
+        },
+        { type: 'string' }
+      ],
       description: 'Lista de 3 a 6 dolores del nicho.'
     },
     {
