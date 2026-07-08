@@ -18,8 +18,7 @@ const { headline, subheadline, imageUrl, clientCount, rating } = Astro.props;
         <h1 class="title-heading" style="font-size: 48px; line-height: 1.1; margin-bottom: 24px;">{headline}</h1>
         <p class="title-paragraph black" style="font-size: 18px; margin-bottom: 32px;">{subheadline}</p>
         <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 32px;">
-          <a href="#" class="primary-button w-button">Pruébalo Gratis</a>
-          <a href="#" class="secondary-button w-button">Hablar con Asesor</a>
+          <a href="/contacto" class="primary-button w-button">Hablar con Asesor</a>
         </div>
         {(clientCount || rating) && (
           <div style="display: flex; align-items: center; gap: 16px; font-size: 14px; color: #555;">
