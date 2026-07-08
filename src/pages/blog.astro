@@ -72,15 +72,21 @@ const seo = {
 </div>
 </section>
 </div>
-<style>
+<style is:global>
   @media screen and (max-width: 991px) {
     .div-block {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr !important;
     }
   }
   @media screen and (max-width: 767px) {
     .div-block {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr !important;
+      width: 100%;
+    }
+    .blog-card {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
   }
 </style>
