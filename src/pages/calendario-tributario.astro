@@ -3,8 +3,8 @@ import MainLayout from '../layouts/MainLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 
 const seo = {
-  title: "Calendario Tributario 2025 Colombia | Kontrolo",
-  description: "Consulta las fechas de vencimiento de la DIAN para 2025. Ingresa tu NIT y descubre cuándo te toca declarar Renta, IVA y Retefuente. ¡No pagues sanciones!",
+  title: "Calendario Tributario 2026 Colombia | Kontrolo",
+  description: "Consulta las fechas de vencimiento de la DIAN para 2026. Ingresa tu NIT y descubre cuándo te toca declarar Renta, IVA y Retefuente. ¡No pagues sanciones!",
 };
 ---
 
@@ -15,7 +15,7 @@ const seo = {
     <section class="section" style="background: linear-gradient(135deg, #05192D 0%, #131ddf 100%); color: white; padding: 100px 20px 60px;">
       <div class="container w-container" style="max-width: 800px; text-align: center;">
         <div style="display: inline-block; background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px;">
-          📅 ACTUALIZADO 2025
+          📅 ACTUALIZADO 2026
         </div>
         <h1 style="font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; color: white;">
           Calendario Tributario DIAN
@@ -40,7 +40,7 @@ const seo = {
       <div class="container w-container" style="max-width: 900px;">
         <div id="resultadosHeader" style="display: none; text-align: center; margin-bottom: 40px;">
           <h3 style="font-size: 28px; color: #111;">Vencimientos para el NIT terminado en <span id="nitDisplay" style="color: #131ddf; font-weight: 800;"></span></h3>
-          <p style="color: #666;">Basado en el Decreto Oficial de la DIAN para 2025.</p>
+          <p style="color: #666;">Basado en el Decreto Oficial de la DIAN para 2026.</p>
         </div>
 
         <div id="defaultMsg" style="text-align: center; padding: 40px; color: #888;">
@@ -81,7 +81,7 @@ const seo = {
               <div style="font-size: 13px; color: #ff5a5f; font-weight: 600;">Próximo Vencimiento:</div>
               <div id="fechaRete" style="font-size: 20px; font-weight: 800; color: #111;">--</div>
             </div>
-            <p style="font-size: 14px; color: #666;">Declaración mensual. Corresponde al periodo de Enero 2025.</p>
+            <p style="font-size: 14px; color: #666;">Declaración mensual. Corresponde al periodo de Enero 2026.</p>
           </div>
 
         </div>
@@ -227,22 +227,507 @@ const seo = {
       // Puedes actualizar directamente los valores de cada llave ("00", "01"...) 
       // basándote en el decreto oficial en PDF de la DIAN.
       const calendarioDIAN = {
-        "00": { renta: "8 de Mayo, 2025", iva: "7 de Marzo, 2025", rete: "9 de Febrero, 2025" },
-        "01": { renta: "9 de Mayo, 2025", iva: "8 de Marzo, 2025", rete: "10 de Febrero, 2025" },
-        "02": { renta: "10 de Mayo, 2025", iva: "9 de Marzo, 2025", rete: "11 de Febrero, 2025" },
-        "03": { renta: "11 de Mayo, 2025", iva: "10 de Marzo, 2025", rete: "12 de Febrero, 2025" }
-        // Para que la página funcione al 100% ahora mismo, autocompletamos los demás del 04 al 99:
-      };
-
-      for (let i = 4; i <= 99; i++) {
-        let nitKey = i.toString().padStart(2, '0');
-        // Cálculo temporal usando patrón de distribución
-        calendarioDIAN[nitKey] = {
-          renta: `${8 + (i % 15)} de Mayo, 2025`,
-          iva: `${7 + (i % 12)} de Marzo, 2025`,
-          rete: `${9 + (i % 10)} de Febrero, 2025`
-        };
+      "00": {
+            "renta": "26 de Octubre, 2026",
+            "iva": "24 de Marzo, 2026",
+            "rete": "23 de Febrero, 2026"
+      },
+      "01": {
+            "renta": "12 de Agosto, 2026",
+            "iva": "10 de Marzo, 2026",
+            "rete": "10 de Febrero, 2026"
+      },
+      "02": {
+            "renta": "12 de Agosto, 2026",
+            "iva": "11 de Marzo, 2026",
+            "rete": "11 de Febrero, 2026"
+      },
+      "03": {
+            "renta": "13 de Agosto, 2026",
+            "iva": "12 de Marzo, 2026",
+            "rete": "12 de Febrero, 2026"
+      },
+      "04": {
+            "renta": "13 de Agosto, 2026",
+            "iva": "13 de Marzo, 2026",
+            "rete": "13 de Febrero, 2026"
+      },
+      "05": {
+            "renta": "14 de Agosto, 2026",
+            "iva": "16 de Marzo, 2026",
+            "rete": "16 de Febrero, 2026"
+      },
+      "06": {
+            "renta": "14 de Agosto, 2026",
+            "iva": "17 de Marzo, 2026",
+            "rete": "17 de Febrero, 2026"
+      },
+      "07": {
+            "renta": "18 de Agosto, 2026",
+            "iva": "18 de Marzo, 2026",
+            "rete": "18 de Febrero, 2026"
+      },
+      "08": {
+            "renta": "18 de Agosto, 2026",
+            "iva": "19 de Marzo, 2026",
+            "rete": "19 de Febrero, 2026"
+      },
+      "09": {
+            "renta": "19 de Agosto, 2026",
+            "iva": "20 de Marzo, 2026",
+            "rete": "20 de Febrero, 2026"
+      },
+      "10": {
+            "renta": "19 de Agosto, 2026",
+            "iva": "24 de Marzo, 2026",
+            "rete": "23 de Febrero, 2026"
+      },
+      "11": {
+            "renta": "20 de Agosto, 2026",
+            "iva": "10 de Marzo, 2026",
+            "rete": "10 de Febrero, 2026"
+      },
+      "12": {
+            "renta": "20 de Agosto, 2026",
+            "iva": "11 de Marzo, 2026",
+            "rete": "11 de Febrero, 2026"
+      },
+      "13": {
+            "renta": "21 de Agosto, 2026",
+            "iva": "12 de Marzo, 2026",
+            "rete": "12 de Febrero, 2026"
+      },
+      "14": {
+            "renta": "21 de Agosto, 2026",
+            "iva": "13 de Marzo, 2026",
+            "rete": "13 de Febrero, 2026"
+      },
+      "15": {
+            "renta": "24 de Agosto, 2026",
+            "iva": "16 de Marzo, 2026",
+            "rete": "16 de Febrero, 2026"
+      },
+      "16": {
+            "renta": "24 de Agosto, 2026",
+            "iva": "17 de Marzo, 2026",
+            "rete": "17 de Febrero, 2026"
+      },
+      "17": {
+            "renta": "25 de Agosto, 2026",
+            "iva": "18 de Marzo, 2026",
+            "rete": "18 de Febrero, 2026"
+      },
+      "18": {
+            "renta": "25 de Agosto, 2026",
+            "iva": "19 de Marzo, 2026",
+            "rete": "19 de Febrero, 2026"
+      },
+      "19": {
+            "renta": "26 de Agosto, 2026",
+            "iva": "20 de Marzo, 2026",
+            "rete": "20 de Febrero, 2026"
+      },
+      "20": {
+            "renta": "26 de Agosto, 2026",
+            "iva": "24 de Marzo, 2026",
+            "rete": "23 de Febrero, 2026"
+      },
+      "21": {
+            "renta": "27 de Agosto, 2026",
+            "iva": "10 de Marzo, 2026",
+            "rete": "10 de Febrero, 2026"
+      },
+      "22": {
+            "renta": "27 de Agosto, 2026",
+            "iva": "11 de Marzo, 2026",
+            "rete": "11 de Febrero, 2026"
+      },
+      "23": {
+            "renta": "28 de Agosto, 2026",
+            "iva": "12 de Marzo, 2026",
+            "rete": "12 de Febrero, 2026"
+      },
+      "24": {
+            "renta": "28 de Agosto, 2026",
+            "iva": "13 de Marzo, 2026",
+            "rete": "13 de Febrero, 2026"
+      },
+      "25": {
+            "renta": "31 de Agosto, 2026",
+            "iva": "16 de Marzo, 2026",
+            "rete": "16 de Febrero, 2026"
+      },
+      "26": {
+            "renta": "31 de Agosto, 2026",
+            "iva": "17 de Marzo, 2026",
+            "rete": "17 de Febrero, 2026"
+      },
+      "27": {
+            "renta": "1 de Septiembre, 2026",
+            "iva": "18 de Marzo, 2026",
+            "rete": "18 de Febrero, 2026"
+      },
+      "28": {
+            "renta": "1 de Septiembre, 2026",
+            "iva": "19 de Marzo, 2026",
+            "rete": "19 de Febrero, 2026"
+      },
+      "29": {
+            "renta": "2 de Septiembre, 2026",
+            "iva": "20 de Marzo, 2026",
+            "rete": "20 de Febrero, 2026"
+      },
+      "30": {
+            "renta": "2 de Septiembre, 2026",
+            "iva": "24 de Marzo, 2026",
+            "rete": "23 de Febrero, 2026"
+      },
+      "31": {
+            "renta": "3 de Septiembre, 2026",
+            "iva": "10 de Marzo, 2026",
+            "rete": "10 de Febrero, 2026"
+      },
+      "32": {
+            "renta": "3 de Septiembre, 2026",
+            "iva": "11 de Marzo, 2026",
+            "rete": "11 de Febrero, 2026"
+      },
+      "33": {
+            "renta": "4 de Septiembre, 2026",
+            "iva": "12 de Marzo, 2026",
+            "rete": "12 de Febrero, 2026"
+      },
+      "34": {
+            "renta": "4 de Septiembre, 2026",
+            "iva": "13 de Marzo, 2026",
+            "rete": "13 de Febrero, 2026"
+      },
+      "35": {
+            "renta": "7 de Septiembre, 2026",
+            "iva": "16 de Marzo, 2026",
+            "rete": "16 de Febrero, 2026"
+      },
+      "36": {
+            "renta": "7 de Septiembre, 2026",
+            "iva": "17 de Marzo, 2026",
+            "rete": "17 de Febrero, 2026"
+      },
+      "37": {
+            "renta": "8 de Septiembre, 2026",
+            "iva": "18 de Marzo, 2026",
+            "rete": "18 de Febrero, 2026"
+      },
+      "38": {
+            "renta": "8 de Septiembre, 2026",
+            "iva": "19 de Marzo, 2026",
+            "rete": "19 de Febrero, 2026"
+      },
+      "39": {
+            "renta": "9 de Septiembre, 2026",
+            "iva": "20 de Marzo, 2026",
+            "rete": "20 de Febrero, 2026"
+      },
+      "40": {
+            "renta": "9 de Septiembre, 2026",
+            "iva": "24 de Marzo, 2026",
+            "rete": "23 de Febrero, 2026"
+      },
+      "41": {
+            "renta": "10 de Septiembre, 2026",
+            "iva": "10 de Marzo, 2026",
+            "rete": "10 de Febrero, 2026"
+      },
+      "42": {
+            "renta": "10 de Septiembre, 2026",
+            "iva": "11 de Marzo, 2026",
+            "rete": "11 de Febrero, 2026"
+      },
+      "43": {
+            "renta": "11 de Septiembre, 2026",
+            "iva": "12 de Marzo, 2026",
+            "rete": "12 de Febrero, 2026"
+      },
+      "44": {
+            "renta": "11 de Septiembre, 2026",
+            "iva": "13 de Marzo, 2026",
+            "rete": "13 de Febrero, 2026"
+      },
+      "45": {
+            "renta": "14 de Septiembre, 2026",
+            "iva": "16 de Marzo, 2026",
+            "rete": "16 de Febrero, 2026"
+      },
+      "46": {
+            "renta": "14 de Septiembre, 2026",
+            "iva": "17 de Marzo, 2026",
+            "rete": "17 de Febrero, 2026"
+      },
+      "47": {
+            "renta": "15 de Septiembre, 2026",
+            "iva": "18 de Marzo, 2026",
+            "rete": "18 de Febrero, 2026"
+      },
+      "48": {
+            "renta": "15 de Septiembre, 2026",
+            "iva": "19 de Marzo, 2026",
+            "rete": "19 de Febrero, 2026"
+      },
+      "49": {
+            "renta": "16 de Septiembre, 2026",
+            "iva": "20 de Marzo, 2026",
+            "rete": "20 de Febrero, 2026"
+      },
+      "50": {
+            "renta": "16 de Septiembre, 2026",
+            "iva": "24 de Marzo, 2026",
+            "rete": "23 de Febrero, 2026"
+      },
+      "51": {
+            "renta": "17 de Septiembre, 2026",
+            "iva": "10 de Marzo, 2026",
+            "rete": "10 de Febrero, 2026"
+      },
+      "52": {
+            "renta": "17 de Septiembre, 2026",
+            "iva": "11 de Marzo, 2026",
+            "rete": "11 de Febrero, 2026"
+      },
+      "53": {
+            "renta": "18 de Septiembre, 2026",
+            "iva": "12 de Marzo, 2026",
+            "rete": "12 de Febrero, 2026"
+      },
+      "54": {
+            "renta": "18 de Septiembre, 2026",
+            "iva": "13 de Marzo, 2026",
+            "rete": "13 de Febrero, 2026"
+      },
+      "55": {
+            "renta": "21 de Septiembre, 2026",
+            "iva": "16 de Marzo, 2026",
+            "rete": "16 de Febrero, 2026"
+      },
+      "56": {
+            "renta": "21 de Septiembre, 2026",
+            "iva": "17 de Marzo, 2026",
+            "rete": "17 de Febrero, 2026"
+      },
+      "57": {
+            "renta": "22 de Septiembre, 2026",
+            "iva": "18 de Marzo, 2026",
+            "rete": "18 de Febrero, 2026"
+      },
+      "58": {
+            "renta": "22 de Septiembre, 2026",
+            "iva": "19 de Marzo, 2026",
+            "rete": "19 de Febrero, 2026"
+      },
+      "59": {
+            "renta": "23 de Septiembre, 2026",
+            "iva": "20 de Marzo, 2026",
+            "rete": "20 de Febrero, 2026"
+      },
+      "60": {
+            "renta": "23 de Septiembre, 2026",
+            "iva": "24 de Marzo, 2026",
+            "rete": "23 de Febrero, 2026"
+      },
+      "61": {
+            "renta": "24 de Septiembre, 2026",
+            "iva": "10 de Marzo, 2026",
+            "rete": "10 de Febrero, 2026"
+      },
+      "62": {
+            "renta": "24 de Septiembre, 2026",
+            "iva": "11 de Marzo, 2026",
+            "rete": "11 de Febrero, 2026"
+      },
+      "63": {
+            "renta": "25 de Septiembre, 2026",
+            "iva": "12 de Marzo, 2026",
+            "rete": "12 de Febrero, 2026"
+      },
+      "64": {
+            "renta": "25 de Septiembre, 2026",
+            "iva": "13 de Marzo, 2026",
+            "rete": "13 de Febrero, 2026"
+      },
+      "65": {
+            "renta": "28 de Septiembre, 2026",
+            "iva": "16 de Marzo, 2026",
+            "rete": "16 de Febrero, 2026"
+      },
+      "66": {
+            "renta": "28 de Septiembre, 2026",
+            "iva": "17 de Marzo, 2026",
+            "rete": "17 de Febrero, 2026"
+      },
+      "67": {
+            "renta": "1 de Octubre, 2026",
+            "iva": "18 de Marzo, 2026",
+            "rete": "18 de Febrero, 2026"
+      },
+      "68": {
+            "renta": "1 de Octubre, 2026",
+            "iva": "19 de Marzo, 2026",
+            "rete": "19 de Febrero, 2026"
+      },
+      "69": {
+            "renta": "2 de Octubre, 2026",
+            "iva": "20 de Marzo, 2026",
+            "rete": "20 de Febrero, 2026"
+      },
+      "70": {
+            "renta": "2 de Octubre, 2026",
+            "iva": "24 de Marzo, 2026",
+            "rete": "23 de Febrero, 2026"
+      },
+      "71": {
+            "renta": "5 de Octubre, 2026",
+            "iva": "10 de Marzo, 2026",
+            "rete": "10 de Febrero, 2026"
+      },
+      "72": {
+            "renta": "5 de Octubre, 2026",
+            "iva": "11 de Marzo, 2026",
+            "rete": "11 de Febrero, 2026"
+      },
+      "73": {
+            "renta": "6 de Octubre, 2026",
+            "iva": "12 de Marzo, 2026",
+            "rete": "12 de Febrero, 2026"
+      },
+      "74": {
+            "renta": "6 de Octubre, 2026",
+            "iva": "13 de Marzo, 2026",
+            "rete": "13 de Febrero, 2026"
+      },
+      "75": {
+            "renta": "7 de Octubre, 2026",
+            "iva": "16 de Marzo, 2026",
+            "rete": "16 de Febrero, 2026"
+      },
+      "76": {
+            "renta": "7 de Octubre, 2026",
+            "iva": "17 de Marzo, 2026",
+            "rete": "17 de Febrero, 2026"
+      },
+      "77": {
+            "renta": "8 de Octubre, 2026",
+            "iva": "18 de Marzo, 2026",
+            "rete": "18 de Febrero, 2026"
+      },
+      "78": {
+            "renta": "8 de Octubre, 2026",
+            "iva": "19 de Marzo, 2026",
+            "rete": "19 de Febrero, 2026"
+      },
+      "79": {
+            "renta": "9 de Octubre, 2026",
+            "iva": "20 de Marzo, 2026",
+            "rete": "20 de Febrero, 2026"
+      },
+      "80": {
+            "renta": "9 de Octubre, 2026",
+            "iva": "24 de Marzo, 2026",
+            "rete": "23 de Febrero, 2026"
+      },
+      "81": {
+            "renta": "13 de Octubre, 2026",
+            "iva": "10 de Marzo, 2026",
+            "rete": "10 de Febrero, 2026"
+      },
+      "82": {
+            "renta": "13 de Octubre, 2026",
+            "iva": "11 de Marzo, 2026",
+            "rete": "11 de Febrero, 2026"
+      },
+      "83": {
+            "renta": "14 de Octubre, 2026",
+            "iva": "12 de Marzo, 2026",
+            "rete": "12 de Febrero, 2026"
+      },
+      "84": {
+            "renta": "14 de Octubre, 2026",
+            "iva": "13 de Marzo, 2026",
+            "rete": "13 de Febrero, 2026"
+      },
+      "85": {
+            "renta": "15 de Octubre, 2026",
+            "iva": "16 de Marzo, 2026",
+            "rete": "16 de Febrero, 2026"
+      },
+      "86": {
+            "renta": "15 de Octubre, 2026",
+            "iva": "17 de Marzo, 2026",
+            "rete": "17 de Febrero, 2026"
+      },
+      "87": {
+            "renta": "16 de Octubre, 2026",
+            "iva": "18 de Marzo, 2026",
+            "rete": "18 de Febrero, 2026"
+      },
+      "88": {
+            "renta": "16 de Octubre, 2026",
+            "iva": "19 de Marzo, 2026",
+            "rete": "19 de Febrero, 2026"
+      },
+      "89": {
+            "renta": "19 de Octubre, 2026",
+            "iva": "20 de Marzo, 2026",
+            "rete": "20 de Febrero, 2026"
+      },
+      "90": {
+            "renta": "19 de Octubre, 2026",
+            "iva": "24 de Marzo, 2026",
+            "rete": "23 de Febrero, 2026"
+      },
+      "91": {
+            "renta": "20 de Octubre, 2026",
+            "iva": "10 de Marzo, 2026",
+            "rete": "10 de Febrero, 2026"
+      },
+      "92": {
+            "renta": "20 de Octubre, 2026",
+            "iva": "11 de Marzo, 2026",
+            "rete": "11 de Febrero, 2026"
+      },
+      "93": {
+            "renta": "21 de Octubre, 2026",
+            "iva": "12 de Marzo, 2026",
+            "rete": "12 de Febrero, 2026"
+      },
+      "94": {
+            "renta": "21 de Octubre, 2026",
+            "iva": "13 de Marzo, 2026",
+            "rete": "13 de Febrero, 2026"
+      },
+      "95": {
+            "renta": "22 de Octubre, 2026",
+            "iva": "16 de Marzo, 2026",
+            "rete": "16 de Febrero, 2026"
+      },
+      "96": {
+            "renta": "22 de Octubre, 2026",
+            "iva": "17 de Marzo, 2026",
+            "rete": "17 de Febrero, 2026"
+      },
+      "97": {
+            "renta": "23 de Octubre, 2026",
+            "iva": "18 de Marzo, 2026",
+            "rete": "18 de Febrero, 2026"
+      },
+      "98": {
+            "renta": "23 de Octubre, 2026",
+            "iva": "19 de Marzo, 2026",
+            "rete": "19 de Febrero, 2026"
+      },
+      "99": {
+            "renta": "26 de Octubre, 2026",
+            "iva": "20 de Marzo, 2026",
+            "rete": "20 de Febrero, 2026"
       }
+};
 
       function calcularFechas(nit) {
         return calendarioDIAN[nit] || {
