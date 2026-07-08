@@ -73,6 +73,9 @@ const seo = {
 </section>
 </div>
 <style is:global>
+  body, html {
+    overflow-x: hidden;
+  }
   @media screen and (max-width: 991px) {
     .div-block {
       grid-template-columns: 1fr 1fr !important;
@@ -80,13 +83,20 @@ const seo = {
   }
   @media screen and (max-width: 767px) {
     .div-block {
-      grid-template-columns: 1fr !important;
-      width: 100%;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 20px;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
     }
     .blog-card {
-      width: 100%;
-      max-width: 100%;
-      box-sizing: border-box;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .title-heading, .title-paragraph {
+      word-break: break-word;
     }
   }
 </style>
