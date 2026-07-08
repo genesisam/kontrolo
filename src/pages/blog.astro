@@ -1,4 +1,4 @@
-﻿---
+---
 import OptimizedImage from '../components/OptimizedImage.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import { sanityClient } from 'sanity:client';
@@ -72,5 +72,17 @@ const seo = {
 </div>
 </section>
 </div>
+<style>
+  @media screen and (max-width: 991px) {
+    .div-block {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .div-block {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 </MainLayout>
 
