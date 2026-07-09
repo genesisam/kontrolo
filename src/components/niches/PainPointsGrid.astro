@@ -1,8 +1,9 @@
 ﻿---
 interface Props {
   points: any[];
+  icons?: (string | null)[];
 }
-const { points } = Astro.props;
+const { points, icons = [] } = Astro.props;
 ---
 <section class="section">
   <div class="container w-container">
@@ -10,11 +11,11 @@ const { points } = Astro.props;
       <h2 class="title-heading">Entendemos tus retos diarios</h2>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-      {points.map((pt) => {
+      {points.map((pt, index) => {
         if (!pt) return null;
-        const isString = pt.isString || typeof pt === 'string';
-        const text = isString ? (pt.value || pt) : pt.point;
-        const iconUrl = isString ? null : pt.iconUrl;
+        const isString = typeof pt === 'string';
+        const text = isString ? pt : pt.point;
+        const iconUrl = icons[index] || null;
 
         return (
           <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 16px; padding: 30px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">

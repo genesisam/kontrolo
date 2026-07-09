@@ -19,7 +19,7 @@ export async function getStaticPaths() {
   const currentTypeNiches = await sanityClient.fetch(`*[_type == "niche" && industryType == "pms"]{
     "slug": slug.current,
     seoTitle, seoDescription, industryName, heroHeadline, heroSubheadline, 
-    "heroImageUrl": heroImage.asset->url, clientCount, rating, painPoints[]{ type(@) == "string" => { "isString": true, "value": @ }, type(@) != "string" => { "isString": false, point, "iconUrl": icon.asset->url } },
+    "heroImageUrl": heroImage.asset->url, clientCount, rating, painPoints, "painPointsIcons": painPoints[].icon.asset->url,
     features[]{ featureTitle, featureDescription, featureImage{ asset->{url} }, isReversed },
     testimonials[]->{ authorName, authorRole, companyName, quote, rating, avatar{ asset->{url} } },
     faqs[]{ question, answer }
@@ -52,7 +52,7 @@ const seo = {
       rating={niche.rating} 
     />
     <TrustBar />
-    {niche.painPoints && niche.painPoints.length > 0 && <PainPointsGrid points={niche.painPoints} />}
+    {niche.painPoints && niche.painPoints.length > 0 && <PainPointsGrid points={niche.painPoints} icons={niche.painPointsIcons} />}
     {niche.features && niche.features.length > 0 && <FeatureZigZag features={niche.features} />}
     {niche.testimonials && niche.testimonials.length > 0 && <TestimonialCarousel testimonials={niche.testimonials} />}
     {niche.faqs && niche.faqs.length > 0 && <FaqAccordion faqs={niche.faqs} />}
