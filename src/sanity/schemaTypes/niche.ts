@@ -1,4 +1,4 @@
-﻿export const niche = {
+export const niche = {
   name: 'niche',
   title: 'Landing de Nicho',
   type: 'document',
@@ -22,12 +22,13 @@
       of: [
         {
           type: 'object',
+          name: 'painPointItem',
+          title: 'Punto de Dolor',
           fields: [
             { name: 'point', title: 'Punto de Dolor', type: 'string' },
             { name: 'icon', title: 'Icono Personalizado (Opcional)', type: 'image', options: { hotspot: true } }
           ]
-        },
-        { type: 'string' }
+        }
       ],
       description: 'Lista de 3 a 6 dolores del nicho.'
     },
