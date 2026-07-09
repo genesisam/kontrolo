@@ -10,81 +10,37 @@ interface Props {
 const { faqs } = Astro.props;
 ---
 <section class="section">
-  <div class="container w-container">
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h2 class="title-heading" style="text-align: center; margin-bottom: 40px;">Preguntas Frecuentes</h2>
-      <div class="faq-list">
-        {faqs && faqs.map((faq) => (
-          <details class="faq-accordion-item">
-            <summary class="faq-accordion-summary">
-              {faq.question}
-              <span class="faq-icon">+</span>
-            </summary>
-            <div class="faq-accordion-content">
-              <p>{faq.answer}</p>
+  <div class="w-layout-blockcontainer container w-container">
+    <div class="section-inner">
+      <div class="title-wrap">
+        <div class="title-inner">
+          <div class="subtitle">
+            <div class="caption">FAQ</div>
+          </div>
+          <h2 class="title-heading animate-on-scroll animate-fade-up integration-width">Preguntas Frecuentes</h2>
+        </div>
+        <p class="title-paragraph black">Resuelve tus dudas. Si necesitas más información, nuestro equipo de soporte está disponible para asesorarte en todo momento.</p>
+      </div>
+      <div class="faq-wrap">
+        <div class="faq-content" style="width: 100%;">
+          {faqs && faqs.map((faq) => (
+            <div class="faq w-dropdown" data-hover="false">
+              <div class="question-block w-dropdown-toggle">
+                <h6 class="heading-21" style="margin: 0; font-size: 16px;">{faq.question}</h6>
+                <div class="faq-icon">
+                  <div class="vertical-line"></div>
+                  <div class="horizontal-line"></div>
+                </div>
+              </div>
+              <nav class="answer-block w-dropdown-list">
+                <div class="faq-answer">
+                  <p>{faq.answer}</p>
+                </div>
+              </nav>
             </div>
-          </details>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .faq-accordion-item {
-    border-bottom: 1px solid #eaeaea;
-    margin-bottom: 10px;
-  }
-  
-  .faq-accordion-summary {
-    list-style: none; /* Hide default triangle */
-    font-size: 20px;
-    font-weight: 600;
-    padding: 20px 0;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #111;
-    transition: color 0.3s ease;
-  }
-  
-  .faq-accordion-summary::-webkit-details-marker {
-    display: none; /* Hide for Webkit browsers */
-  }
-
-  .faq-accordion-summary:hover {
-    color: #ff3c3c;
-  }
-
-  .faq-icon {
-    font-size: 24px;
-    font-weight: 400;
-    color: #ff3c3c;
-    transition: transform 0.3s ease;
-  }
-
-  /* When details is open, rotate the icon */
-  details[open] .faq-icon {
-    transform: rotate(45deg);
-  }
-
-  .faq-accordion-content {
-    padding-bottom: 20px;
-    color: #555;
-    font-size: 16px;
-    line-height: 1.6;
-    animation: fadeInDown 0.3s ease-out;
-  }
-
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>

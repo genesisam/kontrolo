@@ -15,6 +15,14 @@ const { features } = Astro.props;
 ---
 <section class="section">
   <div class="container w-container">
+    <div class="title-wrap" style="text-align: center; margin-bottom: 60px;">
+      <div class="title-inner" style="justify-content: center;">
+        <div class="subtitle bg-white">
+          <div class="caption">BENEFICIOS</div>
+        </div>
+        <h2 class="title-heading animate-on-scroll animate-fade-up">Funcionalidades <span class="title-span">Principales</span></h2>
+      </div>
+    </div>
     {features.map((feature, index) => (
       <div style={`display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; ${feature.isReversed ? 'direction: rtl;' : ''}`}>
         <div style="direction: ltr;">
