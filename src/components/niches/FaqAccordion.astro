@@ -21,7 +21,7 @@ const { faqs } = Astro.props;
         </div>
         <p class="title-paragraph black">Resuelve tus dudas. Si necesitas más información, nuestro equipo de soporte está disponible para asesorarte en todo momento.</p>
       </div>
-      <div class="faq-wrap">
+      <div class="faq-wrap" style="display: block; max-width: 800px; margin: 0 auto;">
         <div class="faq-content" style="width: 100%;">
           {faqs && faqs.map((faq) => (
             <div class="faq w-dropdown" data-hover="false">
