@@ -1,0 +1,166 @@
+---
+---
+<section class="section" style="padding: 100px 0; background-color: #ffffff;">
+  <div class="container w-container">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
+      <h2 class="title-heading animate-on-scroll animate-fade-up">Planes diseñados para el tamaño de tu negocio</h2>
+      <p class="title-paragraph black animate-on-scroll animate-fade-up">Precios transparentes. Sin cobros por transacción ni comisiones escondidas.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Plan 1 -->
+      <div class="pricing-card animate-on-scroll animate-fade-up">
+        <h3 class="plan-name">Emprendedor</h3>
+        <p class="plan-desc">Para negocios pequeños o que apenas empiezan a digitalizarse.</p>
+        <div class="plan-price">
+          <span class="price-currency">$</span><span class="price-amount">89.000</span><span class="price-period">/mes</span>
+        </div>
+        <ul class="plan-features">
+          <li>✓ 1 Usuario Administrador</li>
+          <li>✓ Facturación Electrónica DIAN (50 docs)</li>
+          <li>✓ Control de Inventario Básico</li>
+          <li>✓ Soporte por Email</li>
+        </ul>
+        <a href="/registro" class="kontrolo-btn kontrolo-btn-outline" style="width:100%; display:block; text-align:center;">Empezar gratis</a>
+      </div>
+
+      <!-- Plan 2 -->
+      <div class="pricing-card popular animate-on-scroll animate-fade-up" style="transition-delay: 100ms;">
+        <div class="popular-badge">Más Elegido</div>
+        <h3 class="plan-name">Crecimiento</h3>
+        <p class="plan-desc">La suite completa para negocios en expansión que necesitan control total.</p>
+        <div class="plan-price">
+          <span class="price-currency">$</span><span class="price-amount">149.000</span><span class="price-period">/mes</span>
+        </div>
+        <ul class="plan-features">
+          <li>✓ 3 Usuarios (Admin + Cajeros)</li>
+          <li>✓ Facturación Electrónica DIAN Ilimitada</li>
+          <li>✓ PMS, ERP o POS Completo</li>
+          <li>✓ Reportes Gerenciales y Nómina</li>
+          <li>✓ Soporte Prioritario WhatsApp</li>
+        </ul>
+        <a href="/registro" class="kontrolo-btn kontrolo-btn-primary" style="width:100%; display:block; text-align:center; background-color: #131ddf; color: white;">Prueba 15 días gratis</a>
+      </div>
+
+      <!-- Plan 3 -->
+      <div class="pricing-card animate-on-scroll animate-fade-up" style="transition-delay: 200ms;">
+        <h3 class="plan-name">Corporativo</h3>
+        <p class="plan-desc">Para hoteles grandes, cadenas o empresas con múltiples sedes.</p>
+        <div class="plan-price">
+          <span class="price-amount" style="font-size:32px;">A la medida</span>
+        </div>
+        <ul class="plan-features">
+          <li>✓ Múltiples Sucursales / Bodegas</li>
+          <li>✓ Usuarios Ilimitados</li>
+          <li>✓ Integración API a medida</li>
+          <li>✓ Implementación y Capacitación in situ</li>
+          <li>✓ Gerente de Cuenta Dedicado</li>
+        </ul>
+        <a href="/contacto" class="kontrolo-btn kontrolo-btn-outline" style="width:100%; display:block; text-align:center;">Contactar Ventas</a>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px;" class="animate-on-scroll animate-fade-up">
+      <p style="font-size: 14px; color: #64748b;">* Los precios pueden variar según cantidad de habitaciones (PMS) o puntos de venta (POS).</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: center;
+  }
+  .pricing-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  .pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  }
+  .pricing-card.popular {
+    border-color: #131ddf;
+    box-shadow: 0 12px 40px rgba(19,29,223,0.1);
+    transform: scale(1.05);
+  }
+  .pricing-card.popular:hover {
+    transform: scale(1.05) translateY(-5px);
+  }
+  .popular-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #131ddf;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .plan-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 12px;
+  }
+  .plan-desc {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    min-height: 42px;
+  }
+  .plan-price {
+    margin-bottom: 30px;
+    color: #0f172a;
+  }
+  .price-currency {
+    font-size: 20px;
+    font-weight: 600;
+    vertical-align: top;
+    margin-right: 4px;
+  }
+  .price-amount {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+  .price-period {
+    font-size: 16px;
+    color: #64748b;
+    font-weight: 500;
+  }
+  .plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+  }
+  .plan-features li {
+    color: #334155;
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  
+  @media (max-width: 991px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .pricing-card.popular {
+      transform: scale(1);
+    }
+    .pricing-card.popular:hover {
+      transform: translateY(-5px);
+    }
+  }
+</style>

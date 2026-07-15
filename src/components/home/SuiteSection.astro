@@ -1,0 +1,147 @@
+---
+import OptimizedImage from '../OptimizedImage.astro';
+---
+<section class="section black-section">
+  <div class="w-layout-blockcontainer container w-container">
+    <div class="section-inner">
+      <div class="title-wrap" style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
+        <h2 class="title-heading animate-on-scroll animate-fade-up color-white">Una sola plataforma. Tres soluciones que trabajan juntas.</h2>
+        <p class="title-paragraph" style="color: #cbd5e1; font-size: 18px;">Empieza por la que necesitas hoy. Activa las demás cuando tu negocio crezca. Todo se conecta solo, sin migraciones dolorosas.</p>
+      </div>
+
+      <div class="choose-wrap" style="align-items: stretch; gap: 20px;">
+        <!-- Tab 1: PMS -->
+        <div class="choose-card suite-card animate-on-scroll animate-fade-up">
+          <div class="suite-icon-wrapper">🏨</div>
+          <div class="data-inner">
+            <h3 class="color-white">PMS para hoteles y alojamientos</h3>
+            <p style="color: #94a3b8; font-size: 15px; margin-bottom: 20px;">Reservas, check-in, housekeeping, tarifas y facturación de huéspedes en un calendario que se sincroniza con Booking y Airbnb. Sin sobreventas ni comisiones escondidas.</p>
+            <ul class="suite-features">
+              <li>✓ Channel manager (Booking, Airbnb)</li>
+              <li>✓ Motor de reservas directas 0% comisión</li>
+              <li>✓ Check-in digital y registro TRA/SIRE</li>
+              <li>✓ Facturación DIAN al huésped en 1 clic</li>
+            </ul>
+            <div class="suite-microdato">
+              <strong>Impacto real:</strong> Los hoteles reducen las sobreventas a cero y aumentan sus reservas directas.
+            </div>
+            <div class="suite-actions">
+              <a href="/software-pms-para-hoteles" class="suite-link">Conocer el PMS →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: ERP -->
+        <div class="choose-card suite-card animate-on-scroll animate-fade-up" style="transition-delay: 100ms;">
+          <div class="suite-icon-wrapper">🏢</div>
+          <div class="data-inner">
+            <h3 class="color-white">ERP para empresas y pymes</h3>
+            <p style="color: #94a3b8; font-size: 15px; margin-bottom: 20px;">Contabilidad, inventarios, compras, ventas, nómina electrónica y reportes en tiempo real. Deja de perseguir la información y tenla siempre al día.</p>
+            <ul class="suite-features">
+              <li>✓ Inventarios multi-bodega en vivo</li>
+              <li>✓ Compras y cuentas por pagar</li>
+              <li>✓ Nómina electrónica avalada DIAN</li>
+              <li>✓ Contabilidad conectada a la operación</li>
+            </ul>
+            <div class="suite-microdato">
+              <strong>Impacto real:</strong> Las pymes que usan Kontrolo recuperan en promedio 12 horas administrativas a la semana.
+            </div>
+            <div class="suite-actions">
+              <a href="/software-erp" class="suite-link">Conocer el ERP →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: POS -->
+        <div class="choose-card suite-card animate-on-scroll animate-fade-up" style="transition-delay: 200ms;">
+          <div class="suite-icon-wrapper">🛒</div>
+          <div class="data-inner">
+            <h3 class="color-white">POS para restaurantes y comercios</h3>
+            <p style="color: #94a3b8; font-size: 15px; margin-bottom: 20px;">Vende rápido, factura electrónicamente y controla mesas, cocina e inventario en tiempo real. Cumple la Resolución 000165 sin pensarlo.</p>
+            <ul class="suite-features">
+              <li>✓ Documento equivalente POS</li>
+              <li>✓ Gestión de mesas y comandas</li>
+              <li>✓ Control de recetas e insumos</li>
+              <li>✓ Domicilios, turnos y arqueo</li>
+            </ul>
+            <div class="suite-microdato">
+              <strong>Impacto real:</strong> Los restaurantes facturan cada mesa en menos de 30 segundos y cuadran caja fácil.
+            </div>
+            <div class="suite-actions">
+              <a href="/software-pos" class="suite-link">Conocer el POS →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .suite-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px 24px;
+    background: #111111;
+    border: 1px solid #222222;
+    border-radius: 16px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    height: 100%;
+  }
+  .suite-card:hover {
+    background: #1a1a1a;
+    transform: translateY(-5px);
+    border-color: #131ddf;
+  }
+  .suite-icon-wrapper {
+    font-size: 40px;
+    margin-bottom: 20px;
+    background: rgba(255,255,255,0.05);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+  }
+  .suite-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+  }
+  .suite-features li {
+    color: #cbd5e1;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .suite-microdato {
+    background: rgba(19, 29, 223, 0.1);
+    border-left: 3px solid #131ddf;
+    padding: 12px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: #e2e8f0;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .suite-actions {
+    margin-top: auto;
+  }
+  .suite-link {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #131ddf;
+    transition: color 0.3s ease;
+  }
+  .suite-link:hover {
+    color: #131ddf;
+  }
+</style>

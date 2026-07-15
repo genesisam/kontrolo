@@ -9,6 +9,8 @@ interface Props {
   imageMobile?: string;
   primaryButtonText?: string;
   primaryButtonLink?: string;
+  secondaryButtonText?: string;
+  secondaryButtonLink?: string;
   bgColor?: string;
 }
 
@@ -20,6 +22,8 @@ const {
   imageMobile = "/images/hero-bg-mobile-2.jpg",
   primaryButtonText = "Prueba 15 días Gratis",
   primaryButtonLink = "/contacto",
+  secondaryButtonText = "",
+  secondaryButtonLink = "",
   bgColor = "#f8f2f6"
 } = Astro.props;
 ---
@@ -40,16 +44,19 @@ const {
         <h1 class="kontrolo-hero-title" set:html={titleHtml}></h1>
         <p class="kontrolo-hero-subtitle" set:html={subtitleHtml}></p>
         
-        {primaryButtonText && (
-          <div class="kontrolo-btn-group">
+        <div class="kontrolo-btn-group">
+          {primaryButtonText && (
             <a href={primaryButtonLink} class="kontrolo-btn kontrolo-btn-primary">{primaryButtonText}</a>
-          </div>
-        )}
+          )}
+          {secondaryButtonText && (
+            <a href={secondaryButtonLink} class="kontrolo-btn kontrolo-btn-outline">{secondaryButtonText}</a>
+          )}
+        </div>
         
         <div class="kontrolo-trust-badges">
-          <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> 100% avalado ante la DIAN</span>
-          <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg> Sin tarjeta de crédito</span>
-          <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Sin contrato de permanencia</span>
+          <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Facturación electrónica DIAN incluida</span>
+          <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Sin permanencia ni letra pequeña</span>
+          <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg> Prueba gratis, sin tarjeta de crédito</span>
         </div>
       </div>
     </div>

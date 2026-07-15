@@ -7,7 +7,17 @@ import Footer from '../components/Footer.astro';
 
 const seo = {
   title: "Sistema POS con facturación electrónica DIAN | Kontrolo",
-  description: "Software de punto de venta (POS) en la nube para Colombia. Kontrolo es fácil, rápido y cumple con la facturación electrónica de la DIAN sin complicaciones."
+  description: "Software de punto de venta (POS) en la nube para Colombia. Kontrolo es fácil, rápido y cumple con la facturación electrónica de la DIAN sin complicaciones.",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Kontrolo Software POS",
+    "description": "Software de Punto de Venta (POS) en la nube con facturación electrónica DIAN integrada.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Kontrolo"
+    }
+  }
 };
 ---
 <MainLayout seo={seo}>
@@ -22,6 +32,112 @@ const seo = {
   imageMobile="/images/software-pos-movil.jpg"
   bgColor="#F5F5F5"
 />
+
+<section class="section to-top">
+<div class="w-layout-blockcontainer container w-container">
+<div class="feature-outer feature-software-pms">
+  <div class="feature-card animate-on-scroll animate-fade-up">
+    <div class="feature-img"><OptimizedImage alt="Ventas y facturación instantánea" src="/images/kontrol-card-pos-1.jpg" class="cover-image"/></div>
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="heading-6">Ventas y facturación instantánea</h4>
+      <p>Registra ventas con rapidez, aplica descuentos automáticos y genera facturación electrónica DIAN al instante. Controla métodos de pago mixtos (efectivo, tarjeta, transferencias) y evita errores con cierres automáticos de caja.</p>
+    </div>
+  </div>
+  <div id="w-node-_2fc916ed-0867-2277-56c6-83d7afeab241-66b9b636" class="feature-card animate-on-scroll animate-fade-up">
+    <div class="feature-img"><OptimizedImage alt="Inventario sincronizado en tiempo real" src="/images/kontrol-card-pos-2.jpg" class="cover-image"/></div>
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="heading-7">Inventario sincronizado en tiempo real</h4>
+      <p>Supervisa entradas, salidas y existencias desde cualquier tienda o sucursal. Recibe alertas por niveles bajos de stock y actualiza precios o productos automáticamente en todos los puntos de venta.</p>
+    </div>
+  </div>
+  <div id="w-node-_2fc916ed-0867-2277-56c6-83d7afeab24c-66b9b636" class="feature-card flex animate-on-scroll animate-fade-up">
+    <div class="feature-img"><OptimizedImage alt="Clientes y fidelización" src="/images/kontrol-card-pos-3.jpg" class="cover-image"/></div>
+    <div class="data-inner small animate-on-scroll animate-fade-up">
+      <h4 class="heading-8">Clientes y fidelización</h4>
+      <p>Crea perfiles de clientes, registra compras recurrentes y gestiona programas de puntos o descuentos personalizados. Incrementa la recompra y mide el comportamiento de tus mejores clientes desde tu CRM integrado al POS.</p>
+    </div>
+  </div>
+  <div id="w-node-_2fc916ed-0867-2277-56c6-83d7afeab25a-66b9b636" class="feature-flex">
+    <div class="fill-block">
+      <div class="feature-card animate-on-scroll animate-fade-up">
+        <div class="feature-img large"><OptimizedImage alt="Tesorería y conciliación automática" src="/images/kontrol-card-pos-4.jpg" class="cover-image"/></div>
+        <div class="data-inner animate-on-scroll animate-fade-up">
+          <h4 class="heading-4">Tesorería y conciliación automática</h4>
+          <p>Conecta tu POS con pasarelas de pago y bancos para conciliar ingresos automáticamente. Monitorea tu flujo de caja diario y proyecta ventas con reportes actualizados en tiempo real.</p>
+        </div>
+      </div>
+    </div>
+    <div class="fill-block">
+      <div class="feature-card animate-on-scroll animate-fade-up">
+        <div class="feature-img large"><OptimizedImage alt="Nómina y rendimiento del personal" src="/images/kontrol-card-pos-5-1.jpg" class="cover-image"/></div>
+        <div class="data-inner animate-on-scroll animate-fade-up">
+          <h4 class="heading-5">Nómina y rendimiento del personal</h4>
+          <p>Administra turnos, propinas y comisiones desde el mismo panel. <br>Evalúa el rendimiento de tu equipo por ventas, horarios y productividad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="section black-section">
+<div class="w-layout-blockcontainer container w-container">
+<div class="section-inner">
+<div class="title-wrap" style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+<div class="subtitle-black" style="justify-content: center;">
+<div class="caption">FUNCIONALIDADES DESTACADAS</div>
+</div>
+<h2 class="title-heading animate-on-scroll animate-fade-up color-white">Descubre las potentes funciones del <span class="title-span" style="color: #4facfe !important;">software POS en la nube Kontrolo</span></h2>
+<p class="title-paragraph" style="color: #a0aec0; margin-top: 15px;">Kontrolo POS conecta ventas, inventarios, clientes y métodos de pago en una sola plataforma. Optimiza la operación de tu negocio, controla tus puntos de venta en tiempo real y mejora la experiencia de tus clientes con un sistema rápido, seguro y totalmente en la nube.</p>
+</div>
+<div class="choose-wrap">
+  <div class="choose-card" >
+    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_22_15-1.png" class="choose-icon" alt="Ventas rápidas" />
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="color-white" style="margin-bottom: 15px;">Ventas rápidas y sin errores</h4>
+      <p>Registra ventas en segundos con interfaz intuitiva y tickets automáticos. Aplica descuentos, combos o precios especiales sin depender del área administrativa. Kontrolo POS reduce los errores humanos y acelera el servicio en mostrador o mesa.</p>
+    </div>
+  </div>
+  <div class="choose-card" >
+    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_28_47-1.png" class="choose-icon" alt="Facturación electrónica" />
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="color-white" style="margin-bottom: 15px;">Facturación electrónica DIAN integrada</h4>
+      <p>Cumple con la normativa vigente sin salir del POS. Genera facturas electrónicas y notas crédito en segundos, conectadas directamente con la DIAN. Evita reprocesos y garantiza trazabilidad fiscal total.</p>
+    </div>
+  </div>
+  <div class="choose-card" >
+    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_31_03-1.png" class="choose-icon" alt="Gestión de inventario" />
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="color-white" style="margin-bottom: 15px;">Gestión de inventario por sucursal</h4>
+      <p>Actualiza existencias automáticamente cada vez que realizas una venta. Consulta el stock en todas tus sedes y recibe alertas de productos con bajo inventario.</p>
+    </div>
+  </div>
+  <div class="choose-card" >
+    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_34_06-1.png" class="choose-icon" alt="CRM y fidelización" />
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="color-white" style="margin-bottom: 15px;">CRM y fidelización de clientes</h4>
+      <p>Registra clientes frecuentes, aplica programas de puntos y consulta historial de compras. Aumenta la recompra y crea promociones personalizadas para cada tipo de cliente.</p>
+    </div>
+  </div>
+  <div class="choose-card" >
+    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_36_15-1.png" class="choose-icon" alt="Pagos integrados" />
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="color-white" style="margin-bottom: 15px;">Pagos integrados y conciliación automática</h4>
+      <p>Integra Wompi, PayU o Bancolombia para recibir pagos por tarjeta, PSE o QR. Las transacciones se registran automáticamente en tu sistema contable o ERP Kontrolo.</p>
+    </div>
+  </div>
+  <div class="choose-card" >
+    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_39_05-1.png" class="choose-icon" alt="Reportes" />
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="color-white" style="margin-bottom: 15px;">Reportes inteligentes y control en tiempo real</h4>
+      <p>Accede a paneles con métricas de ventas, márgenes, turnos y rentabilidad por producto o empleado. Toma decisiones rápidas con reportes actualizados desde cualquier dispositivo.</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
 <section class="section">
 <div class="w-layout-blockcontainer container w-container">
 <div class="section-inner">
@@ -60,64 +176,7 @@ const seo = {
 </div>
 </div>
 </section>
-<section class="section white-bg">
-<div class="w-layout-blockcontainer container w-container">
-<div class="section-inner">
-<div class="title-wrap">
-<div class="title-inner">
-<div class="subtitle bg-white">
-<div class="caption">pricing</div>
-</div>
-<h2 class="title-heading animate-on-scroll animate-fade-up pricing-width">Flexible <span class="title-span">Plans</span> to Meet Your Needs</h2>
-</div>
-<p class="title-paragraph">Each plan is designed to offer the features and support you need to maximize your financial analytics and reporting.</p>
-</div>
-<div class="w-dyn-list">
-<div class="pricing-wrap w-dyn-items" role="list">
-<div class="w-dyn-item" role="listitem">
-<div class="procing-card">
-<div class="pricing-data">
-<div class="price-subtitle bg-white">
-<div class="caption"></div>
-</div>
-<div class="pricing-inner">
-<div class="price-inner">
-<h3 class="price"></h3>
-<h3 class="price-slash">/</h3>
-<p class="price-month">Month</p>
-</div>
-<p class="body-small"></p>
-</div>
-</div>
-<div class="pricing-detail w-richtext"></div>
-<a class="secondary-button w-button" href="#">Get Started</a>
-</div>
-<div class="procing-card bg-secondary">
-<div class="pricing-data">
-<div class="price-subtitle dark">
-<div class="caption color-white"></div>
-</div>
-<div class="pricing-inner">
-<div class="price-inner">
-<h3 class="price color-white"></h3>
-<h3 class="price-slash color-white">/</h3>
-<p class="price-month color-white">Month</p>
-</div>
-<p class="body-small"></p>
-</div>
-</div>
-<div class="pricing-detail-dark w-richtext"></div>
-<a class="default-button w-button" href="#">Get Started</a>
-</div>
-</div>
-</div>
-<div class="empty-state w-dyn-empty">
-<div>No pricing plans found.</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+
 <Testimonial />
 <section class="section cta">
 <div class="w-layout-blockcontainer container w-container">

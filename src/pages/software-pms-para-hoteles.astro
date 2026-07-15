@@ -7,7 +7,17 @@ import Footer from '../components/Footer.astro';
 
 const seo = {
   title: "Software PMS para hoteles en Colombia | Kontrolo",
-  description: "Software PMS para hoteles en Colombia: Kontrolo centraliza reservas, limpieza de habitaciones, check-in/out e inventario, con facturación electrónica DIAN y reportes en tiempo real."
+  description: "Software PMS para hoteles en Colombia: Kontrolo centraliza reservas, limpieza de habitaciones, check-in/out e inventario, con facturación electrónica DIAN y reportes en tiempo real.",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Kontrolo Software PMS",
+    "description": "Software PMS en la nube para gestión de hoteles y hostales, con integraciones de facturación electrónica DIAN.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Kontrolo"
+    }
+  }
 };
 ---
 <MainLayout seo={seo}>
@@ -232,64 +242,7 @@ const seo = {
 </div>
 </div>
 </section>
-<section class="section white-bg">
-<div class="w-layout-blockcontainer container w-container">
-<div class="section-inner">
-<div class="title-wrap">
-<div class="title-inner">
-<div class="subtitle bg-white">
-<div class="caption">pricing</div>
-</div>
-<h2 class="title-heading animate-on-scroll animate-fade-up pricing-width">Flexible <span class="title-span">Plans</span> to Meet Your Needs</h2>
-</div>
-<p class="title-paragraph">Each plan is designed to offer the features and support you need to maximize your financial analytics and reporting.</p>
-</div>
-<div class="w-dyn-list">
-<div class="pricing-wrap w-dyn-items" role="list">
-<div class="w-dyn-item" role="listitem">
-<div class="procing-card">
-<div class="pricing-data">
-<div class="price-subtitle bg-white">
-<div class="caption"></div>
-</div>
-<div class="pricing-inner">
-<div class="price-inner">
-<h3 class="price"></h3>
-<h3 class="price-slash">/</h3>
-<p class="price-month">Month</p>
-</div>
-<p class="body-small"></p>
-</div>
-</div>
-<div class="pricing-detail w-richtext"></div>
-<a class="secondary-button w-button" href="#">Get Started</a>
-</div>
-<div class="procing-card bg-secondary">
-<div class="pricing-data">
-<div class="price-subtitle dark">
-<div class="caption color-white"></div>
-</div>
-<div class="pricing-inner">
-<div class="price-inner">
-<h3 class="price color-white"></h3>
-<h3 class="price-slash color-white">/</h3>
-<p class="price-month color-white">Month</p>
-</div>
-<p class="body-small"></p>
-</div>
-</div>
-<div class="pricing-detail-dark w-richtext"></div>
-<a class="default-button w-button" href="#">Get Started</a>
-</div>
-</div>
-</div>
-<div class="empty-state w-dyn-empty">
-<div>No pricing plans found.</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+
 <Testimonial />
 <section class="section cta">
 <div class="w-layout-blockcontainer container w-container">

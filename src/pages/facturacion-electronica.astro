@@ -1,0 +1,87 @@
+---
+import OptimizedImage from '../components/OptimizedImage.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import Hero from '../components/Hero.astro';
+import DianSection from '../components/home/DianSection.astro';
+import TrustBar from '../components/niches/TrustBar.astro';
+
+const seo = {
+  title: "Facturación Electrónica DIAN para Pymes en Colombia | Kontrolo",
+  description: "Cumple con la Resolución DIAN 000165 de manera fácil y rápida. Emite facturas electrónicas y documento equivalente POS sin complicaciones con Kontrolo.",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Kontrolo Facturación Electrónica",
+    "description": "Módulo de facturación electrónica validada por la DIAN para Colombia.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Kontrolo"
+    }
+  }
+};
+---
+<MainLayout seo={seo}>
+<div class="page-wrap">
+  <Hero 
+    label="URGENTE: RESOLUCIÓN DIAN 000165"
+    titleHtml="El Documento Equivalente POS ya es obligatorio. <span class='kontrolo-primary-text'>¿Estás listo?</span>"
+    subtitleHtml="Evita multas y cierres de tu negocio. Con Kontrolo, emite Facturas Electrónicas y el nuevo Documento Equivalente POS validado por la DIAN en segundos, sin procesos técnicos complicados."
+    primaryButtonText="Activar Facturación DIAN Hoy"
+    primaryButtonLink="/registro"
+    imageDesktop="/images/software-pos-desktop.jpg"
+    imageMobile="/images/software-pos-movil.jpg"
+    bgColor="#f8f2f6"
+  />
+  
+  <TrustBar />
+
+  <DianSection />
+
+  <section class="section black-section">
+    <div class="w-layout-blockcontainer container w-container">
+      <div class="section-inner">
+        <div class="title-wrap" style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+          <h2 class="title-heading animate-on-scroll animate-fade-up color-white">Todo lo que necesitas para <span class="title-span">cumplir con la DIAN</span></h2>
+        </div>
+        <div class="choose-wrap">
+          <div class="choose-card">
+            <div class="data-inner animate-on-scroll animate-fade-up">
+              <h4 class="color-white" style="margin-bottom: 15px;">Documento Equivalente POS Electrónico</h4>
+              <p>Genera comprobantes electrónicos instantáneos para tus ventas de mostrador. Totalmente alineado con los requisitos técnicos del Anexo 1.9 de la DIAN.</p>
+            </div>
+          </div>
+          <div class="choose-card">
+            <div class="data-inner animate-on-scroll animate-fade-up">
+              <h4 class="color-white" style="margin-bottom: 15px;">Facturas y Notas Crédito/Débito</h4>
+              <p>Envía facturas electrónicas ilimitadas a tus clientes empresariales. La plataforma envía automáticamente el XML y PDF requerido por ley.</p>
+            </div>
+          </div>
+          <div class="choose-card">
+            <div class="data-inner animate-on-scroll animate-fade-up">
+              <h4 class="color-white" style="margin-bottom: 15px;">Acuse de Recibo y Radicación</h4>
+              <p>Lleva el control de los eventos título valor (RADIAN) y asegúrate de que tus compras y gastos sean deducibles de impuestos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="w-layout-blockcontainer container w-container">
+      <div class="cta-wrap">
+        <div class="title-wrap">
+          <div class="title-inner">
+            <div class="subtitle bg-white">
+              <div class="caption">PONTE AL DÍA</div>
+            </div>
+            <h2 class="title-heading animate-on-scroll animate-fade-up"><span class="title-span">Evita sanciones.</span> Habilita tu facturación electrónica ahora.</h2>
+          </div>
+          <p class="cta-paragraph">Un equipo de expertos te ayudará con el proceso de habilitación gratuito ante la DIAN. En menos de 48 horas estarás emitiendo documentos electrónicos legales.</p>
+        </div>
+        <a class="primary-button w-button" href="/contacto">Hablar con un asesor DIAN</a>
+      </div>
+    </div>
+  </section>
+</div>
+</MainLayout>

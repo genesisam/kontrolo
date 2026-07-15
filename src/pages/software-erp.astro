@@ -7,7 +7,17 @@ import Footer from '../components/Footer.astro';
 
 const seo = {
   title: "Software ERP en la nube para empresas en Colombia | Kontrolo",
-  description: "Software ERP en la nube con facturación electrónica DIAN. Kontrolo organiza contabilidad, inventarios, compras y ventas en una sola plataforma."
+  description: "Software ERP en la nube con facturación electrónica DIAN. Kontrolo organiza contabilidad, inventarios, compras y ventas en una sola plataforma.",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Kontrolo Software ERP",
+    "description": "Software ERP en la nube con facturación electrónica DIAN para pymes en Colombia.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Kontrolo"
+    }
+  }
 };
 ---
 <MainLayout seo={seo}>
@@ -19,6 +29,112 @@ const seo = {
   primaryButtonText="Conoce Nuestro ERP"
   primaryButtonLink="/contacto"
 />
+
+<section class="section to-top">
+<div class="w-layout-blockcontainer container w-container">
+<div class="feature-outer feature-software-pms">
+  <div class="feature-card animate-on-scroll animate-fade-up">
+    <div class="feature-img"><OptimizedImage alt="Contabilidad y DIAN automatizados" src="/images/kontrol-card-erp-1.jpg" class="cover-image"/></div>
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="heading-14">Contabilidad y DIAN automatizados</h4>
+      <p>Emite facturación electrónica DIAN, notas y recibos en segundos. Registra asientos automáticamente, gestiona impuestos y cierra periodos sin planillas manuales. Menos errores, más control financiero.</p>
+    </div>
+  </div>
+  <div id="w-node-_2fc916ed-0867-2277-56c6-83d7afeab241-36c7f59b" class="feature-card animate-on-scroll animate-fade-up">
+    <div class="feature-img"><OptimizedImage alt="Inventarios y compras en tiempo real" src="/images/kontrol-card-erp-2.jpg" class="cover-image"/></div>
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="heading-15">Inventarios y compras en<br>tiempo real</h4>
+      <p>Controla stock por bodega y sucursal, lotes y costos. Reponer es simple con mínimos/máximos y órdenes de compra sugeridas. Evita quiebres y sobre-inventario.</p>
+    </div>
+  </div>
+  <div id="w-node-_2fc916ed-0867-2277-56c6-83d7afeab24c-36c7f59b" class="feature-card flex animate-on-scroll animate-fade-up">
+    <div class="feature-img"><OptimizedImage alt="Ventas y clientes (CRM integrado)" src="/images/kontrol-card-erp-3.jpg" class="cover-image"/></div>
+    <div class="data-inner small animate-on-scroll animate-fade-up">
+      <h4 class="heading-16">Ventas y clientes<br>(CRM integrado)</h4>
+      <p>Gestiona cotizaciones, pedidos y ventas en un flujo continuo. Consolida clientes, estados de cuenta y cartera. Acelera el cobro con recordatorios automáticos y reportes de rentabilidad por cliente.</p>
+    </div>
+  </div>
+  <div id="w-node-_2fc916ed-0867-2277-56c6-83d7afeab25a-36c7f59b" class="feature-flex">
+    <div class="fill-block">
+      <div class="feature-card animate-on-scroll animate-fade-up">
+        <div class="feature-img large"><OptimizedImage alt="Tesorería y conciliación bancaria" src="/images/kontrol-card-erp-4.jpg" class="cover-image"/></div>
+        <div class="data-inner animate-on-scroll animate-fade-up">
+          <h4 class="heading-17">Tesorería y conciliación bancaria</h4>
+          <p>Conecta bancos para conciliación automática, proyecta flujo de caja y controla egresos con aprobaciones. Visibilidad total de saldos, vencimientos y presupuestos.</p>
+        </div>
+      </div>
+    </div>
+    <div class="fill-block">
+      <div class="feature-card animate-on-scroll animate-fade-up">
+        <div class="feature-img large"><OptimizedImage alt="Nómina y costos operativos" src="/images/kontrol-card-erp-5.jpg" class="cover-image"/></div>
+        <div class="data-inner animate-on-scroll animate-fade-up">
+          <h4 class="heading-18">Nómina y costos operativos</h4>
+          <p>Administra nómina, novedades y provisiones. Integra centros de costo para ver márgenes reales por sede, proyecto o línea de negocio. Cumple normativas sin hojas de cálculo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="section black-section">
+<div class="w-layout-blockcontainer container w-container">
+<div class="section-inner">
+<div class="title-wrap" style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+<div class="subtitle-black" style="justify-content: center;">
+<div class="caption">FUNCIONALIDADES DESTACADAS</div>
+</div>
+<h2 class="title-heading animate-on-scroll animate-fade-up color-white">Descubre las potentes funciones del <span class="title-span" style="color: #4facfe !important;">software ERP en la nube Kontrolo</span></h2>
+<p class="title-paragraph" style="color: #a0aec0; margin-top: 15px;">Kontrolo ERP unifica contabilidad, ventas, compras, inventarios, nómina y facturación DIAN en una sola plataforma. Optimiza la gestión, reduce tareas manuales y facilita decisiones con datos actualizados en tiempo real.</p>
+</div>
+<div class="choose-wrap">
+  <div class="choose-card" >
+    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-17_02_50-1.png" class="choose-icon" alt="Automatización contable" />
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="color-white" style="margin-bottom: 15px;">Automatización contable avanzada</h4>
+      <p>Ahorra horas de trabajo con asientos automáticos, cierre contable guiado y control tributario integrado. Kontrolo actualiza balances, estados financieros y retenciones de forma inmediata, reduciendo errores humanos.</p>
+    </div>
+  </div>
+  <div class="choose-card" >
+    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-17_06_26-1.png" class="choose-icon" alt="Compras inteligentes" />
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="color-white" style="margin-bottom: 15px;">Compras inteligentes y control de proveedores</h4>
+      <p>Registra y aprueba órdenes de compra desde cualquier dispositivo. Evalúa proveedores, compara precios y recibe alertas automáticas cuando el inventario alcanza su nivel mínimo.</p>
+    </div>
+  </div>
+  <div class="choose-card" >
+    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_09_50-1.png" class="choose-icon" alt="Ventas y gestión comercial" />
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="color-white" style="margin-bottom: 15px;">Ventas y gestión comercial conectada</h4>
+      <p>Convierte cotizaciones en facturas con un clic, controla descuentos, márgenes y cuentas por cobrar. Integra tu CRM y punto de venta (POS) para tener una visión completa de tus ventas y clientes en tiempo real.</p>
+    </div>
+  </div>
+  <div class="choose-card" >
+    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_12_37-1.png" class="choose-icon" alt="Tesorería" />
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="color-white" style="margin-bottom: 15px;">Tesorería y conciliación automática</h4>
+      <p>Sincroniza tus bancos para realizar conciliaciones automáticas y proyecciones de flujo de caja. Supervisa pagos, anticipos y gastos con alertas en tiempo real y niveles de aprobación personalizados.</p>
+    </div>
+  </div>
+  <div class="choose-card" >
+    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_15_07-1.png" class="choose-icon" alt="Gestión de inventarios" />
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="color-white" style="margin-bottom: 15px;">Gestión de inventarios y trazabilidad completa</h4>
+      <p>Administra existencias por bodega, lote o número de serie. Rastrea movimientos de entrada y salida, controla costos promedio y genera reportes de rotación e inventario valorizado.</p>
+    </div>
+  </div>
+  <div class="choose-card" >
+    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_18_21-1.png" class="choose-icon" alt="Reportes gerenciales" />
+    <div class="data-inner animate-on-scroll animate-fade-up">
+      <h4 class="color-white" style="margin-bottom: 15px;">Reportes gerenciales y análisis estratégico</h4>
+      <p>Visualiza métricas financieras, operativas y de rentabilidad en dashboards configurables por usuario. Analiza desempeño por sede, área o producto y anticipa decisiones clave para mejorar la rentabilidad.</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
 <section class="section">
 <div class="w-layout-blockcontainer container w-container">
 <div class="section-inner">
@@ -57,64 +173,7 @@ const seo = {
 </div>
 </div>
 </section>
-<section class="section white-bg">
-<div class="w-layout-blockcontainer container w-container">
-<div class="section-inner">
-<div class="title-wrap">
-<div class="title-inner">
-<div class="subtitle bg-white">
-<div class="caption">pricing</div>
-</div>
-<h2 class="title-heading animate-on-scroll animate-fade-up pricing-width">Flexible <span class="title-span">Plans</span> to Meet Your Needs</h2>
-</div>
-<p class="title-paragraph">Each plan is designed to offer the features and support you need to maximize your financial analytics and reporting.</p>
-</div>
-<div class="w-dyn-list">
-<div class="pricing-wrap w-dyn-items" role="list">
-<div class="w-dyn-item" role="listitem">
-<div class="procing-card">
-<div class="pricing-data">
-<div class="price-subtitle bg-white">
-<div class="caption"></div>
-</div>
-<div class="pricing-inner">
-<div class="price-inner">
-<h3 class="price"></h3>
-<h3 class="price-slash">/</h3>
-<p class="price-month">Month</p>
-</div>
-<p class="body-small"></p>
-</div>
-</div>
-<div class="pricing-detail w-richtext"></div>
-<a class="secondary-button w-button" href="#">Get Started</a>
-</div>
-<div class="procing-card bg-secondary">
-<div class="pricing-data">
-<div class="price-subtitle dark">
-<div class="caption color-white"></div>
-</div>
-<div class="pricing-inner">
-<div class="price-inner">
-<h3 class="price color-white"></h3>
-<h3 class="price-slash color-white">/</h3>
-<p class="price-month color-white">Month</p>
-</div>
-<p class="body-small"></p>
-</div>
-</div>
-<div class="pricing-detail-dark w-richtext"></div>
-<a class="default-button w-button" href="#">Get Started</a>
-</div>
-</div>
-</div>
-<div class="empty-state w-dyn-empty">
-<div>No pricing plans found.</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+
 <Testimonial />
 <section class="section cta">
 <div class="w-layout-blockcontainer container w-container">

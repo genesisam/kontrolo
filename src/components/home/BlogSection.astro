@@ -1,0 +1,118 @@
+---
+import OptimizedImage from '../OptimizedImage.astro';
+import { sanityClient } from 'sanity:client';
+
+const posts = await sanityClient.fetch(`*[_type == "post" && defined(slug.current)] | order(publishedAt desc)[0...3] {
+  title,
+  "slug": slug.current,
+  publishedAt,
+  "authorName": author->name,
+  "categoryName": categories[0]->title,
+  "imageUrl": mainImage.asset->url
+}`);
+---
+<section class="section" style="padding: 100px 0; background-color: #f8fafc;">
+  <div class="container w-container">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
+      <h2 class="title-heading animate-on-scroll animate-fade-up">Aprende a escalar tu negocio</h2>
+      <p class="title-paragraph black animate-on-scroll animate-fade-up">Consejos, guías y casos de éxito para llevar tu operación al siguiente nivel.</p>
+    </div>
+
+    <div class="blog-grid">
+      {posts.map((post) => (
+      <a class="blog-card-home animate-on-scroll animate-fade-up" href={`/blog/${post.slug}`}>
+        <div class="blog-thumb-home"><OptimizedImage alt={post.title} loading="lazy" src={post.imageUrl || '/images/gallery-img-04.jpg'} /></div>
+        <div class="blog-content-home">
+          <div class="blog-meta-home">
+            <div>{post.categoryName || 'Gestión Empresarial'}</div>
+            <div>•</div>
+            <div>{new Date(post.publishedAt).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+          </div>
+          <h5 class="blog-title-home">{post.title}</h5>
+          <div class="blog-link-home">Leer artículo →</div>
+        </div>
+      </a>
+      ))}
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;" class="animate-on-scroll animate-fade-up">
+      <a href="/blog" class="kontrolo-btn kontrolo-btn-outline" style="display: inline-block; padding: 12px 28px; font-weight: 600;">Ver todos los artículos</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  .blog-card-home {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .blog-card-home:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  }
+  .blog-thumb-home {
+    height: 220px;
+    overflow: hidden;
+  }
+  .blog-thumb-home img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .blog-card-home:hover .blog-thumb-home img {
+    transform: scale(1.05);
+  }
+  .blog-content-home {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .blog-meta-home {
+    display: flex;
+    gap: 8px;
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .blog-title-home {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  .blog-link-home {
+    margin-top: auto;
+    color: #131ddf;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  @media (max-width: 991px) {
+    .blog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 767px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
