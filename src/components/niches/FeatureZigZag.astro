@@ -25,11 +25,11 @@ const { features } = Astro.props;
     </div>
     {features.map((feature, index) => (
       <div class={`feature-zigzag-row ${feature.isReversed ? 'is-reversed' : ''}`}>
-        <div style="direction: ltr;">
+        <div style="flex: 1; direction: ltr;">
           <h3 class="title-heading" style="font-size: 32px; margin-bottom: 20px;">{feature.title}</h3>
           <p class="title-paragraph black">{feature.description}</p>
         </div>
-        <div style="direction: ltr; border-radius: 20px; overflow: hidden; background: var(--color-gray-50); box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+        <div style="flex: 1; direction: ltr; border-radius: 20px; overflow: hidden; background: var(--color-gray-50); box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
           {feature.featureImage && feature.featureImage.asset && (
             <OptimizedImage src={feature.featureImage.asset.url} alt={feature.title} style="width: 100%; height: auto; display: block;" />
           )}
