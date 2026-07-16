@@ -48,7 +48,7 @@ export default function CiiuSearch() {
     <div style={{ width: '100%', maxWidth: '900px', margin: '0 auto', fontFamily: '"General Sans", sans-serif' }}>
       
       <div style={{ background: '#006642', color: 'var(--color-white)', padding: '32px', borderRadius: '16px 16px 0 0', textAlign: 'center' }}>
-        <h4 style={{ margin: '0 0 16px 0', fontSize: '24px', fontWeight: 600 }}>Buscador de Códigos CIIU</h4>
+        <h4 style={{ margin: '0 0 16px 0', fontSize: '24px', fontWeight: 600, color: '#ffffff' }}>Buscador de Códigos CIIU</h4>
         <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
           <input 
             type="text" 
