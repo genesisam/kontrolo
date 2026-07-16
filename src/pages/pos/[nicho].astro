@@ -19,8 +19,8 @@ export async function getStaticPaths() {
   const currentTypeNiches = await sanityClient.fetch(`*[_type == "niche" && industryType == "pos"]{
     "slug": slug.current,
     seoTitle, seoDescription, industryName, heroHeadline, heroSubheadline, 
-    "heroImageUrl": heroImage.asset->url, clientCount, rating, painPoints, "painPointsIcons": painPoints[].icon.asset->url,
-    features[]{ featureTitle, featureDescription, featureImage{ asset->{url} }, isReversed },
+    "heroImageUrl": heroImage.asset->url, clientCount, rating, painPoints,
+    features[]{ title, description, featureImage{ asset->{url} }, isReversed },
     testimonials[]->{ authorName, authorRole, companyName, quote, rating, avatar{ asset->{url} } },
     faqs[]{ question, answer }
   }`);

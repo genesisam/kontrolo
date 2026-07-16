@@ -2,8 +2,8 @@
 import OptimizedImage from '../OptimizedImage.astro';
 
 interface Feature {
-  featureTitle: string;
-  featureDescription: string;
+  title: string;
+  description: string;
   featureImage: { asset: { url: string } };
   isReversed: boolean;
 }
@@ -26,12 +26,12 @@ const { features } = Astro.props;
     {features.map((feature, index) => (
       <div class={`feature-zigzag-row ${feature.isReversed ? 'is-reversed' : ''}`}>
         <div style="direction: ltr;">
-          <h3 class="title-heading" style="font-size: 32px; margin-bottom: 20px;">{feature.featureTitle}</h3>
-          <p class="title-paragraph black">{feature.featureDescription}</p>
+          <h3 class="title-heading" style="font-size: 32px; margin-bottom: 20px;">{feature.title}</h3>
+          <p class="title-paragraph black">{feature.description}</p>
         </div>
         <div style="direction: ltr; border-radius: 20px; overflow: hidden; background: var(--color-gray-50); box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
           {feature.featureImage && feature.featureImage.asset && (
-            <OptimizedImage src={feature.featureImage.asset.url} alt={feature.featureTitle} style="width: 100%; height: auto; display: block;" />
+            <OptimizedImage src={feature.featureImage.asset.url} alt={feature.title} style="width: 100%; height: auto; display: block;" />
           )}
         </div>
       </div>

@@ -1,4 +1,4 @@
-﻿---
+---
 interface Props {
   points: any[];
   icons?: (string | null)[];
@@ -14,21 +14,24 @@ const { points, icons = [] } = Astro.props;
       {points.map((pt, index) => {
         if (!pt) return null;
         const isString = typeof pt === 'string';
-        const text = isString ? pt : pt.point;
-        const iconUrl = icons[index] || null;
+        const title = isString ? pt : (pt.title || pt.point);
+        const description = !isString ? pt.description : null;
+        const iconValue = !isString ? pt.icon : null;
+        const isEmoji = iconValue && iconValue.length <= 5; // Asume que un string corto es un emoji
 
         return (
           <div style="background: var(--color-white); border: 1px solid var(--color-gray-100); border-radius: 16px; padding: 30px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
-            {iconUrl ? (
-              <div style="width: 64px; height: 64px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
-                <img src={iconUrl} alt="Pain point icon" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+            {iconValue ? (
+              <div style="width: 64px; height: 64px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 40px;">
+                {isEmoji ? iconValue : <img src={iconValue} alt="" style="max-width: 100%; max-height: 100%; object-fit: contain;" />}
               </div>
             ) : (
               <div style="width: 48px; height: 48px; background: rgba(255, 60, 60, 0.1); color: #ff3c3c; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
               </div>
             )}
-            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark);">{text}</p>
+            <h3 style="font-size: 20px; font-weight: 600; color: var(--color-dark); margin-bottom: 12px; margin-top: 0;">{title}</h3>
+            {description && <p style="font-size: 15px; color: var(--color-gray-500); margin: 0; line-height: 1.5;">{description}</p>}
           </div>
         );
       })}
