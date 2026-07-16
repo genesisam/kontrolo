@@ -34,7 +34,11 @@ const { faqs } = Astro.props;
               </div>
               <nav class="answer-block w-dropdown-list">
                 <div class="faq-answer">
-                  <p>{faq.answer}</p>
+                  <p>
+                    {typeof faq.answer === 'string' 
+                      ? faq.answer 
+                      : (faq.answer as any)?.map((block: any) => block.children?.map((child: any) => child.text).join('')).join('\\n')}
+                  </p>
                 </div>
               </nav>
             </div>
