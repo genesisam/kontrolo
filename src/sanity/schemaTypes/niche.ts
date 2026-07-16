@@ -25,8 +25,9 @@ export const niche = {
           name: 'painPointItem',
           title: 'Punto de Dolor',
           fields: [
-            { name: 'point', title: 'Punto de Dolor', type: 'string' },
-            { name: 'icon', title: 'Icono Personalizado (Opcional)', type: 'image', options: { hotspot: true } }
+            { name: 'title', title: 'Título del Dolor', type: 'string' },
+            { name: 'description', title: 'Descripción', type: 'text' },
+            { name: 'icon', title: 'Icono (Emoji o Texto)', type: 'string' }
           ]
         }
       ],
@@ -40,8 +41,8 @@ export const niche = {
         {
           type: 'object',
           fields: [
-            { name: 'featureTitle', title: 'Título del Feature', type: 'string' },
-            { name: 'featureDescription', title: 'Descripción', type: 'text' },
+            { name: 'title', title: 'Título del Feature', type: 'string' },
+            { name: 'description', title: 'Descripción', type: 'text' },
             { name: 'featureImage', title: 'Imagen', type: 'image', options: { hotspot: true } },
             { name: 'isReversed', title: 'Alternar Diseño (Imagen Izquierda)', type: 'boolean', initialValue: false }
           ]
@@ -58,15 +59,7 @@ export const niche = {
       name: 'faqs',
       title: 'Preguntas Frecuentes',
       type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            { name: 'question', title: 'Pregunta', type: 'string' },
-            { name: 'answer', title: 'Respuesta', type: 'text' }
-          ]
-        }
-      ]
+      of: [{ type: 'faq' }]
     }
   ]
 }
