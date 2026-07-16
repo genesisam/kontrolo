@@ -7,22 +7,48 @@ interface Props {
   description: string;
   category: string;
   imageUrl: string;
+  type?: string;
 }
 
-const { title, slug, description, category, imageUrl } = Astro.props;
+const { title, slug, description, category, imageUrl, type = 'guide' } = Astro.props;
+
+// Format href and CTA based on resource type
+const href = slug.startsWith('/') ? slug : `/recurso/${slug}`;
+
+let ctaText = "Ver recurso";
+let badgeColor = "#0056ff"; // Default Blue
+let badgeBg = "rgba(0, 86, 255, 0.1)";
+
+if (type === 'calculator') {
+  ctaText = "Usar Calculadora";
+  badgeColor = "#131ddf";
+  badgeBg = "rgba(19, 29, 223, 0.1)";
+} else if (type === 'ai-tool') {
+  ctaText = "Probar Herramienta IA";
+  badgeColor = "#a21caf"; // Purple
+  badgeBg = "rgba(162, 28, 175, 0.1)";
+} else if (type === 'template') {
+  ctaText = "Descargar Plantilla";
+  badgeColor = "#059669"; // Green
+  badgeBg = "rgba(5, 150, 105, 0.1)";
+} else if (type === 'video') {
+  ctaText = "Ver Video";
+  badgeColor = "#e11d48"; // Red
+  badgeBg = "rgba(225, 29, 72, 0.1)";
+}
 ---
-<a href={`/recursos/contadores/${slug}`} style="text-decoration: none; color: inherit; background: #fff; border: 1px solid #eaeaea; border-radius: 16px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; height: 100%;" class="resource-card-hover">
+<a href={href} style="text-decoration: none; color: inherit; background: #fff; border: 1px solid #eaeaea; border-radius: 16px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; height: 100%;" class="resource-card-hover">
   <div style="height: 200px; width: 100%; background: #eee; position: relative;">
-    <div style="position: absolute; top: 16px; left: 16px; background: #0056ff; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; z-index: 10;">
-      {category}
+    <div style={`position: absolute; top: 16px; left: 16px; background: ${badgeColor}; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; z-index: 10;`}>
+      {category || 'Recurso'}
     </div>
-    <OptimizedImage src={imageUrl || 'images/gallery-img-04.jpg'} alt={title} class="resource-cover-image" />
+    {imageUrl && <OptimizedImage src={imageUrl} alt={title} class="resource-cover-image" />}
   </div>
   <div style="padding: 24px; flex-grow: 1; display: flex; flex-direction: column;">
     <h3 style="font-size: 20px; font-weight: 700; margin: 0 0 12px 0; color: #111;">{title}</h3>
     <p style="color: #666; font-size: 14px; line-height: 1.5; margin-bottom: 24px; flex-grow: 1;">{description}</p>
-    <div style="font-size: 14px; font-weight: 700; color: #0056ff; display: flex; align-items: center; gap: 8px;">
-      Descargar gratis 
+    <div style={`font-size: 14px; font-weight: 700; color: ${badgeColor}; display: flex; align-items: center; gap: 8px;`}>
+      {ctaText}
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </div>
   </div>

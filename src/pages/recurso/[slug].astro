@@ -1,0 +1,194 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { sanityClient } from "sanity:client";
+import OptimizedImage from '../../components/OptimizedImage.astro';
+
+import UvtCalculator from '../../components/resources/tools/UvtCalculator';
+import EmployeeCostCalculator from '../../components/resources/tools/EmployeeCostCalculator';
+import LaborSettlementCalculator from '../../components/resources/tools/LaborSettlementCalculator';
+import DianInterestCalculator from '../../components/resources/tools/DianInterestCalculator';
+import ContractGenerator from '../../components/resources/tools/ContractGenerator';
+import CiiuSearch from '../../components/resources/tools/CiiuSearch';
+import LeadMagnetCTA from '../../components/resources/LeadMagnetCTA.astro';
+
+export async function getStaticPaths() {
+  const resources = await sanityClient.fetch(`*[_type == "resource"]{
+    "slug": slug.current,
+    title,
+    description,
+    "imageUrl": coverImage.asset->url,
+    category,
+    resourceType,
+    toolId,
+    fileAttachment {
+      asset->{url}
+    },
+    faqs,
+    seo
+  }`);
+
+  const mockResource1 = { slug: 'calculadora-uvt-2026', title: 'Calculadora de UVT y Retención en la Fuente 2026', description: 'Convierte Pesos a UVT al instante...', resourceType: 'calculator', toolId: 'calculadora-uvt', category: 'Calculadoras Financieras', faqs: [] };
+  const mockResource2 = { slug: 'calculadora-costo-empleado-2026', title: 'Calculadora de Costo Laboral', description: 'Descubre el costo real de contratar...', resourceType: 'calculator', toolId: 'calculadora-costo-empleado', category: 'Calculadoras Financieras', faqs: [] };
+  const mockResource3 = { slug: 'simulador-liquidacion-laboral', title: 'Simulador de Liquidación Laboral', description: 'Calcula cuánto debes pagar o recibir por liquidación...', resourceType: 'calculator', toolId: 'simulador-liquidacion', category: 'Calculadoras Financieras', faqs: [] };
+  const mockResource4 = { slug: 'calculadora-intereses-dian', title: 'Calculadora de Intereses DIAN', description: 'Simulador de intereses moratorios con tasa usura referencial.', resourceType: 'calculator', toolId: 'calculadora-intereses-dian', category: 'Calculadoras Financieras', faqs: [] };
+  const mockResource5 = { slug: 'generador-contratos-laborales', title: 'Generador IA Contratos Laborales', description: 'Crea contratos a término indefinido al instante.', resourceType: 'ai-tool', toolId: 'generador-contratos', category: 'Inteligencia Artificial', faqs: [] };
+  const mockResource6 = { slug: 'buscador-codigos-ciiu', title: 'Buscador Códigos CIIU', description: 'Encuentra el código exacto para tu RUT.', resourceType: 'calculator', toolId: 'buscador-ciiu', category: 'Guías y Documentos', faqs: [] };
+
+  const paths = resources.map((resource: any) => ({
+    params: { slug: resource.slug },
+    props: { resource },
+  }));
+
+  const mocks = [mockResource1, mockResource2, mockResource3, mockResource4, mockResource5, mockResource6];
+  
+  mocks.forEach(mock => {
+    if (!paths.some((p: any) => p.params.slug === mock.slug)) {
+      paths.push({ params: { slug: mock.slug }, props: { resource: mock } });
+    }
+  });
+
+  return paths;
+}
+
+const { resource } = Astro.props;
+
+// --- SEO: GENERACIÓN DE SCHEMAS JSON-LD ---
+const schemas = [];
+
+// 1. SoftwareApplication Schema para posicionar las calculadoras como Apps
+if (['calculator', 'ai-tool'].includes(resource.resourceType)) {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": resource.title,
+    "description": resource.description,
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "COP"
+    }
+  });
+}
+
+// 2. FAQ Schema para Fragmentos Destacados en Google
+if (resource.faqs && resource.faqs.length > 0) {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": resource.faqs.map((faq: any) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  });
+}
+
+// Use SEO from Sanity or fallback
+const seoData = {
+  title: resource.seo?.metaTitle || `${resource.title} | Herramientas Kontrolo`,
+  description: resource.seo?.metaDescription || resource.description,
+  image: resource.seo?.ogImage?.asset?.url || resource.imageUrl,
+  canonical: resource.seo?.canonicalUrl,
+  structuredData: schemas.length > 0 ? schemas : undefined
+};
+---
+
+<MainLayout seo={seoData}>
+  <div class="page-wrap">
+    
+    {/* HERO CONDICIONAL SEGÚN TIPO */}
+    <section class="section" style="padding-top: 140px; padding-bottom: 60px; background: #fff;">
+      <div class="container w-container">
+        <div style="display: flex; gap: 60px; align-items: center; flex-wrap: wrap;">
+          
+          <div style="flex: 1; min-width: 300px;">
+            <div style="display: inline-block; background: rgba(19, 29, 223, 0.1); color: #131ddf; padding: 6px 16px; border-radius: 100px; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+              {resource.category || 'Recurso'} • {resource.resourceType || 'SIN TIPO'}
+            </div>
+            <h1 class="title-heading" style="font-size: 48px; line-height: 1.1; margin-bottom: 24px;">{resource.title}</h1>
+            <p class="title-paragraph black" style="font-size: 18px; margin-bottom: 32px; color: #555;">{resource.description}</p>
+          </div>
+          
+          {resource.resourceType === 'template' && (
+            <div style="flex: 1; min-width: 300px; max-width: 500px; background: #f4f4f6; padding: 40px; border-radius: 24px;">
+              <h3 style="font-size: 24px; margin-bottom: 16px;">Descargar Material</h3>
+              <p style="color: #666; margin-bottom: 24px;">Acceso instantáneo gratuito.</p>
+              <a href={resource.fileUrl || '#'} download class="primary-button w-button" style="width: 100%; justify-content: center;">Descargar Ahora</a>
+            </div>
+          )}
+
+          {resource.resourceType === 'video' && resource.videoUrl && (
+            <div style="flex: 1; min-width: 300px;">
+               <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                <iframe src={resource.videoUrl} style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+              </div>
+            </div>
+          )}
+
+          {['calculator', 'ai-tool', 'guide'].includes(resource.resourceType) && resource.imageUrl && (
+            <div style="flex: 1; min-width: 300px;">
+               <OptimizedImage src={resource.imageUrl} alt={resource.title} style="width: 100%; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);" />
+            </div>
+          )}
+
+        </div>
+      </div>
+    </section>
+
+    {/* ZONA INTERACTIVA / TOOL MOUNT */}
+    {['calculator', 'ai-tool'].includes(resource.resourceType) && (
+      <section class="section" style="padding: 40px 0 80px; background: #f4f4f6;">
+        <div class="container w-container">
+          
+          {resource.toolId === 'calculadora-uvt' ? (
+             <UvtCalculator client:load />
+          ) : resource.toolId === 'calculadora-costo-empleado' ? (
+             <EmployeeCostCalculator client:load />
+          ) : resource.toolId === 'simulador-liquidacion' ? (
+             <LaborSettlementCalculator client:load />
+          ) : resource.toolId === 'calculadora-intereses-dian' ? (
+             <DianInterestCalculator client:load />
+          ) : resource.toolId === 'generador-contratos' ? (
+             <ContractGenerator client:load />
+          ) : resource.toolId === 'buscador-ciiu' ? (
+             <CiiuSearch client:load />
+          ) : (
+            <div style="background: #fff; border-radius: 24px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); min-height: 400px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ddd;">
+               <div style="text-align: center;">
+                 <h4 style="font-size: 24px; color: #111; margin-bottom: 8px;">Herramienta en Construcción</h4>
+                 <p style="color: #666;">Estamos afinando los detalles de esta herramienta. ¡Vuelve pronto!</p>
+               </div>
+            </div>
+          )}
+
+          {/* BANNER CRO: LLAMADO A LA ACCIÓN GLOBAL */}
+          <LeadMagnetCTA />
+          
+        </div>
+      </section>
+    )}
+
+    {/* FAQS */}
+    {resource.faqs && resource.faqs.length > 0 && (
+      <section class="section" style="padding: 80px 0; background: #fff;">
+        <div class="container w-container">
+          <h2 style="font-size: 32px; margin-bottom: 40px; text-align: center;">Preguntas Frecuentes</h2>
+          <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+            {resource.faqs.map((faq: any) => (
+              <div style="border: 1px solid #eaeaea; border-radius: 16px; padding: 24px;">
+                <h4 style="margin-top: 0; margin-bottom: 12px; font-size: 18px;">{faq.question}</h4>
+                <p style="margin: 0; color: #555;">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+  </div>
+</MainLayout>

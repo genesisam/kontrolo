@@ -1,0 +1,173 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { sanityClient } from "sanity:client";
+import ResourceCard from '../../components/resources/ResourceCard.astro';
+
+// Fetch resources
+const featuredResources = await sanityClient.fetch(`*[_type == "resource" && featured == true] | order(_createdAt desc)[0...3]{
+  "slug": slug.current,
+  title,
+  description,
+  resourceType,
+  category,
+  "imageUrl": coverImage.asset->url
+}`);
+
+const allResources = await sanityClient.fetch(`*[_type == "resource"] | order(_createdAt desc){
+  title,
+  "slug": slug.current,
+  description,
+  "imageUrl": coverImage.asset->url,
+  category,
+  resourceType,
+  toolId
+}`);
+
+// Inject mock for development preview
+const mockResource1 = {
+  slug: 'calculadora-uvt-2026',
+  title: 'Calculadora de UVT y Retención en la Fuente 2026',
+  description: 'Convierte Pesos a UVT al instante y calcula automáticamente la retención en la fuente aplicable a tus honorarios y servicios.',
+  resourceType: 'calculator',
+  category: 'Calculadoras Financieras',
+  imageUrl: null
+};
+
+const mockResource2 = {
+  slug: 'calculadora-costo-empleado-2026',
+  title: 'Calculadora de Costo Laboral de un Empleado 2026',
+  description: 'Descubre el costo real de contratar a un empleado con todas las prestaciones, aportes parafiscales y seguridad social. Exoneración Art. 114-1 ET incluida.',
+  resourceType: 'calculator',
+  category: 'Calculadoras Financieras',
+  imageUrl: null
+};
+
+const mockResource3 = {
+  slug: 'simulador-liquidacion-laboral',
+  title: 'Simulador de Liquidación Laboral',
+  description: 'Calcula cuánto debes pagar o recibir por liquidación de prestaciones sociales e indemnizaciones por despido.',
+  resourceType: 'calculator',
+  category: 'Calculadoras Financieras',
+  imageUrl: null
+};
+
+if (!allResources.some((r: any) => r.slug === mockResource1.slug)) {
+  allResources.push(mockResource1);
+  featuredResources.push(mockResource1);
+}
+
+const mockResource4 = { slug: 'calculadora-intereses-dian', title: 'Calculadora de Intereses DIAN', description: 'Simulador de intereses moratorios con tasa usura referencial.', resourceType: 'calculator', category: 'Calculadoras Financieras', imageUrl: null };
+const mockResource5 = { slug: 'generador-contratos-laborales', title: 'Generador IA Contratos Laborales', description: 'Crea contratos a término indefinido al instante.', resourceType: 'ai-tool', category: 'Inteligencia Artificial', imageUrl: null };
+const mockResource6 = { slug: 'buscador-codigos-ciiu', title: 'Buscador Códigos CIIU', description: 'Encuentra el código exacto para tu RUT.', resourceType: 'calculator', category: 'Guías y Documentos', imageUrl: null };
+
+const mocks = [mockResource1, mockResource2, mockResource3, mockResource4, mockResource5, mockResource6];
+
+mocks.forEach(mock => {
+  if (!allResources.some((r: any) => r.slug === mock.slug)) {
+    allResources.push(mock);
+    featuredResources.push(mock);
+  }
+});
+
+const categories = await sanityClient.fetch(`*[_type == "resourceCategory"]{ title, "slug": slug.current }`);
+
+const seo = {
+  title: 'Centro de Recursos y Herramientas Gratuitas | Kontrolo',
+  description: 'Descubre calculadoras financieras, generadores de IA, plantillas Excel y guías para optimizar tu gestión contable y empresarial en Colombia.',
+};
+---
+
+<MainLayout seo={seo}>
+  <div class="page-wrap">
+    
+    {/* HERO HUB */}
+    <section class="section" style="padding-top: 160px; padding-bottom: 80px; background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);">
+      <div class="container w-container">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <div style="display: inline-block; padding: 6px 16px; background: rgba(19, 29, 223, 0.1); color: #131ddf; border-radius: 100px; font-weight: 600; font-size: 14px; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px;">Centro de Recursos</div>
+          <h1 class="title-heading" style="font-size: 56px; line-height: 1.1; margin-bottom: 24px;">Herramientas para acelerar <br/><span style="color: #0056ff;">tu crecimiento empresarial</span></h1>
+          <p class="title-paragraph black" style="font-size: 20px; margin-bottom: 40px; color: #555;">Calculadoras interactivas, plantillas listas para usar y asistentes impulsados por IA diseñados para ahorrarte horas de trabajo operativo.</p>
+          
+          {/* SEARCH BAR MOCKUP */}
+          <div style="position: relative; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 50px; overflow: hidden;">
+            <input type="text" placeholder="¿Qué herramienta estás buscando hoy? Ej. Calculadora Nómina" style="width: 100%; padding: 20px 24px; padding-right: 60px; border: 2px solid transparent; outline: none; font-size: 16px; font-family: inherit; transition: all 0.3s ease;" class="resource-search-input" />
+            <div style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: #131ddf; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* DESTACADOS */}
+    {featuredResources.length > 0 && (
+      <section class="section" style="padding: 80px 0; background: #fff;">
+        <div class="container w-container">
+          <h2 style="font-size: 32px; margin-bottom: 40px;">⭐ Herramientas Destacadas</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;">
+            {featuredResources.map((resource: any) => (
+              <ResourceCard 
+                title={resource.title} 
+                slug={resource.slug} 
+                description={resource.description} 
+                category={resource.category} 
+                imageUrl={resource.imageUrl} 
+                type={resource.resourceType}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {/* TODOS LOS RECURSOS */}
+    <section class="section" style="padding: 80px 0 120px; background: #f8f9fa;">
+      <div class="container w-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+          <h2 style="font-size: 32px; margin-bottom: 0;">Recientemente Añadidos</h2>
+          <div style="font-size: 15px; color: #666;">Mostrando {allResources.length} recursos</div>
+        </div>
+        
+        {allResources.length === 0 ? (
+          <div style="text-align: center; padding: 60px 0; color: #666; background: #fff; border-radius: 20px; border: 1px dashed #ccc;">
+            <h3 style="font-size: 24px; margin-bottom: 10px;">Aún no hay recursos publicados.</h3>
+            <p>Vuelve pronto para descubrir nuevas herramientas.</p>
+          </div>
+        ) : (
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;">
+            {allResources.map((resource: any) => (
+              <ResourceCard 
+                title={resource.title} 
+                slug={`/recurso/${resource.slug}`} 
+                description={resource.description} 
+                category={resource.category} 
+                imageUrl={resource.imageUrl}
+                type={resource.resourceType}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+
+    {/* GLOBAL CTA */}
+    <section class="section" style="background: #111; color: #fff; padding: 100px 20px;">
+      <div class="container w-container" style="text-align: center;">
+        <h2 style="font-size: 48px; margin-bottom: 24px; color: #fff; letter-spacing: -0.02em;">¿Listo para ir más allá de las plantillas?</h2>
+        <p style="font-size: 20px; color: #aaa; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Deja atrás el trabajo manual. Descubre cómo el ecosistema de Kontrolo automatiza tu facturación, nómina e inventario en un solo lugar.</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="/software-erp" class="primary-button w-button" style="padding: 18px 40px; font-weight: 700; border-radius: 50px; font-size: 16px;">Conocer el ERP</a>
+          <a href="/contacto" class="secondary-button w-button" style="padding: 18px 40px; font-weight: 700; border-radius: 50px; background: transparent; border: 1px solid #333; color: #fff; font-size: 16px;">Agendar Demo</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <style>
+    .resource-search-input:focus {
+      border-color: #131ddf !important;
+      box-shadow: 0 0 0 4px rgba(19, 29, 223, 0.1);
+    }
+  </style>
+</MainLayout>

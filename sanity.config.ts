@@ -11,7 +11,16 @@ export default defineConfig({
 
   basePath: '/admin',
 
-  plugins: [structureTool()],
+  plugins: [
+    structureTool({
+      structure: (S) =>
+        S.list()
+          .title('Kontrolo CMS')
+          .items([
+            ...S.documentTypeListItems(),
+          ]),
+    }),
+  ],
 
   schema: schema,
 });
