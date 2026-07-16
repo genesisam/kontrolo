@@ -145,17 +145,17 @@ const seoData = {
       <section class="section" style="padding: 40px 0 80px; background: var(--color-gray-50);">
         <div class="container w-container">
           
-          {resource.toolId === 'calculadora-uvt' ? (
+          {resource.toolId === 'uvt-calculator' ? (
              <UvtCalculator client:load />
-          ) : resource.toolId === 'calculadora-costo-empleado' ? (
+          ) : resource.toolId === 'employee-cost' ? (
              <EmployeeCostCalculator client:load />
-          ) : resource.toolId === 'simulador-liquidacion' ? (
+          ) : resource.toolId === 'liquidation-calculator' ? (
              <LaborSettlementCalculator client:load />
-          ) : resource.toolId === 'calculadora-intereses-dian' ? (
+          ) : resource.toolId === 'dian-interest' ? (
              <DianInterestCalculator client:load />
-          ) : resource.toolId === 'generador-contratos' ? (
+          ) : resource.toolId === 'contract-generator' ? (
              <ContractGenerator client:load />
-          ) : resource.toolId === 'buscador-ciiu' ? (
+          ) : resource.toolId === 'ciiu-search' ? (
              <CiiuSearch client:load />
           ) : (
             <div class="fallback-card">

@@ -1,11 +1,11 @@
 ---
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
 ---
 
 <div class="lead-magnet-cta-box">
   
-  <div class="subtitle-black">
-    <div class="caption">DEJA DE CALCULAR A MANO</div>
-  </div>
+  <Badge variant="black">DEJA DE CALCULAR A MANO</Badge>
   
   <h2 class="lead-magnet-title">
     ¿Cuánto tiempo pierdes en Excel cada mes?
@@ -16,12 +16,12 @@
   </p>
   
   <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-    <a href="/contacto" class="primary-button w-button">
+    <Button href="/contacto" variant="primary">
       Empezar 15 Días Gratis
-    </a>
-    <a href="/contacto" class="secondary-button w-button">
+    </Button>
+    <Button href="/contacto" variant="outline" style="color: white; border-color: rgba(255, 255, 255, 0.4);">
       Hablar con Asesor
-    </a>
+    </Button>
   </div>
   
   <div style="margin-top: 32px; display: flex; gap: 24px; justify-content: center; opacity: 0.6; font-size: 13px; flex-wrap: wrap;">
