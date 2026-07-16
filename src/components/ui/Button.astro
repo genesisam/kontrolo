@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'white-outline';
   href?: string;
   class?: string;
   id?: string;
@@ -18,7 +18,8 @@ const variantStyles = {
   primary: "kontrolo-btn-primary",
   secondary: "kontrolo-btn-secondary",
   outline: "kontrolo-btn-outline",
-  ghost: "kontrolo-btn-ghost"
+  ghost: "kontrolo-btn-ghost",
+  'white-outline': "kontrolo-btn-white-outline"
 };
 
 const finalClass = `${baseStyles} ${variantStyles[variant]} ${className || ''}`.trim();
@@ -81,6 +82,17 @@ const finalClass = `${baseStyles} ${variantStyles[variant]} ${className || ''}`.
   .kontrolo-btn-outline:hover {
     background-color: rgba(19, 29, 223, 0.05);
     border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .kontrolo-btn-white-outline {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  .kontrolo-btn-white-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-white);
     transform: translateY(-2px);
   }
 
