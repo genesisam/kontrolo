@@ -1,47 +1,32 @@
 ---
+const { problems } = Astro.props;
 ---
 <section class="section" style="background-color: #f7f8fa; padding: 100px 0;">
   <div class="container w-container">
     <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 60px;">
-      <h2 class="title-heading animate-on-scroll animate-fade-up">¿Tu negocio funciona con 5 sistemas que no se hablan entre sí?</h2>
-      <p class="title-paragraph black animate-on-scroll animate-fade-up">Excel para el inventario, un facturador aparte, las reservas en un cuaderno, la nómina donde el contador y las ventas en la memoria del cajero. Así se ve el caos que Kontrolo elimina:</p>
+      <h2 class="title-heading animate-on-scroll animate-fade-up">{problems?.title || "¿Tu negocio funciona con 5 sistemas que no se hablan entre sí?"}</h2>
+      <p class="title-paragraph black animate-on-scroll animate-fade-up">{problems?.description || "Excel para el inventario, un facturador aparte, las reservas en un cuaderno, la nómina donde el contador y las ventas en la memoria del cajero. Así se ve el caos que Kontrolo elimina:"}</p>
     </div>
 
     <div class="problem-grid animate-on-scroll animate-fade-up">
-      <div class="problem-card">
-        <div class="problem-icon">🧾</div>
-        <h3 class="problem-title">Miedo a la DIAN</h3>
-        <p class="problem-desc">Multas de hasta 1.5 UVT por factura electrónica no reportada a tiempo.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">⏰</div>
-        <h3 class="problem-title">Horas perdidas</h3>
-        <p class="problem-desc">Digitar dos veces lo mismo en sistemas distintos te roba hasta <strong>12 horas semanales</strong>.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">📦</div>
-        <h3 class="problem-title">Inventario fantasma</h3>
-        <p class="problem-desc">Vendes lo que ya no tienes y compras lo que no rota porque los datos no cuadran.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">🛏️</div>
-        <h3 class="problem-title">Sobreventas de habitaciones</h3>
-        <p class="problem-desc">Dos huéspedes en la misma habitación: la reseña de 1 estrella ya está escrita.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">📊</div>
-        <h3 class="problem-title">Ceguera gerencial</h3>
-        <p class="problem-desc">Te enteras de cuánto ganaste (o perdiste) un mes después, cuando ya es tarde.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">💸</div>
-        <h3 class="problem-title">Costos ocultos</h3>
-        <p class="problem-desc">Cada sistema suelto es otra licencia, otro soporte y otro margen de error.</p>
-      </div>
+      {(problems?.problemCards || [
+        { icon: '🧾', title: 'Miedo a la DIAN', description: 'Multas de hasta 1.5 UVT por factura electrónica no reportada a tiempo.' },
+        { icon: '⏰', title: 'Horas perdidas', description: 'Digitar dos veces lo mismo en sistemas distintos te roba hasta <strong>12 horas semanales</strong>.' },
+        { icon: '📦', title: 'Inventario fantasma', description: 'Vendes lo que ya no tienes y compras lo que no rota porque los datos no cuadran.' },
+        { icon: '🛏️', title: 'Sobreventas de habitaciones', description: 'Dos huéspedes en la misma habitación: la reseña de 1 estrella ya está escrita.' },
+        { icon: '📊', title: 'Ceguera gerencial', description: 'Te enteras de cuánto ganaste (o perdiste) un mes después, cuando ya es tarde.' },
+        { icon: '💸', title: 'Costos ocultos', description: 'Cada sistema suelto es otra licencia, otro soporte y otro margen de error.' }
+      ]).map((card: any) => (
+        <div class="problem-card">
+          <div class="problem-icon">{card.icon}</div>
+          <h3 class="problem-title">{card.title}</h3>
+          <p class="problem-desc" set:html={card.description}></p>
+        </div>
+      ))}
     </div>
 
     <div style="text-align: center; margin-top: 50px;" class="animate-on-scroll animate-fade-up">
-      <p style="font-size: 18px; font-weight: 600; color: #64748b;">Nada de esto es culpa tuya. Es culpa de tener herramientas desconectadas.</p>
+      <p style="font-size: 18px; font-weight: 600; color: #64748b;">{problems?.bottomText || "Nada de esto es culpa tuya. Es culpa de tener herramientas desconectadas."}</p>
     </div>
   </div>
 </section>
@@ -53,7 +38,7 @@
     gap: 30px;
   }
   .problem-card {
-    background: #ffffff;
+    background: var(--color-white);
     border: 1px solid #e2e8f0;
     border-radius: 16px;
     padding: 32px;

@@ -1,13 +1,16 @@
 ---
+import { sanityClient } from "sanity:client";
 import OptimizedImage from '../components/OptimizedImage.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import Testimonial from '../components/Testimonial.astro';
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 
+const pageData = await sanityClient.fetch('*[_type == "solutionPage" && slug.current == "software-pos"][0]');
+
 const seo = {
-  title: "Sistema POS con facturación electrónica DIAN | Kontrolo",
-  description: "Software de punto de venta (POS) en la nube para Colombia. Kontrolo es fácil, rápido y cumple con la facturación electrónica de la DIAN sin complicaciones.",
+  title: pageData?.seo?.metaTitle || "Sistema POS con facturación electrónica DIAN | Kontrolo",
+  description: pageData?.seo?.metaDescription || "Software de punto de venta (POS) en la nube para Colombia. Kontrolo es fácil, rápido y cumple con la facturación electrónica de la DIAN sin complicaciones.",
   structuredData: {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -23,18 +26,23 @@ const seo = {
 <MainLayout seo={seo}>
 <div class="page-wrap">
 <Hero 
-  label="SISTEMA POS"
-  titleHtml="Vende más rápido y cumple <span class='kontrolo-primary-text'>con la DIAN al instante</span>"
-  subtitleHtml="Sistema de Punto de Venta (POS) rápido, intuitivo y con facturación electrónica integrada. Perfecto para restaurantes, tiendas y puntos físicos."
-  primaryButtonText="Ver Sistema POS"
-  primaryButtonLink="/contacto"
+  label={pageData?.hero?.label || "SISTEMA POS"}
+  titleHtml={pageData?.hero?.headline || "Vende más rápido y cumple <span class='kontrolo-primary-text'>con la DIAN al instante</span>"}
+  subtitleHtml={pageData?.hero?.subheadline || "Sistema de Punto de Venta (POS) rápido, intuitivo y con facturación electrónica integrada. Perfecto para restaurantes, tiendas y puntos físicos."}
+  primaryButtonText={pageData?.hero?.primaryButtonText || "Ver Sistema POS"}
+  primaryButtonLink={pageData?.hero?.primaryButtonLink || "/contacto"}
   imageDesktop="/images/software-pos-desktop.jpg"
   imageMobile="/images/software-pos-movil.jpg"
-  bgColor="#F5F5F5"
+  bgColor="var(--color-gray-100)"
 />
 
 <section class="section to-top">
 <div class="w-layout-blockcontainer container w-container">
+<div class="title-wrap" style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+  <div class="subtitle"><div class="caption">{pageData?.overview?.caption || "AGILIDAD EN EL MOSTRADOR"}</div></div>
+  <h2 class="title-heading animate-on-scroll animate-fade-up">{pageData?.overview?.title || "Vende más, espera menos"}</h2>
+  <p class="title-paragraph" style="margin: 0 auto;">{pageData?.overview?.description || "Transforma la experiencia en tu punto de venta. Agiliza cobros, controla inventarios al instante y mantén a tus clientes felices con un servicio rápido y sin errores."}</p>
+</div>
 <div class="feature-outer feature-software-pms">
   <div class="feature-card animate-on-scroll animate-fade-up">
     <div class="feature-img"><OptimizedImage alt="Ventas y facturación instantánea" src="/images/kontrol-card-pos-1.jpg" class="cover-image"/></div>
@@ -86,54 +94,28 @@ const seo = {
 <div class="section-inner">
 <div class="title-wrap" style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
 <div class="subtitle-black" style="justify-content: center;">
-<div class="caption">FUNCIONALIDADES DESTACADAS</div>
+<div class="caption">{pageData?.features?.caption || "FUNCIONALIDADES DESTACADAS"}</div>
 </div>
-<h2 class="title-heading animate-on-scroll animate-fade-up color-white">Descubre las potentes funciones del <span class="title-span" style="color: #4facfe !important;">software POS en la nube Kontrolo</span></h2>
-<p class="title-paragraph" style="color: #a0aec0; margin-top: 15px;">Kontrolo POS conecta ventas, inventarios, clientes y métodos de pago en una sola plataforma. Optimiza la operación de tu negocio, controla tus puntos de venta en tiempo real y mejora la experiencia de tus clientes con un sistema rápido, seguro y totalmente en la nube.</p>
+<h2 class="title-heading animate-on-scroll animate-fade-up color-white">{pageData?.features?.title || "Descubre las potentes funciones del software POS en la nube Kontrolo"}</h2>
+<p class="title-paragraph" style="color: #a0aec0; margin-top: 15px;">{pageData?.features?.description || "Kontrolo POS conecta ventas, inventarios, clientes y métodos de pago en una sola plataforma. Optimiza la operación de tu negocio, controla tus puntos de venta en tiempo real y mejora la experiencia de tus clientes con un sistema rápido, seguro y totalmente en la nube."}</p>
 </div>
 <div class="choose-wrap">
-  <div class="choose-card" >
-    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_22_15-1.png" class="choose-icon" alt="Ventas rápidas" />
-    <div class="data-inner animate-on-scroll animate-fade-up">
-      <h4 class="color-white" style="margin-bottom: 15px;">Ventas rápidas y sin errores</h4>
-      <p>Registra ventas en segundos con interfaz intuitiva y tickets automáticos. Aplica descuentos, combos o precios especiales sin depender del área administrativa. Kontrolo POS reduce los errores humanos y acelera el servicio en mostrador o mesa.</p>
+  {(pageData?.features?.cards || [
+    { icon: '🛒', title: 'Ventas rápidas y sin errores', description: 'Registra ventas en segundos con interfaz intuitiva y tickets automáticos. Aplica descuentos, combos o precios especiales sin depender del área administrativa.' },
+    { icon: '📄', title: 'Facturación electrónica DIAN integrada', description: 'Cumple con la normativa vigente sin salir del POS. Genera facturas electrónicas y notas crédito en segundos, conectadas directamente con la DIAN.' },
+    { icon: '📦', title: 'Gestión de inventario por sucursal', description: 'Actualiza existencias automáticamente cada vez que realizas una venta. Consulta el stock en todas tus sedes y recibe alertas de productos con bajo inventario.' },
+    { icon: '🤝', title: 'CRM y fidelización de clientes', description: 'Registra clientes frecuentes, aplica programas de puntos y consulta historial de compras. Aumenta la recompra y crea promociones personalizadas.' },
+    { icon: '💳', title: 'Pagos integrados y conciliación automática', description: 'Integra Wompi, PayU o Bancolombia para recibir pagos por tarjeta, PSE o QR. Las transacciones se registran automáticamente en tu sistema contable.' },
+    { icon: '📊', title: 'Reportes inteligentes y control en tiempo real', description: 'Accede a paneles con métricas de ventas, márgenes, turnos y rentabilidad por producto o empleado.' }
+  ]).map((card: any) => (
+    <div class="choose-card" >
+      <div class="emoji-icon" style="font-size: 24px; background: rgba(255,255,255,0.05); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; margin-bottom: 20px;">{card.icon}</div>
+      <div class="data-inner animate-on-scroll animate-fade-up">
+        <h4 class="color-white" style="margin-bottom: 15px;">{card.title}</h4>
+        <p>{card.description}</p>
+      </div>
     </div>
-  </div>
-  <div class="choose-card" >
-    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_28_47-1.png" class="choose-icon" alt="Facturación electrónica" />
-    <div class="data-inner animate-on-scroll animate-fade-up">
-      <h4 class="color-white" style="margin-bottom: 15px;">Facturación electrónica DIAN integrada</h4>
-      <p>Cumple con la normativa vigente sin salir del POS. Genera facturas electrónicas y notas crédito en segundos, conectadas directamente con la DIAN. Evita reprocesos y garantiza trazabilidad fiscal total.</p>
-    </div>
-  </div>
-  <div class="choose-card" >
-    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_31_03-1.png" class="choose-icon" alt="Gestión de inventario" />
-    <div class="data-inner animate-on-scroll animate-fade-up">
-      <h4 class="color-white" style="margin-bottom: 15px;">Gestión de inventario por sucursal</h4>
-      <p>Actualiza existencias automáticamente cada vez que realizas una venta. Consulta el stock en todas tus sedes y recibe alertas de productos con bajo inventario.</p>
-    </div>
-  </div>
-  <div class="choose-card" >
-    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_34_06-1.png" class="choose-icon" alt="CRM y fidelización" />
-    <div class="data-inner animate-on-scroll animate-fade-up">
-      <h4 class="color-white" style="margin-bottom: 15px;">CRM y fidelización de clientes</h4>
-      <p>Registra clientes frecuentes, aplica programas de puntos y consulta historial de compras. Aumenta la recompra y crea promociones personalizadas para cada tipo de cliente.</p>
-    </div>
-  </div>
-  <div class="choose-card" >
-    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_36_15-1.png" class="choose-icon" alt="Pagos integrados" />
-    <div class="data-inner animate-on-scroll animate-fade-up">
-      <h4 class="color-white" style="margin-bottom: 15px;">Pagos integrados y conciliación automática</h4>
-      <p>Integra Wompi, PayU o Bancolombia para recibir pagos por tarjeta, PSE o QR. Las transacciones se registran automáticamente en tu sistema contable o ERP Kontrolo.</p>
-    </div>
-  </div>
-  <div class="choose-card" >
-    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_39_05-1.png" class="choose-icon" alt="Reportes" />
-    <div class="data-inner animate-on-scroll animate-fade-up">
-      <h4 class="color-white" style="margin-bottom: 15px;">Reportes inteligentes y control en tiempo real</h4>
-      <p>Accede a paneles con métricas de ventas, márgenes, turnos y rentabilidad por producto o empleado. Toma decisiones rápidas con reportes actualizados desde cualquier dispositivo.</p>
-    </div>
-  </div>
+  ))}
 </div>
 </div>
 </div>
@@ -144,11 +126,11 @@ const seo = {
 <div class="title-wrap">
 <div class="title-inner">
 <div class="subtitle">
-<div class="caption">INTEGRACIONES PMS</div>
+<div class="caption">{pageData?.integrations?.caption || "INTEGRACIONES PMS"}</div>
 </div>
-<h2 class="title-heading animate-on-scroll animate-fade-up integration-width">Integraciones contables <span class="title-span">sin fricción</span> con tu software POS</h2>
+<h2 class="title-heading animate-on-scroll animate-fade-up integration-width">{pageData?.integrations?.title || "Integraciones contables sin fricción con tu software POS"}</h2>
 </div>
-<p class="title-paragraph black">Las integraciones de Kontrolo POS enlazan tu caja con contabilidad, bancos, DIAN, pasarelas de pago, e-commerce y nómina, para que cada venta actualice automáticamente facturas, cierres de caja e inventarios.</p>
+<p class="title-paragraph black">{pageData?.integrations?.description || "Las integraciones de Kontrolo POS enlazan tu caja con contabilidad, bancos, DIAN, pasarelas de pago, e-commerce y nómina, para que cada venta actualice automáticamente facturas, cierres de caja e inventarios."}</p>
 </div>
 <div class="choose-wrap" >
 <div class="choose-card white-background"><OptimizedImage alt="Característica de software Kontrolo" loading="lazy" src="/images/WOMPI.svg" width="130"/>
@@ -184,13 +166,13 @@ const seo = {
 <div class="title-wrap">
 <div class="title-inner">
 <div class="subtitle bg-white">
-<div class="caption">COMIENZA HOY</div>
+<div class="caption">{pageData?.cta?.caption || "COMIENZA HOY"}</div>
 </div>
-<h2 class="title-heading animate-on-scroll animate-fade-up"><span class="title-span">Activa Kontrolo </span>y centraliza tu operación en la nube</h2>
+<h2 class="title-heading animate-on-scroll animate-fade-up">{pageData?.cta?.title || "Activa Kontrolo y centraliza tu operación en la nube"}</h2>
 </div>
-<p class="cta-paragraph">Transforma tu negocio con Kontrolo, la suite de gestión empresarial que integra PMS, ERP y POS con facturación electrónica DIAN, pagos y CRM. Automatiza procesos, reduce errores y toma decisiones con datos en tiempo real.</p>
+<p class="cta-paragraph">{pageData?.cta?.description || "Transforma tu negocio con Kontrolo, la suite de gestión empresarial que integra PMS, ERP y POS con facturación electrónica DIAN, pagos y CRM. Automatiza procesos, reduce errores y toma decisiones con datos en tiempo real."}</p>
 </div>
-<a class="primary-button w-button" href="#">Solicitar demo gratuita</a>
+<a class="primary-button w-button" href={pageData?.cta?.buttonLink || "/contacto"}>{pageData?.cta?.buttonText || "Solicitar demo gratuita"}</a>
 </div>
 </div>
 </section>

@@ -1,21 +1,21 @@
 :root {
-  --gray: #666;
-  --secondary: #01020e;
-  --white-border: #ebebeb;
+  --gray: var(--color-gray-800);
+  --secondary: var(--color-dark);
+  --white-border: var(--color-gray-100);
   --white: white;
-  --primary: #131ddf;
+  --primary: var(--color-primary);
   --transparent: transparent;
-  --gray2: #929292;
-  --black-bg: #141414;
+  --gray2: var(--color-gray-500);
+  --black-bg: var(--color-dark);
   --desktop-spacing: 100px;
   --tablet-spacing: 80px;
   --mobile-landscape-spacing: 60px;
   --mobile-portrait-spacing: 50px;
-  --white-bg: #faf9f8;
-  --black-border: #1e1e1e;
+  --white-bg: var(--color-gray-50);
+  --black-border: var(--color-gray-800);
   --black: black;
   --hover-button: #0ec1ff;
-  --img-background: #d9d9d9;
+  --img-background: var(--color-gray-300);
 }
 
 .w-layout-blockcontainer {
@@ -35,32 +35,32 @@
 }
 
 .w-commerce-commerceaddtocartoptionpill {
-  color: #000;
+  color: var(--color-dark);
   cursor: pointer;
-  background-color: #fff;
-  border: 1px solid #000;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-dark);
   margin-right: 10px;
   padding: 8px 15px;
 }
 
 .w-commerce-commerceaddtocartoptionpill.w--ecommerce-pill-selected {
-  color: #fff;
-  background-color: #000;
+  color: var(--color-white);
+  background-color: var(--color-dark);
 }
 
 .w-commerce-commerceaddtocartoptionpill.w--ecommerce-pill-disabled {
-  color: #666;
+  color: var(--color-gray-800);
   cursor: not-allowed;
-  background-color: #e6e6e6;
-  border-color: #e6e6e6;
+  background-color: var(--color-gray-200);
+  border-color: var(--color-gray-200);
   outline-style: none;
 }
 
 .w-commerce-commerceaddtocartquantityinput {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 60px;
   height: 38px;
@@ -71,7 +71,7 @@
 }
 
 .w-commerce-commerceaddtocartquantityinput::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commerceaddtocartquantityinput:focus {
@@ -80,7 +80,7 @@
 }
 
 .w-commerce-commerceaddtocartbutton {
-  color: #fff;
+  color: var(--color-white);
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
@@ -94,15 +94,15 @@
 }
 
 .w-commerce-commerceaddtocartbutton.w--ecommerce-add-to-cart-disabled {
-  color: #666;
+  color: var(--color-gray-800);
   cursor: not-allowed;
-  background-color: #e6e6e6;
-  border-color: #e6e6e6;
+  background-color: var(--color-gray-200);
+  border-color: var(--color-gray-200);
   outline-style: none;
 }
 
 .w-commerce-commercebuynowbutton {
-  color: #fff;
+  color: var(--color-white);
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
@@ -117,27 +117,27 @@
 }
 
 .w-commerce-commercebuynowbutton.w--ecommerce-buy-now-disabled {
-  color: #666;
+  color: var(--color-gray-800);
   cursor: not-allowed;
-  background-color: #e6e6e6;
-  border-color: #e6e6e6;
+  background-color: var(--color-gray-200);
+  border-color: var(--color-gray-200);
   outline-style: none;
 }
 
 .w-commerce-commerceaddtocartoutofstock {
-  background-color: #ddd;
+  background-color: var(--color-gray-300);
   margin-top: 10px;
   padding: 10px;
 }
 
 .w-commerce-commerceaddtocarterror {
-  background-color: #ffdede;
+  background-color: var(--color-danger-light);
   margin-top: 10px;
   padding: 10px;
 }
 
 .w-commerce-commercecheckoutformcontainer {
-  background-color: #f5f5f5;
+  background-color: var(--color-gray-100);
   width: 100%;
   min-height: 100vh;
   padding: 20px;
@@ -155,11 +155,11 @@
 }
 
 .w-commerce-commercecartapplepaybutton {
-  color: #fff;
+  color: var(--color-white);
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
-  background-color: #000;
+  background-color: var(--color-dark);
   border-width: 0;
   border-radius: 2px;
   align-items: center;
@@ -178,11 +178,11 @@
 }
 
 .w-commerce-commercecartquickcheckoutbutton {
-  color: #fff;
+  color: var(--color-white);
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
-  background-color: #000;
+  background-color: var(--color-dark);
   border-width: 0;
   border-radius: 2px;
   justify-content: center;
@@ -204,8 +204,8 @@
 }
 
 .w-commerce-commercecheckoutblockheader {
-  background-color: #fff;
-  border: 1px solid #e6e6e6;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
   justify-content: space-between;
   align-items: baseline;
   padding: 4px 20px;
@@ -213,10 +213,10 @@
 }
 
 .w-commerce-commercecheckoutblockcontent {
-  background-color: #fff;
-  border-bottom: 1px solid #e6e6e6;
-  border-left: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-200);
+  border-left: 1px solid var(--color-gray-200);
+  border-right: 1px solid var(--color-gray-200);
   padding: 20px;
 }
 
@@ -227,8 +227,8 @@
 .w-commerce-commercecheckoutemailinput {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -239,7 +239,7 @@
 }
 
 .w-commerce-commercecheckoutemailinput::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutemailinput:focus {
@@ -254,8 +254,8 @@
 .w-commerce-commercecheckoutshippingfullname {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -266,7 +266,7 @@
 }
 
 .w-commerce-commercecheckoutshippingfullname::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutshippingfullname:focus {
@@ -277,8 +277,8 @@
 .w-commerce-commercecheckoutshippingstreetaddress {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -289,7 +289,7 @@
 }
 
 .w-commerce-commercecheckoutshippingstreetaddress::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutshippingstreetaddress:focus {
@@ -300,8 +300,8 @@
 .w-commerce-commercecheckoutshippingstreetaddressoptional {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -312,7 +312,7 @@
 }
 
 .w-commerce-commercecheckoutshippingstreetaddressoptional::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutshippingstreetaddressoptional:focus {
@@ -335,8 +335,8 @@
 .w-commerce-commercecheckoutshippingcity {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -347,7 +347,7 @@
 }
 
 .w-commerce-commercecheckoutshippingcity::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutshippingcity:focus {
@@ -358,8 +358,8 @@
 .w-commerce-commercecheckoutshippingstateprovince {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -370,7 +370,7 @@
 }
 
 .w-commerce-commercecheckoutshippingstateprovince::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutshippingstateprovince:focus {
@@ -381,8 +381,8 @@
 .w-commerce-commercecheckoutshippingzippostalcode {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -393,7 +393,7 @@
 }
 
 .w-commerce-commercecheckoutshippingzippostalcode::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutshippingzippostalcode:focus {
@@ -404,8 +404,8 @@
 .w-commerce-commercecheckoutshippingcountryselector {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -416,7 +416,7 @@
 }
 
 .w-commerce-commercecheckoutshippingcountryselector::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutshippingcountryselector:focus {
@@ -429,13 +429,13 @@
 }
 
 .w-commerce-commercecheckoutshippingmethodslist {
-  border-left: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
+  border-left: 1px solid var(--color-gray-200);
+  border-right: 1px solid var(--color-gray-200);
 }
 
 .w-commerce-commercecheckoutshippingmethoditem {
-  background-color: #fff;
-  border-bottom: 1px solid #e6e6e6;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-200);
   flex-direction: row;
   align-items: baseline;
   margin-bottom: 0;
@@ -458,10 +458,10 @@
 
 .w-commerce-commercecheckoutshippingmethodsemptystate {
   text-align: center;
-  background-color: #fff;
-  border-bottom: 1px solid #e6e6e6;
-  border-left: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-200);
+  border-left: 1px solid var(--color-gray-200);
+  border-right: 1px solid var(--color-gray-200);
   padding: 64px 16px;
 }
 
@@ -473,8 +473,8 @@
   -webkit-appearance: none;
   appearance: none;
   cursor: text;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -485,7 +485,7 @@
 }
 
 .w-commerce-commercecheckoutcardnumber::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutcardnumber:focus, .w-commerce-commercecheckoutcardnumber.-wfp-focus {
@@ -497,8 +497,8 @@
   -webkit-appearance: none;
   appearance: none;
   cursor: text;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -509,7 +509,7 @@
 }
 
 .w-commerce-commercecheckoutcardexpirationdate::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutcardexpirationdate:focus, .w-commerce-commercecheckoutcardexpirationdate.-wfp-focus {
@@ -521,8 +521,8 @@
   -webkit-appearance: none;
   appearance: none;
   cursor: text;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -533,7 +533,7 @@
 }
 
 .w-commerce-commercecheckoutcardsecuritycode::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutcardsecuritycode:focus, .w-commerce-commercecheckoutcardsecuritycode.-wfp-focus {
@@ -563,8 +563,8 @@
 .w-commerce-commercecheckoutbillingfullname {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -575,7 +575,7 @@
 }
 
 .w-commerce-commercecheckoutbillingfullname::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutbillingfullname:focus {
@@ -586,8 +586,8 @@
 .w-commerce-commercecheckoutbillingstreetaddress {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -598,7 +598,7 @@
 }
 
 .w-commerce-commercecheckoutbillingstreetaddress::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutbillingstreetaddress:focus {
@@ -609,8 +609,8 @@
 .w-commerce-commercecheckoutbillingstreetaddressoptional {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -621,7 +621,7 @@
 }
 
 .w-commerce-commercecheckoutbillingstreetaddressoptional::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutbillingstreetaddressoptional:focus {
@@ -632,8 +632,8 @@
 .w-commerce-commercecheckoutbillingcity {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -644,7 +644,7 @@
 }
 
 .w-commerce-commercecheckoutbillingcity::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutbillingcity:focus {
@@ -655,8 +655,8 @@
 .w-commerce-commercecheckoutbillingstateprovince {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -667,7 +667,7 @@
 }
 
 .w-commerce-commercecheckoutbillingstateprovince::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutbillingstateprovince:focus {
@@ -678,8 +678,8 @@
 .w-commerce-commercecheckoutbillingzippostalcode {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -690,7 +690,7 @@
 }
 
 .w-commerce-commercecheckoutbillingzippostalcode::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutbillingzippostalcode:focus {
@@ -701,8 +701,8 @@
 .w-commerce-commercecheckoutbillingcountryselector {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
   border-radius: 3px;
   width: 100%;
   height: 38px;
@@ -713,7 +713,7 @@
 }
 
 .w-commerce-commercecheckoutbillingcountryselector::placeholder {
-  color: #999;
+  color: var(--color-gray-500);
 }
 
 .w-commerce-commercecheckoutbillingcountryselector:focus {
@@ -726,8 +726,8 @@
 }
 
 .w-commerce-commercecheckoutsummaryblockheader {
-  background-color: #fff;
-  border: 1px solid #e6e6e6;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
   justify-content: space-between;
   align-items: baseline;
   padding: 4px 20px;
@@ -788,7 +788,7 @@
 }
 
 .w-commerce-commercecheckoutplaceorderbutton {
-  color: #fff;
+  color: var(--color-white);
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
@@ -804,14 +804,14 @@
 }
 
 .w-commerce-commercecheckouterrorstate {
-  background-color: #ffdede;
+  background-color: var(--color-danger-light);
   margin-top: 16px;
   margin-bottom: 16px;
   padding: 10px 16px;
 }
 
 .w-commerce-commercepaypalcheckoutformcontainer {
-  background-color: #f5f5f5;
+  background-color: var(--color-gray-100);
   width: 100%;
   min-height: 100vh;
   padding: 20px;
@@ -840,14 +840,14 @@
 }
 
 .w-commerce-commercepaypalcheckouterrorstate {
-  background-color: #ffdede;
+  background-color: var(--color-danger-light);
   margin-top: 16px;
   margin-bottom: 16px;
   padding: 10px 16px;
 }
 
 .w-commerce-commerceorderconfirmationcontainer {
-  background-color: #f5f5f5;
+  background-color: var(--color-gray-100);
   width: 100%;
   min-height: 100vh;
   padding: 20px;
@@ -912,15 +912,15 @@
 }
 
 .w-users-useraccountwrapper {
-  background-color: #f5f5f5;
+  background-color: var(--color-gray-100);
   width: 100%;
   min-height: 100vh;
   padding: 20px;
 }
 
 .w-users-blockheader {
-  background-color: #fff;
-  border: 1px solid #e6e6e6;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
   justify-content: space-between;
   align-items: baseline;
   padding: 4px 20px;
@@ -928,10 +928,10 @@
 }
 
 .w-users-blockcontent {
-  background-color: #fff;
-  border-bottom: 1px solid #e6e6e6;
-  border-left: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-200);
+  border-left: 1px solid var(--color-gray-200);
+  border-right: 1px solid var(--color-gray-200);
   margin-bottom: 20px;
   padding: 20px;
 }
@@ -962,7 +962,7 @@
 }
 
 .w-checkbox-input--inputType-custom {
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-gray-300);
   border-radius: 2px;
   width: 12px;
   height: 12px;
@@ -988,8 +988,8 @@
 
 .w-users-useraccountformcancelbutton {
   text-align: center;
-  color: #333;
-  background-color: #d3d3d3;
+  color: var(--color-gray-800);
+  background-color: var(--color-gray-300);
 }
 
 .w-users-useraccountsubscriptionlist {
@@ -1159,7 +1159,7 @@ label {
 }
 
 blockquote {
-  border-left: 5px solid #e2e2e2;
+  border-left: 5px solid var(--color-gray-200);
   margin-bottom: 10px;
   padding: 10px 20px;
   font-size: 18px;
@@ -1323,24 +1323,24 @@ figure {
 
 .nav-dd-link.w--current {
   color: var(--primary);
-  background-color: #000;
+  background-color: var(--color-dark);
 }
 
 .nav-top-line {
-  background-color: #000;
+  background-color: var(--color-dark);
   width: 22px;
   height: 2px;
   margin-bottom: 6px;
 }
 
 .nav-middle-line {
-  background-color: #000;
+  background-color: var(--color-dark);
   width: 16px;
   height: 2px;
 }
 
 .nav-bottom-line {
-  background-color: #000;
+  background-color: var(--color-dark);
   width: 22px;
   height: 2px;
   margin-top: 6px;
@@ -1503,7 +1503,7 @@ figure {
 }
 
 .color-box {
-  border: 1px solid #000;
+  border: 1px solid var(--color-dark);
   border-radius: 4px;
   width: 32px;
   height: 32px;
@@ -1912,7 +1912,7 @@ figure {
 
 .error-message {
   color: var(--white);
-  background-color: #ff7272;
+  background-color: var(--color-danger);
   border-radius: 15px;
   margin-left: 0;
   margin-right: 0;
@@ -2111,7 +2111,7 @@ figure {
 .text-field {
   border: 1px solid var(--white-border);
   color: var(--gray);
-  background-color: #fff;
+  background-color: var(--color-white);
   background-image: url('../images/user-icon.svg');
   background-position: 18px 14px;
   background-repeat: no-repeat;
@@ -3147,7 +3147,7 @@ figure {
 
 .logo-block {
   background-color: var(--white-bg);
-  border: .83px solid #dfdfdf;
+  border: .83px solid var(--color-gray-200);
   border-radius: 16px;
   justify-content: center;
   align-items: center;
@@ -3184,8 +3184,8 @@ figure {
 }
 
 .cart-input {
-  color: #000;
-  background-color: #f9f9f9;
+  color: var(--color-dark);
+  background-color: var(--color-gray-50);
   border: 1px solid #0000001a;
   height: 42px;
   padding: 10px 19px;
@@ -3198,7 +3198,7 @@ figure {
 }
 
 .cart-input::placeholder {
-  color: #666;
+  color: var(--color-gray-800);
   font-size: 14px;
   font-weight: 400;
   line-height: 150%;
@@ -3957,7 +3957,7 @@ figure {
 }
 
 .remove-link {
-  color: #ff7272;
+  color: var(--color-danger);
   text-decoration: none;
   transition: color .3s;
 }
@@ -3970,7 +3970,7 @@ figure {
   z-index: 999;
   grid-column-gap: 5px;
   grid-row-gap: 5px;
-  background-color: #fff;
+  background-color: var(--color-white);
   border: 1px solid #0000001a;
   border-radius: 5px;
   justify-content: flex-start;

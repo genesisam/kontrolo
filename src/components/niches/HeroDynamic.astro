@@ -11,27 +11,57 @@ interface Props {
 
 const { headline, subheadline, imageUrl, clientCount, rating } = Astro.props;
 ---
-<section class="section pb-0" style="padding-top: 120px;">
+<section class="section pb-0 hero-dynamic-section">
   <div class="w-layout-blockcontainer container w-container">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+    <div class="hero-dynamic-grid">
       <div>
-        <h1 class="title-heading" style="font-size: 48px; line-height: 1.1; margin-bottom: 24px;">{headline}</h1>
-        <p class="title-paragraph black" style="font-size: 18px; margin-bottom: 32px;">{subheadline}</p>
-        <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 32px;">
-          <a href="/contacto" class="primary-button w-button">Hablar con Asesor</a>
+        <h1 class="title-heading hero-dynamic-title">{headline}</h1>
+        <p class="title-paragraph black hero-dynamic-desc">{subheadline}</p>
+        <div class="hero-dynamic-btn-wrap" style="flex-direction: column; align-items: flex-start; margin-bottom: 24px;">
+          <a href="/contacto" class="primary-button w-button" style="width: auto;">Hablar con Asesor</a>
+          <span style="font-size: 13px; color: var(--color-gray-500); margin-top: 8px;">*Sin tarjeta de crédito. Configuración en minutos.</span>
         </div>
         {(clientCount || rating) && (
-          <div style="display: flex; align-items: center; gap: 16px; font-size: 14px; color: #555;">
+          <div class="hero-dynamic-stats">
             {clientCount && <span>🔥 Únete a {clientCount}</span>}
             {rating && <span>⭐ Rating {rating}/5</span>}
           </div>
         )}
       </div>
       <div>
-        <div style="position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-          <OptimizedImage src={imageUrl || 'images/gallery-img-04.jpg'} alt={headline || 'Kontrolo'} style="width: 100%; height: auto; display: block;" />
+        <div class="hero-dynamic-img-wrap">
+          <OptimizedImage src={imageUrl || 'images/gallery-img-04.jpg'} alt={headline || 'Kontrolo'} class="hero-img" />
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .hero-dynamic-section { padding-top: 120px; }
+  .hero-dynamic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hero-dynamic-title { font-size: 48px; line-height: 1.1; margin-bottom: 24px; }
+  .hero-dynamic-desc { font-size: 18px; margin-bottom: 32px; }
+  .hero-dynamic-btn-wrap { display: flex; gap: 16px; align-items: center; margin-bottom: 32px; }
+  .hero-dynamic-stats { display: flex; align-items: center; gap: 16px; font-size: 14px; color: var(--color-gray-500); }
+  .hero-dynamic-img-wrap { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  .hero-img { width: 100%; height: auto; display: block; }
+
+  @media (max-width: 991px) {
+    .hero-dynamic-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .hero-dynamic-title { font-size: 38px; }
+    .hero-dynamic-btn-wrap { justify-content: center; }
+    .hero-dynamic-stats { justify-content: center; }
+  }
+
+  @media (max-width: 767px) {
+    .hero-dynamic-section { padding-top: 100px; }
+    .hero-dynamic-title { font-size: 32px; }
+    .hero-dynamic-desc { font-size: 16px; margin-bottom: 24px; }
+    .hero-img {
+      height: 300px;
+      object-fit: cover;
+      object-position: center top;
+    }
+  }
+</style>

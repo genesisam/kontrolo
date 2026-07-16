@@ -1,0 +1,78 @@
+---
+export interface Props {
+  variant?: 'default' | 'black' | 'success' | 'dian' | 'info';
+  class?: string;
+}
+
+const { 
+  variant = 'default', 
+  class: className 
+} = Astro.props;
+
+const baseStyles = "kontrolo-badge";
+const variantStyles = {
+  default: "badge-default",
+  black: "badge-black",
+  success: "badge-success",
+  dian: "badge-dian",
+  info: "badge-info"
+};
+
+const finalClass = `${baseStyles} ${variantStyles[variant]} ${className || ''}`.trim();
+---
+
+<div class={finalClass}>
+  <slot />
+</div>
+
+<style is:global>
+  .kontrolo-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 16px !important;
+    border-radius: 100px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    margin: 0 0 24px 0 !important;
+    font-family: 'General Sans', sans-serif !important;
+    width: max-content !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    text-align: center !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+  }
+  
+  .badge-default {
+    background: rgba(19, 29, 223, 0.1) !important;
+    color: var(--color-primary) !important;
+    border: 1px solid transparent !important;
+  }
+  
+  .badge-black {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--color-white) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  .badge-success {
+    background: rgba(16, 185, 129, 0.1) !important;
+    color: var(--color-success) !important;
+    border: 1px solid rgba(16, 185, 129, 0.2) !important;
+  }
+  
+  .badge-dian {
+    background: rgba(19, 29, 223, 0.15) !important;
+    color: #4338ca !important;
+    border: 1px solid rgba(19, 29, 223, 0.3) !important;
+  }
+
+  .badge-info {
+    background: rgba(162, 28, 175, 0.1) !important;
+    color: #a21caf !important;
+    border: 1px solid rgba(162, 28, 175, 0.2) !important;
+  }
+</style>

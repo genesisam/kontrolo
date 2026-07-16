@@ -1,13 +1,16 @@
 ---
+import { sanityClient } from "sanity:client";
 import OptimizedImage from '../components/OptimizedImage.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import Testimonial from '../components/Testimonial.astro';
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 
+const pageData = await sanityClient.fetch('*[_type == "solutionPage" && slug.current == "software-pms-para-hoteles"][0]');
+
 const seo = {
-  title: "Software PMS para hoteles en Colombia | Kontrolo",
-  description: "Software PMS para hoteles en Colombia: Kontrolo centraliza reservas, limpieza de habitaciones, check-in/out e inventario, con facturación electrónica DIAN y reportes en tiempo real.",
+  title: pageData?.seo?.metaTitle || "Software PMS para hoteles en Colombia | Kontrolo",
+  description: pageData?.seo?.metaDescription || "Software PMS para hoteles en Colombia: Kontrolo centraliza reservas, limpieza de habitaciones, check-in/out e inventario, con facturación electrónica DIAN y reportes en tiempo real.",
   structuredData: {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -23,17 +26,22 @@ const seo = {
 <MainLayout seo={seo}>
 <div class="page-wrap">
 <Hero 
-  label="SOLUCIÓN TODO EN UNO PARA HOTELES"
-  titleHtml="Software PMS para hoteles y <span class='kontrolo-primary-text'>hostales en Colombia</span>"
-  subtitleHtml="Centraliza reservas, limpieza de habitaciones, facturación electrónica DIAN y reportes en tiempo real desde una sola plataforma en la nube. Evita sobreventas, mejora la experiencia de tus huéspedes y toma decisiones con datos precisos y actualizados."
-  primaryButtonText="Comenzar Prueba Gratis"
-  primaryButtonLink="/contacto"
+  label={pageData?.hero?.label || "SOLUCIÓN TODO EN UNO PARA HOTELES"}
+  titleHtml={pageData?.hero?.headline || "Software PMS para hoteles y <span class='kontrolo-primary-text'>hostales en Colombia</span>"}
+  subtitleHtml={pageData?.hero?.subheadline || "Centraliza reservas, limpieza de habitaciones, facturación electrónica DIAN y reportes en tiempo real desde una sola plataforma en la nube. Evita sobreventas, mejora la experiencia de tus huéspedes y toma decisiones con datos precisos y actualizados."}
+  primaryButtonText={pageData?.hero?.primaryButtonText || "Comenzar Prueba Gratis"}
+  primaryButtonLink={pageData?.hero?.primaryButtonLink || "/contacto"}
   imageDesktop="/images/software-pms-desktop.png"
   imageMobile="/images/software-pms-movil.png"
   bgColor="#f8f2f6"
 />
 <section class="section to-top">
 <div class="w-layout-blockcontainer container w-container">
+<div class="title-wrap" style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+  <div class="subtitle"><div class="caption">{pageData?.overview?.caption || "BENEFICIOS CLAVE"}</div></div>
+  <h2 class="title-heading animate-on-scroll animate-fade-up">{pageData?.overview?.title || "Eleva la gestión de tu hotel al siguiente nivel"}</h2>
+  <p class="title-paragraph" style="margin: 0 auto;">{pageData?.overview?.description || "Simplifica tu operación diaria, reduce la carga administrativa y mejora la experiencia de tus huéspedes con un sistema diseñado para hacerte la vida más fácil."}</p>
+</div>
 <div class="feature-outer feature-software-pms">
 <div class="feature-card animate-on-scroll animate-fade-up" >
 <div class="feature-img"><OptimizedImage alt="Característica de software Kontrolo" class="cover-image" loading="eager" src="/images/kontrol-card-pms-1.jpg"/></div>
@@ -88,49 +96,29 @@ const seo = {
 <div class="title-wrap">
 <div class="title-inner">
 <div class="subtitle-black">
-<div class="caption">FUNCIONALIDADES DESTACADAS</div>
+<div class="caption">{pageData?.features?.caption || "FUNCIONALIDADES DESTACADAS"}</div>
 </div>
-<h2 class="title-heading animate-on-scroll animate-fade-up color-white">Descubre las <strong class="bold-text-7">potentes funciones del</strong> <span class="title-span"><strong class="bold-text-3">software PMS para hoteles Kontrolo</strong></span></h2>
+<h2 class="title-heading animate-on-scroll animate-fade-up color-white">{pageData?.features?.title || "Descubre las potentes funciones del software PMS para hoteles Kontrolo"}</h2>
 </div>
-<p class="title-paragraph">Kontrolo reúne todas las herramientas necesarias para digitalizar la gestión hotelera, optimizar tu operación y ofrecer una experiencia de huésped impecable.</p>
+<p class="title-paragraph">{pageData?.features?.description || "Kontrolo reúne todas las herramientas necesarias para digitalizar la gestión hotelera, optimizar tu operación y ofrecer una experiencia de huésped impecable."}</p>
 </div>
 <div class="choose-wrap">
-<div class="choose-card" ><OptimizedImage alt="Característica de software Kontrolo" class="choose-icon" loading="lazy" src="/images/ChatGPT-Image-17-nov-2025-16_27_34-1.png"/>
-<div class="data-inner animate-on-scroll animate-fade-up">
-<h4 class="color-white">Gestión integral de reservas</h4>
-<p>Administra tus <strong>reservas y disponibilidad en tiempo real</strong>, evitando sobreventas. Integra canales como Booking, Expedia o Airbnb y sincroniza todo el inventario.</p>
-</div>
-</div>
-<div class="choose-card" ><OptimizedImage alt="Característica de software Kontrolo" class="choose-icon" loading="lazy" src="/images/ChatGPT-Image-17-nov-2025-16_38_23-1.png"/>
-<div class="data-inner animate-on-scroll animate-fade-up">
-<h4 class="color-white">Check-in y check-out digital</h4>
-<p>Agiliza el registro y salida de <strong>huéspedes</strong> con formularios digitales y llaves electrónicas. Automatiza cobros y ofrece una experiencia moderna.</p>
-</div>
-</div>
-<div class="choose-card" ><OptimizedImage alt="Característica de software Kontrolo" class="choose-icon" loading="lazy" src="/images/ChatGPT-Image-17-nov-2025-16_46_32-1.png"/>
-<div class="data-inner animate-on-scroll animate-fade-up">
-<h4 class="color-white">Reportes y análisis en<br/>tiempo real</h4>
-<p>Genera <strong>reportes automáticos</strong> sobre ocupación, ingresos y gastos. Visualiza indicadores clave y toma decisiones con <strong>datos actualizados</strong> en segundos.</p>
-</div>
-</div>
-<div class="choose-card" ><OptimizedImage alt="Característica de software Kontrolo" class="choose-icon" loading="lazy" src="/images/ChatGPT-Image-17-nov-2025-16_49_14-1.png"/>
-<div class="data-inner animate-on-scroll animate-fade-up">
-<h4 class="color-white">Control de limpieza y mantenimiento de habitaciones</h4>
-<p>Coordina tareas de limpieza y mantenimiento desde cualquier dispositivo. Reduce tiempos muertos y mejora la comunicación entre equipos.</p>
-</div>
-</div>
-<div class="choose-card" ><OptimizedImage alt="Característica de software Kontrolo" class="choose-icon" loading="lazy" src="/images/ChatGPT-Image-17-nov-2025-16_51_04-1.png"/>
-<div class="data-inner animate-on-scroll animate-fade-up">
-<h4 class="color-white">Facturación electrónica DIAN integrada</h4>
-<p>Cumple con la <strong>normativa DIAN</strong> y automatiza la facturación para hoteles y hostales. Evita errores y genera comprobantes fiscales en segundos.</p>
-</div>
-</div>
-<div class="choose-card" ><OptimizedImage alt="Característica de software Kontrolo" class="choose-icon" loading="lazy" src="/images/ChatGPT-Image-17-nov-2025-16_58_17-1.png"/>
-<div class="data-inner animate-on-scroll animate-fade-up">
-<h4 class="color-white">Integración total con<br/>sistemas externos</h4>
-<p>Conecta Kontrolo con <strong>CRM, ERP, POS y Channel Manager</strong>. Centraliza información, reduce errores y mejora la productividad general del hotel.</p>
-</div>
-</div>
+  {(pageData?.features?.cards || [
+    { icon: '📅', title: 'Gestión integral de reservas', description: 'Administra tus reservas y disponibilidad en tiempo real, evitando sobreventas.' },
+    { icon: '📱', title: 'Check-in y check-out digital', description: 'Agiliza el registro y salida de huéspedes con formularios digitales y llaves electrónicas.' },
+    { icon: '📊', title: 'Reportes y análisis en tiempo real', description: 'Genera reportes automáticos sobre ocupación, ingresos y gastos.' },
+    { icon: '🧹', title: 'Control de limpieza y mantenimiento', description: 'Coordina tareas de limpieza y mantenimiento desde cualquier dispositivo.' },
+    { icon: '📄', title: 'Facturación electrónica DIAN integrada', description: 'Cumple con la normativa DIAN y automatiza la facturación.' },
+    { icon: '🔗', title: 'Integración total con sistemas externos', description: 'Conecta Kontrolo con CRM, ERP, POS y Channel Manager.' }
+  ]).map((card: any) => (
+    <div class="choose-card" >
+      <div class="emoji-icon" style="font-size: 24px; background: rgba(255,255,255,0.05); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; margin-bottom: 20px;">{card.icon}</div>
+      <div class="data-inner animate-on-scroll animate-fade-up">
+        <h4 class="color-white">{card.title}</h4>
+        <p>{card.description}</p>
+      </div>
+    </div>
+  ))}
 </div>
 </div>
 </div>
@@ -210,11 +198,11 @@ const seo = {
 <div class="title-wrap">
 <div class="title-inner">
 <div class="subtitle">
-<div class="caption">INTEGRACIONES PMS</div>
+<div class="caption">{pageData?.integrations?.caption || "INTEGRACIONES PMS"}</div>
 </div>
-<h2 class="title-heading animate-on-scroll animate-fade-up integration-width">Integraciones <span class="title-span">sin fricción</span> con tu software hotelero</h2>
+<h2 class="title-heading animate-on-scroll animate-fade-up integration-width">{pageData?.integrations?.title || "Integraciones sin fricción con tu software hotelero"}</h2>
 </div>
-<p class="title-paragraph black">Kontrolo PMS se conecta con channel manager, motor de reservas, DIAN, pasarelas de pago y CRM para sincronizar disponibilidad, tarifas y facturación electrónica en tiempo real, sin migraciones complejas.</p>
+<p class="title-paragraph black">{pageData?.integrations?.description || "Kontrolo PMS se conecta con channel manager, motor de reservas, DIAN, pasarelas de pago y CRM para sincronizar disponibilidad, tarifas y facturación electrónica en tiempo real, sin migraciones complejas."}</p>
 </div>
 <div class="choose-wrap" >
 <div class="choose-card white-background"><OptimizedImage alt="Característica de software Kontrolo" loading="lazy" src="/images/room-cloud.svg" width="130"/>
@@ -250,13 +238,13 @@ const seo = {
 <div class="title-wrap">
 <div class="title-inner">
 <div class="subtitle bg-white">
-<div class="caption">COMIENZA HOY</div>
+<div class="caption">{pageData?.cta?.caption || "COMIENZA HOY"}</div>
 </div>
-<h2 class="title-heading animate-on-scroll animate-fade-up"><span class="title-span">Activa Kontrolo </span>y centraliza tu operación en la nube</h2>
+<h2 class="title-heading animate-on-scroll animate-fade-up">{pageData?.cta?.title || "Activa Kontrolo y centraliza tu operación en la nube"}</h2>
 </div>
-<p class="cta-paragraph">Transforma tu negocio con Kontrolo, la suite de gestión empresarial que integra PMS, ERP y POS con facturación electrónica DIAN, pagos y CRM. Automatiza procesos, reduce errores y toma decisiones con datos en tiempo real.</p>
+<p class="cta-paragraph">{pageData?.cta?.description || "Transforma tu negocio con Kontrolo, la suite de gestión empresarial que integra PMS, ERP y POS con facturación electrónica DIAN, pagos y CRM. Automatiza procesos, reduce errores y toma decisiones con datos en tiempo real."}</p>
 </div>
-<a class="primary-button w-button" href="#">Solicitar demo gratuita</a>
+<a class="primary-button w-button" href={pageData?.cta?.buttonLink || "/contacto"}>{pageData?.cta?.buttonText || "Solicitar demo gratuita"}</a>
 </div>
 </div>
 </section>

@@ -102,22 +102,22 @@ const seoData = {
   <div class="page-wrap">
     
     {/* HERO CONDICIONAL SEGÚN TIPO */}
-    <section class="section" style="padding-top: 140px; padding-bottom: 60px; background: #fff;">
+    <section class="section recurso-hero-section">
       <div class="container w-container">
         <div style="display: flex; gap: 60px; align-items: center; flex-wrap: wrap;">
           
           <div style="flex: 1; min-width: 300px;">
-            <div style="display: inline-block; background: rgba(19, 29, 223, 0.1); color: #131ddf; padding: 6px 16px; border-radius: 100px; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+            <div class="subtitle">
               {resource.category || 'Recurso'} • {resource.resourceType || 'SIN TIPO'}
             </div>
             <h1 class="title-heading" style="font-size: 48px; line-height: 1.1; margin-bottom: 24px;">{resource.title}</h1>
-            <p class="title-paragraph black" style="font-size: 18px; margin-bottom: 32px; color: #555;">{resource.description}</p>
+            <p class="title-paragraph black" style="font-size: 18px; margin-bottom: 32px; color: var(--color-gray-500);">{resource.description}</p>
           </div>
           
           {resource.resourceType === 'template' && (
-            <div style="flex: 1; min-width: 300px; max-width: 500px; background: #f4f4f6; padding: 40px; border-radius: 24px;">
+            <div class="template-download-card">
               <h3 style="font-size: 24px; margin-bottom: 16px;">Descargar Material</h3>
-              <p style="color: #666; margin-bottom: 24px;">Acceso instantáneo gratuito.</p>
+              <p style="color: var(--color-gray-800); margin-bottom: 24px;">Acceso instantáneo gratuito.</p>
               <a href={resource.fileUrl || '#'} download class="primary-button w-button" style="width: 100%; justify-content: center;">Descargar Ahora</a>
             </div>
           )}
@@ -142,7 +142,7 @@ const seoData = {
 
     {/* ZONA INTERACTIVA / TOOL MOUNT */}
     {['calculator', 'ai-tool'].includes(resource.resourceType) && (
-      <section class="section" style="padding: 40px 0 80px; background: #f4f4f6;">
+      <section class="section" style="padding: 40px 0 80px; background: var(--color-gray-50);">
         <div class="container w-container">
           
           {resource.toolId === 'calculadora-uvt' ? (
@@ -158,10 +158,10 @@ const seoData = {
           ) : resource.toolId === 'buscador-ciiu' ? (
              <CiiuSearch client:load />
           ) : (
-            <div style="background: #fff; border-radius: 24px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); min-height: 400px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ddd;">
+            <div class="fallback-card">
                <div style="text-align: center;">
-                 <h4 style="font-size: 24px; color: #111; margin-bottom: 8px;">Herramienta en Construcción</h4>
-                 <p style="color: #666;">Estamos afinando los detalles de esta herramienta. ¡Vuelve pronto!</p>
+                 <h4 style="font-size: 24px; color: var(--color-dark); margin-bottom: 8px;">Herramienta en Construcción</h4>
+                 <p style="color: var(--color-gray-800);">Estamos afinando los detalles de esta herramienta. ¡Vuelve pronto!</p>
                </div>
             </div>
           )}
@@ -175,14 +175,14 @@ const seoData = {
 
     {/* FAQS */}
     {resource.faqs && resource.faqs.length > 0 && (
-      <section class="section" style="padding: 80px 0; background: #fff;">
+      <section class="section" style="padding: 80px 0; background: var(--color-white);">
         <div class="container w-container">
           <h2 style="font-size: 32px; margin-bottom: 40px; text-align: center;">Preguntas Frecuentes</h2>
           <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
             {resource.faqs.map((faq: any) => (
-              <div style="border: 1px solid #eaeaea; border-radius: 16px; padding: 24px;">
+              <div style="border: 1px solid var(--color-gray-100); border-radius: 16px; padding: 24px;">
                 <h4 style="margin-top: 0; margin-bottom: 12px; font-size: 18px;">{faq.question}</h4>
-                <p style="margin: 0; color: #555;">{faq.answer}</p>
+                <p style="margin: 0; color: var(--color-gray-500);">{faq.answer}</p>
               </div>
             ))}
           </div>
@@ -191,4 +191,43 @@ const seoData = {
     )}
 
   </div>
+  </div>
 </MainLayout>
+
+<style>
+  .template-download-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    background: var(--color-gray-50);
+    padding: 40px;
+    border-radius: 24px;
+  }
+  .fallback-card {
+    background: var(--color-white);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--color-gray-300);
+  }
+
+  .recurso-hero-section {
+    padding-top: 140px;
+    padding-bottom: 60px;
+    background: var(--color-white);
+  }
+
+  @media (max-width: 767px) {
+    .template-download-card, .fallback-card {
+      padding: 24px;
+    }
+    .recurso-hero-section {
+      padding-top: 100px;
+      padding-bottom: 40px;
+    }
+  }
+</style>

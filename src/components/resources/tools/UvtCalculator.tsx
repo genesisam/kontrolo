@@ -164,10 +164,10 @@ export default function UvtCalculator() {
     <div style={{ width: '100%', maxWidth: '850px', margin: '0 auto', fontFamily: '"General Sans", sans-serif' }}>
       
       {/* HEADER UVT */}
-      <div style={{ background: '#131ddf', color: '#fff', padding: '24px', borderRadius: '16px 16px 0 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+      <div style={{ background: 'var(--color-primary)', color: 'var(--color-white)', padding: '24px', borderRadius: '16px 16px 0 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
         <div>
-          <h4 style={{ margin: 0, fontSize: '18px', fontWeight: 600, color: '#fff' }}>Simulador Tributario</h4>
-          <p style={{ margin: 0, opacity: 0.9, fontSize: '14px', color: '#fff' }}>Calculadora avanzada de Retención en la Fuente.</p>
+          <h4 style={{ margin: 0, fontSize: '18px', fontWeight: 600, color: 'var(--color-white)' }}>Simulador Tributario</h4>
+          <p style={{ margin: 0, opacity: 0.9, fontSize: '14px', color: 'var(--color-white)' }}>Calculadora avanzada de Retención en la Fuente.</p>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.2)', padding: '8px 16px', borderRadius: '8px' }}>
           <span style={{ fontSize: '13px', opacity: 0.8 }}>Valor UVT:</span>
@@ -177,7 +177,7 @@ export default function UvtCalculator() {
             value={uvtValue} 
             onChange={(e) => setUvtValue(Number(e.target.value))}
             style={{ 
-              background: 'transparent', border: 'none', color: '#fff', fontSize: '16px', fontWeight: 700, 
+              background: 'transparent', border: 'none', color: 'var(--color-white)', fontSize: '16px', fontWeight: 700, 
               width: '80px', outline: 'none', textAlign: 'right'
             }}
           />
@@ -185,22 +185,22 @@ export default function UvtCalculator() {
       </div>
 
       {/* MODE SWITCHER */}
-      <div style={{ display: 'flex', background: '#f4f4f6', padding: '8px', borderBottom: '1px solid #eaeaea' }}>
+      <div style={{ display: 'flex', background: 'var(--color-gray-50)', padding: '8px', borderBottom: '1px solid var(--color-gray-100)' }}>
         <button 
           onClick={() => setCalcMode('traditional')}
-          style={{ flex: 1, padding: '12px', border: 'none', borderRadius: '8px', fontSize: '15px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s', background: calcMode === 'traditional' ? '#fff' : 'transparent', color: calcMode === 'traditional' ? '#131ddf' : '#666', boxShadow: calcMode === 'traditional' ? '0 2px 10px rgba(0,0,0,0.05)' : 'none' }}
+          style={{ flex: 1, padding: '12px', border: 'none', borderRadius: '8px', fontSize: '15px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s', background: calcMode === 'traditional' ? 'var(--color-white)' : 'transparent', color: calcMode === 'traditional' ? 'var(--color-primary)' : 'var(--color-gray-800)', boxShadow: calcMode === 'traditional' ? '0 2px 10px rgba(0,0,0,0.05)' : 'none' }}
         >
           Conceptos Básicos (4%, 10%, 11%)
         </button>
         <button 
           onClick={() => setCalcMode('independent')}
-          style={{ flex: 1, padding: '12px', border: 'none', borderRadius: '8px', fontSize: '15px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s', background: calcMode === 'independent' ? '#fff' : 'transparent', color: calcMode === 'independent' ? '#131ddf' : '#666', boxShadow: calcMode === 'independent' ? '0 2px 10px rgba(0,0,0,0.05)' : 'none' }}
+          style={{ flex: 1, padding: '12px', border: 'none', borderRadius: '8px', fontSize: '15px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s', background: calcMode === 'independent' ? 'var(--color-white)' : 'transparent', color: calcMode === 'independent' ? 'var(--color-primary)' : 'var(--color-gray-800)', boxShadow: calcMode === 'independent' ? '0 2px 10px rgba(0,0,0,0.05)' : 'none' }}
         >
           Rentas de Trabajo (Independientes Art. 383)
         </button>
       </div>
 
-      <div style={{ background: '#fff', padding: '32px', borderRadius: '0 0 16px 16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
+      <div style={{ background: 'var(--color-white)', padding: '32px', borderRadius: '0 0 16px 16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
         
         {calcMode === 'traditional' ? (
           /* =========================================
@@ -209,26 +209,26 @@ export default function UvtCalculator() {
           <div>
             <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', marginBottom: '32px' }}>
               <div style={{ flex: 1, minWidth: '250px' }}>
-                <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>Valor del Contrato / Base (Pesos)</label>
+                <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: 'var(--color-dark)' }}>Valor del Contrato / Base (Pesos)</label>
                 <div style={{ position: 'relative' }}>
-                  <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#555' }}>$</span>
-                  <input type="text" value={parsedAmount > 0 ? parsedAmount.toLocaleString('es-CO') : ''} onChange={handleNumChange(setAmountPesos)} placeholder="0" style={{ width: '100%', padding: '16px 16px 16px 40px', borderRadius: '12px', border: '2px solid #e0e0e0', fontSize: '18px', outline: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box' }} onFocus={(e) => e.target.style.borderColor = '#131ddf'} onBlur={(e) => e.target.style.borderColor = '#e0e0e0'} />
+                  <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-gray-500)' }}>$</span>
+                  <input type="text" value={parsedAmount > 0 ? parsedAmount.toLocaleString('es-CO') : ''} onChange={handleNumChange(setAmountPesos)} placeholder="0" style={{ width: '100%', padding: '16px 16px 16px 40px', borderRadius: '12px', border: '2px solid var(--color-gray-200)', fontSize: '18px', outline: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box' }} onFocus={(e) => e.target.style.borderColor = 'var(--color-primary)'} onBlur={(e) => e.target.style.borderColor = 'var(--color-gray-200)'} />
                 </div>
               </div>
             </div>
 
-            <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '24px', color: '#111' }}>Cálculo de Retención en la Fuente</h3>
+            <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '24px', color: 'var(--color-dark)' }}>Cálculo de Retención en la Fuente</h3>
             
             <div style={{ marginBottom: '24px' }}>
-              <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>Concepto de Retención</label>
-              <select value={selectedConceptId} onChange={(e) => setSelectedConceptId(e.target.value)} style={{ width: '100%', padding: '16px', borderRadius: '12px', border: '1px solid #e0e0e0', fontSize: '16px', outline: 'none', appearance: 'none', background: '#fff', cursor: 'pointer' }}>
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: 'var(--color-dark)' }}>Concepto de Retención</label>
+              <select value={selectedConceptId} onChange={(e) => setSelectedConceptId(e.target.value)} style={{ width: '100%', padding: '16px', borderRadius: '12px', border: '1px solid var(--color-gray-200)', fontSize: '16px', outline: 'none', appearance: 'none', background: 'var(--color-white)', cursor: 'pointer' }}>
                 {RETENTION_CONCEPTS.map(concept => (
                   <option key={concept.id} value={concept.id}>
                     {concept.label} ({(concept.rate * 100).toFixed(1)}%) {concept.minUvt > 0 ? ` - Base: ${concept.minUvt} UVT` : ''}
                   </option>
                 ))}
               </select>
-              <div style={{ fontSize: '13px', color: '#666', marginTop: '8px' }}>
+              <div style={{ fontSize: '13px', color: 'var(--color-gray-800)', marginTop: '8px' }}>
                 Base legal mínima requerida: <strong>{selectedConcept.minUvt === 0 ? 'Sin base (desde el primer peso)' : `${selectedConcept.minUvt} UVT (${formatCurrency(requiredMinPesos)})`}</strong>
               </div>
             </div>
@@ -248,15 +248,15 @@ export default function UvtCalculator() {
               </div>
             )}
 
-            <div style={{ background: '#fafafa', borderRadius: '16px', padding: '24px', border: '1px solid #eaeaea' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', color: '#555' }}>
+            <div style={{ background: 'var(--color-gray-50)', borderRadius: '16px', padding: '24px', border: '1px solid var(--color-gray-100)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', color: 'var(--color-gray-500)' }}>
                 <span>Subtotal:</span><span style={{ fontWeight: 500 }}>{formatCurrency(parsedAmount)}</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', color: meetsMinimum ? '#cf2e2e' : '#aaa' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', color: meetsMinimum ? 'var(--color-danger)' : 'var(--color-gray-500)' }}>
                 <span>Retención ({(selectedConcept.rate * 100).toFixed(1)}%):</span><span style={{ fontWeight: 500 }}>- {formatCurrency(retentionValue)}</span>
               </div>
-              <div style={{ borderTop: '2px solid #ddd', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '18px', fontWeight: 700, color: '#111' }}>Total Neto a Pagar:</span><span style={{ fontSize: '24px', fontWeight: 800, color: '#131ddf' }}>{formatCurrency(netTotal)}</span>
+              <div style={{ borderTop: '2px solid var(--color-gray-300)', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-dark)' }}>Total Neto a Pagar:</span><span style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-primary)' }}>{formatCurrency(netTotal)}</span>
               </div>
             </div>
           </div>
@@ -267,94 +267,94 @@ export default function UvtCalculator() {
           <div>
             {/* 1. INGRESOS */}
             <div style={{ marginBottom: '24px' }}>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#111', borderBottom: '2px solid #131ddf', paddingBottom: '8px', display: 'inline-block' }}>1. Ingresos Mensuales</h3>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-dark)', borderBottom: '2px solid var(--color-primary)', paddingBottom: '8px', display: 'inline-block' }}>1. Ingresos Mensuales</h3>
               <div style={{ marginTop: '16px', position: 'relative' }}>
-                <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#555' }}>$</span>
-                <input type="text" value={parsedIndIncome > 0 ? parsedIndIncome.toLocaleString('es-CO') : ''} onChange={handleNumChange(setIndIncome)} placeholder="Ingresa el valor del contrato..." style={{ width: '100%', padding: '16px 16px 16px 40px', borderRadius: '12px', border: '2px solid #e0e0e0', fontSize: '18px', outline: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box' }} onFocus={(e) => e.target.style.borderColor = '#131ddf'} onBlur={(e) => e.target.style.borderColor = '#e0e0e0'} />
+                <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-gray-500)' }}>$</span>
+                <input type="text" value={parsedIndIncome > 0 ? parsedIndIncome.toLocaleString('es-CO') : ''} onChange={handleNumChange(setIndIncome)} placeholder="Ingresa el valor del contrato..." style={{ width: '100%', padding: '16px 16px 16px 40px', borderRadius: '12px', border: '2px solid var(--color-gray-200)', fontSize: '18px', outline: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box' }} onFocus={(e) => e.target.style.borderColor = 'var(--color-primary)'} onBlur={(e) => e.target.style.borderColor = 'var(--color-gray-200)'} />
               </div>
             </div>
 
             {/* 2. INCRGO */}
-            <div style={{ marginBottom: '24px', background: '#fafafa', padding: '20px', borderRadius: '12px', border: '1px solid #eaeaea' }}>
+            <div style={{ marginBottom: '24px', background: 'var(--color-gray-50)', padding: '20px', borderRadius: '12px', border: '1px solid var(--color-gray-100)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#111', margin: 0 }}>2. Aportes a Seguridad Social (INCRGO)</h3>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', cursor: 'pointer', color: '#131ddf', fontWeight: 600 }}>
-                  <input type="checkbox" checked={autoSS} onChange={(e) => setAutoSS(e.target.checked)} style={{ accentColor: '#131ddf' }} />
+                <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--color-dark)', margin: 0 }}>2. Aportes a Seguridad Social (INCRGO)</h3>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', cursor: 'pointer', color: 'var(--color-primary)', fontWeight: 600 }}>
+                  <input type="checkbox" checked={autoSS} onChange={(e) => setAutoSS(e.target.checked)} style={{ accentColor: 'var(--color-primary)' }} />
                   Calcular automático (IBC 40%)
                 </label>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: '#555' }}>Salud</label>
-                  <input type="text" value={pSalud > 0 ? pSalud.toLocaleString('es-CO') : ''} onChange={handleNumChange(setSsSalud)} disabled={autoSS} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #ccc', outline: 'none', background: autoSS ? '#eee' : '#fff' }} />
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: 'var(--color-gray-500)' }}>Salud</label>
+                  <input type="text" value={pSalud > 0 ? pSalud.toLocaleString('es-CO') : ''} onChange={handleNumChange(setSsSalud)} disabled={autoSS} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid var(--color-gray-300)', outline: 'none', background: autoSS ? 'var(--color-gray-100)' : 'var(--color-white)' }} />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: '#555' }}>Pensión</label>
-                  <input type="text" value={pPension > 0 ? pPension.toLocaleString('es-CO') : ''} onChange={handleNumChange(setSsPension)} disabled={autoSS} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #ccc', outline: 'none', background: autoSS ? '#eee' : '#fff' }} />
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: 'var(--color-gray-500)' }}>Pensión</label>
+                  <input type="text" value={pPension > 0 ? pPension.toLocaleString('es-CO') : ''} onChange={handleNumChange(setSsPension)} disabled={autoSS} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid var(--color-gray-300)', outline: 'none', background: autoSS ? 'var(--color-gray-100)' : 'var(--color-white)' }} />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: '#555' }}>ARL / Solidaridad</label>
-                  <input type="text" value={(pArl + pSolidaridad) > 0 ? (pArl + pSolidaridad).toLocaleString('es-CO') : ''} readOnly disabled={autoSS} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #ccc', outline: 'none', background: '#eee' }} />
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: 'var(--color-gray-500)' }}>ARL / Solidaridad</label>
+                  <input type="text" value={(pArl + pSolidaridad) > 0 ? (pArl + pSolidaridad).toLocaleString('es-CO') : ''} readOnly disabled={autoSS} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid var(--color-gray-300)', outline: 'none', background: 'var(--color-gray-100)' }} />
                 </div>
               </div>
-              <div style={{ marginTop: '12px', textAlign: 'right', fontSize: '13px', color: '#666', fontWeight: 500 }}>
-                Subtotal 1 (Ingreso Neto): <strong style={{ color: '#111' }}>{formatCurrency(subtotal1_IngresoNeto)}</strong>
+              <div style={{ marginTop: '12px', textAlign: 'right', fontSize: '13px', color: 'var(--color-gray-800)', fontWeight: 500 }}>
+                Subtotal 1 (Ingreso Neto): <strong style={{ color: 'var(--color-dark)' }}>{formatCurrency(subtotal1_IngresoNeto)}</strong>
               </div>
             </div>
 
             {/* 3. DEDUCCIONES & EXENTAS */}
             <div style={{ marginBottom: '32px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-              <div style={{ background: '#fff', padding: '20px', borderRadius: '12px', border: '1px solid #eaeaea' }}>
-                <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#111', marginBottom: '16px' }}>3. Deducciones</h3>
+              <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: '12px', border: '1px solid var(--color-gray-100)' }}>
+                <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--color-dark)', marginBottom: '16px' }}>3. Deducciones</h3>
                 <div style={{ marginBottom: '12px' }}>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: '#555' }}>Intereses Vivienda (Máx {formatCurrency(100*uvtValue)})</label>
-                  <input type="text" value={pVivienda > 0 ? pVivienda.toLocaleString('es-CO') : ''} onChange={handleNumChange(setDedVivienda)} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #ccc', outline: 'none' }} />
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: 'var(--color-gray-500)' }}>Intereses Vivienda (Máx {formatCurrency(100*uvtValue)})</label>
+                  <input type="text" value={pVivienda > 0 ? pVivienda.toLocaleString('es-CO') : ''} onChange={handleNumChange(setDedVivienda)} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid var(--color-gray-300)', outline: 'none' }} />
                 </div>
                 <div style={{ marginBottom: '12px' }}>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: '#555' }}>Dependientes (Máx {formatCurrency(32*uvtValue)})</label>
-                  <input type="text" value={pDependientes > 0 ? pDependientes.toLocaleString('es-CO') : ''} onChange={handleNumChange(setDedDependientes)} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #ccc', outline: 'none' }} />
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: 'var(--color-gray-500)' }}>Dependientes (Máx {formatCurrency(32*uvtValue)})</label>
+                  <input type="text" value={pDependientes > 0 ? pDependientes.toLocaleString('es-CO') : ''} onChange={handleNumChange(setDedDependientes)} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid var(--color-gray-300)', outline: 'none' }} />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: '#555' }}>Med. Prepagada (Máx {formatCurrency(16*uvtValue)})</label>
-                  <input type="text" value={pPrepagada > 0 ? pPrepagada.toLocaleString('es-CO') : ''} onChange={handleNumChange(setDedPrepagada)} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #ccc', outline: 'none' }} />
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: 'var(--color-gray-500)' }}>Med. Prepagada (Máx {formatCurrency(16*uvtValue)})</label>
+                  <input type="text" value={pPrepagada > 0 ? pPrepagada.toLocaleString('es-CO') : ''} onChange={handleNumChange(setDedPrepagada)} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid var(--color-gray-300)', outline: 'none' }} />
                 </div>
               </div>
 
-              <div style={{ background: '#fff', padding: '20px', borderRadius: '12px', border: '1px solid #eaeaea' }}>
-                <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#111', marginBottom: '16px' }}>4. Rentas Exentas</h3>
+              <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: '12px', border: '1px solid var(--color-gray-100)' }}>
+                <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--color-dark)', marginBottom: '16px' }}>4. Rentas Exentas</h3>
                 <div style={{ marginBottom: '12px' }}>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: '#555' }}>Aportes AFC y Pensión Voluntaria</label>
-                  <input type="text" value={pAFC > 0 ? pAFC.toLocaleString('es-CO') : ''} onChange={handleNumChange(setExPensionVolAFC)} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #ccc', outline: 'none' }} />
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: 'var(--color-gray-500)' }}>Aportes AFC y Pensión Voluntaria</label>
+                  <input type="text" value={pAFC > 0 ? pAFC.toLocaleString('es-CO') : ''} onChange={handleNumChange(setExPensionVolAFC)} placeholder="0" style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid var(--color-gray-300)', outline: 'none' }} />
                 </div>
-                <div style={{ marginTop: '20px', padding: '12px', background: '#f8f9fa', borderRadius: '8px', border: '1px solid #e0e0e0' }}>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '4px', color: '#131ddf' }}>Renta Exenta Automática (25%)</label>
-                  <div style={{ fontSize: '14px', fontWeight: 600, color: '#111' }}>{formatCurrency(limitRentaExenta25)}</div>
-                  <div style={{ fontSize: '11px', color: '#666', marginTop: '2px' }}>Calculado tras restar deducibles.</div>
+                <div style={{ marginTop: '20px', padding: '12px', background: 'var(--color-gray-50)', borderRadius: '8px', border: '1px solid var(--color-gray-200)' }}>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '4px', color: 'var(--color-primary)' }}>Renta Exenta Automática (25%)</label>
+                  <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-dark)' }}>{formatCurrency(limitRentaExenta25)}</div>
+                  <div style={{ fontSize: '11px', color: 'var(--color-gray-800)', marginTop: '2px' }}>Calculado tras restar deducibles.</div>
                 </div>
               </div>
             </div>
 
             {/* RECIBO DE DEPURACIÓN */}
-            <div style={{ background: '#f8f9fa', borderRadius: '16px', padding: '24px', border: '1px solid #eaeaea' }}>
-              <h3 style={{ fontSize: '16px', fontWeight: 700, margin: '0 0 16px 0', color: '#111' }}>Resumen de Depuración</h3>
+            <div style={{ background: 'var(--color-gray-50)', borderRadius: '16px', padding: '24px', border: '1px solid var(--color-gray-100)' }}>
+              <h3 style={{ fontSize: '16px', fontWeight: 700, margin: '0 0 16px 0', color: 'var(--color-dark)' }}>Resumen de Depuración</h3>
               
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '14px', color: '#555' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '14px', color: 'var(--color-gray-500)' }}>
                 <span>Ingreso Bruto:</span><span>{formatCurrency(parsedIndIncome)}</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '14px', color: '#cf2e2e' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '14px', color: 'var(--color-danger)' }}>
                 <span>(-) Seg. Social (INCRGO):</span><span>- {formatCurrency(totalINCRGO)}</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '14px', color: '#555', paddingBottom: '12px', borderBottom: '1px dashed #ccc' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '14px', color: 'var(--color-gray-500)', paddingBottom: '12px', borderBottom: '1px dashed var(--color-gray-300)' }}>
                 <strong>Subtotal 1 (Ingreso Neto):</strong><strong>{formatCurrency(subtotal1_IngresoNeto)}</strong>
               </div>
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '14px', color: '#cf2e2e' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '14px', color: 'var(--color-danger)' }}>
                 <span>(-) Deducciones aplicables:</span><span>- {formatCurrency(totalDeducciones)}</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '14px', color: '#cf2e2e' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '14px', color: 'var(--color-danger)' }}>
                 <span>(-) AFC + Pens. Voluntarias:</span><span>- {formatCurrency(limitAFC)}</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '14px', color: '#cf2e2e', paddingBottom: '12px', borderBottom: '1px dashed #ccc' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '14px', color: 'var(--color-danger)', paddingBottom: '12px', borderBottom: '1px dashed var(--color-gray-300)' }}>
                 <span>(-) Renta Exenta Laboral 25%:</span><span>- {formatCurrency(limitRentaExenta25)}</span>
               </div>
 
@@ -363,15 +363,15 @@ export default function UvtCalculator() {
                 <span>Se aplica: {formatCurrency(totalBeneficioAplicado)}</span>
               </div>
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px', fontSize: '15px', color: '#111', fontWeight: 600 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px', fontSize: '15px', color: 'var(--color-dark)', fontWeight: 600 }}>
                 <span>Ingreso Laboral Gravado (Base Retención):</span><span>{formatCurrency(ingresoBaseRetencion)}</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px', fontSize: '14px', color: '#555' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px', fontSize: '14px', color: 'var(--color-gray-500)' }}>
                 <span>Equivalencia Base UVT:</span><span>{ingresoBaseUVT.toFixed(2)} UVT</span>
               </div>
 
               {/* TRAMO MARGINAL */}
-              <div style={{ background: '#131ddf', color: '#fff', padding: '20px', borderRadius: '12px' }}>
+              <div style={{ background: 'var(--color-primary)', color: 'var(--color-white)', padding: '20px', borderRadius: '12px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <div style={{ fontSize: '13px', opacity: 0.9, marginBottom: '4px' }}>Retención (Art 383): {formulaStr}</div>

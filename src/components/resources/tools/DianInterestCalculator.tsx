@@ -44,55 +44,55 @@ export default function DianInterestCalculator() {
 
   return (
     <div style={{ width: '100%', maxWidth: '900px', margin: '0 auto', fontFamily: '"General Sans", sans-serif' }}>
-      <div style={{ background: '#0056ff', color: '#fff', padding: '24px', borderRadius: '16px 16px 0 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+      <div style={{ background: '#0056ff', color: 'var(--color-white)', padding: '24px', borderRadius: '16px 16px 0 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
         <div>
-          <h4 style={{ margin: 0, fontSize: '18px', fontWeight: 600, color: '#fff' }}>Calculadora de Intereses Moratorios DIAN</h4>
+          <h4 style={{ margin: 0, fontSize: '18px', fontWeight: 600, color: 'var(--color-white)' }}>Calculadora de Intereses Moratorios DIAN</h4>
           <p style={{ margin: 0, opacity: 0.9, fontSize: '14px', color: '#eef2ff' }}>Calcula la deuda real con actualización diaria (Tasa Ref: {(TASA_DIAN_EA * 100).toFixed(1)}% E.A.)</p>
         </div>
       </div>
 
-      <div style={{ background: '#fff', padding: '32px', borderRadius: '0 0 16px 16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
+      <div style={{ background: 'var(--color-white)', padding: '32px', borderRadius: '0 0 16px 16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
         
         <div>
           <div style={{ marginBottom: '24px' }}>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>Impuesto a Cargo (Capital Adeudado)</label>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: 'var(--color-dark)' }}>Impuesto a Cargo (Capital Adeudado)</label>
             <div style={{ position: 'relative' }}>
-              <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#555' }}>$</span>
-              <input type="text" value={parsedCapital > 0 ? parsedCapital.toLocaleString('es-CO') : ''} onChange={handleNumChange} placeholder="5.000.000" style={{ width: '100%', padding: '12px 16px 12px 40px', borderRadius: '8px', border: '1px solid #e0e0e0', fontSize: '16px', outline: 'none', boxSizing: 'border-box' }} />
+              <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-gray-500)' }}>$</span>
+              <input type="text" value={parsedCapital > 0 ? parsedCapital.toLocaleString('es-CO') : ''} onChange={handleNumChange} placeholder="5.000.000" style={{ width: '100%', padding: '12px 16px 12px 40px', borderRadius: '8px', border: '1px solid var(--color-gray-200)', fontSize: '16px', outline: 'none', boxSizing: 'border-box' }} />
             </div>
           </div>
 
           <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
             <div style={{ flex: 1 }}>
-              <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>Fecha de Vencimiento</label>
-              <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #e0e0e0', outline: 'none', boxSizing: 'border-box', cursor: 'pointer' }} />
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: 'var(--color-dark)' }}>Fecha de Vencimiento</label>
+              <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid var(--color-gray-200)', outline: 'none', boxSizing: 'border-box', cursor: 'pointer' }} />
             </div>
             <div style={{ flex: 1 }}>
-              <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>Fecha de Pago (Hoy)</label>
-              <input type="date" value={payDate} onChange={(e) => setPayDate(e.target.value)} style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #e0e0e0', outline: 'none', boxSizing: 'border-box', cursor: 'pointer' }} />
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: 'var(--color-dark)' }}>Fecha de Pago (Hoy)</label>
+              <input type="date" value={payDate} onChange={(e) => setPayDate(e.target.value)} style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid var(--color-gray-200)', outline: 'none', boxSizing: 'border-box', cursor: 'pointer' }} />
             </div>
           </div>
           
           {daysOfDelay > 0 && (
-            <div style={{ fontSize: '13px', color: '#cf2e2e', background: '#fff5f5', padding: '12px', borderRadius: '8px', border: '1px solid #fed7d7' }}>
+            <div style={{ fontSize: '13px', color: 'var(--color-danger)', background: '#fff5f5', padding: '12px', borderRadius: '8px', border: '1px solid #fed7d7' }}>
               ⚠ Tienes un retraso de <strong>{daysOfDelay} días calendario</strong> frente a la DIAN. El interés compuesto cuenta fines de semana y festivos.
             </div>
           )}
         </div>
 
-        <div style={{ background: '#f8f9fa', borderRadius: '16px', padding: '32px', border: '1px solid #eaeaea', display: 'flex', flexDirection: 'column', gap: '20px', justifyContent: 'center' }}>
+        <div style={{ background: 'var(--color-gray-50)', borderRadius: '16px', padding: '32px', border: '1px solid var(--color-gray-100)', display: 'flex', flexDirection: 'column', gap: '20px', justifyContent: 'center' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '15px' }}>
-             <span style={{color: '#666'}}>Capital Inicial:</span>
+             <span style={{color: 'var(--color-gray-800)'}}>Capital Inicial:</span>
              <span style={{fontWeight: 600}}>{formatCurrency(parsedCapital)}</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '15px', color: '#c53030' }}>
              <span style={{color: '#c53030'}}>Intereses de Mora:</span>
              <span style={{fontWeight: 600}}>+ {formatCurrency(interestAmount)}</span>
           </div>
-          <hr style={{ border: 'none', borderTop: '1px dashed #ccc', margin: '8px 0' }} />
+          <hr style={{ border: 'none', borderTop: '1px dashed var(--color-gray-300)', margin: '8px 0' }} />
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '13px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Total a Pagar a la DIAN</div>
-            <div style={{ fontSize: '40px', fontWeight: 800, color: '#111', lineHeight: '1.1' }}>{formatCurrency(totalToPay)}</div>
+            <div style={{ fontSize: '13px', color: 'var(--color-gray-800)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Total a Pagar a la DIAN</div>
+            <div style={{ fontSize: '40px', fontWeight: 800, color: 'var(--color-dark)', lineHeight: '1.1' }}>{formatCurrency(totalToPay)}</div>
           </div>
         </div>
 

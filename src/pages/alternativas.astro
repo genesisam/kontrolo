@@ -12,7 +12,7 @@ const seo = {
   <div class="page-wrap">
     
     <!-- Hero Section -->
-    <section class="section" style="background: linear-gradient(135deg, #05192D 0%, #131ddf 100%); color: white; padding: 120px 20px 80px; text-align: center;">
+    <section class="section" style="background: linear-gradient(135deg, #05192D 0%, var(--color-primary) 100%); color: white; padding: 120px 20px 80px; text-align: center;">
       <div class="container w-container" style="max-width: 900px;">
         <div style="display: inline-block; background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 24px;">
           ⚖️ COMPARATIVA 2025
@@ -38,14 +38,14 @@ const seo = {
     </section>
 
     <!-- Tablas Comparativas -->
-    <section class="section" style="padding: 80px 20px; background: #f8f9fa;">
+    <section class="section" style="padding: 80px 20px; background: var(--color-gray-50);">
       <div class="container w-container" style="max-width: 1000px;">
 
         <!-- VS SIIGO -->
         <div id="siigo" class="compare-content active">
           <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 32px; font-weight: 800; color: #111;">Kontrolo vs Siigo</h2>
-            <p style="color: #666; font-size: 16px;">La diferencia entre un software pesado y uno ágil que trabaja por ti.</p>
+            <h2 style="font-size: 32px; font-weight: 800; color: var(--color-dark);">Kontrolo vs Siigo</h2>
+            <p style="color: var(--color-gray-800); font-size: 16px;">La diferencia entre un software pesado y uno ágil que trabaja por ti.</p>
           </div>
           <div class="compare-table-wrapper">
             <table class="compare-table">
@@ -90,8 +90,8 @@ const seo = {
         <!-- VS ALEGRA -->
         <div id="alegra" class="compare-content">
           <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 32px; font-weight: 800; color: #111;">Kontrolo vs Alegra</h2>
-            <p style="color: #666; font-size: 16px;">¿Necesitas más que contabilidad básica? Mira esto.</p>
+            <h2 style="font-size: 32px; font-weight: 800; color: var(--color-dark);">Kontrolo vs Alegra</h2>
+            <p style="color: var(--color-gray-800); font-size: 16px;">¿Necesitas más que contabilidad básica? Mira esto.</p>
           </div>
           <div class="compare-table-wrapper">
             <table class="compare-table">
@@ -131,8 +131,8 @@ const seo = {
         <!-- VS LOGGRO -->
         <div id="loggro" class="compare-content">
           <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 32px; font-weight: 800; color: #111;">Kontrolo vs Loggro</h2>
-            <p style="color: #666; font-size: 16px;">Velocidad y modernidad frente a los sistemas tradicionales.</p>
+            <h2 style="font-size: 32px; font-weight: 800; color: var(--color-dark);">Kontrolo vs Loggro</h2>
+            <p style="color: var(--color-gray-800); font-size: 16px;">Velocidad y modernidad frente a los sistemas tradicionales.</p>
           </div>
           <div class="compare-table-wrapper">
             <table class="compare-table">
@@ -175,8 +175,8 @@ const seo = {
     <!-- Migración Section -->
     <section class="section" style="padding: 80px 20px; background: white;">
       <div class="container w-container" style="max-width: 900px; text-align: center; background: #f4f6fa; border-radius: 30px; padding: 60px 40px;">
-        <h2 style="font-size: 36px; font-weight: 800; color: #111; margin-bottom: 20px;">¿Miedo a cambiar de sistema?</h2>
-        <p style="font-size: 18px; color: #555; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <h2 style="font-size: 36px; font-weight: 800; color: var(--color-dark); margin-bottom: 20px;">¿Miedo a cambiar de sistema?</h2>
+        <p style="font-size: 18px; color: var(--color-gray-500); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
           Sabemos que migrar inventarios, clientes y contabilidad suena como una pesadilla. Por eso, en Kontrolo **hacemos todo el trabajo de migración por ti**, totalmente gratis.
         </p>
         <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
@@ -196,19 +196,19 @@ const seo = {
       background: transparent;
       font-size: 16px;
       font-weight: 700;
-      color: #666;
+      color: var(--color-gray-800);
       border-radius: 40px;
       cursor: pointer;
       transition: all 0.3s ease;
     }
     .tab-btn.active {
-      background: #131ddf;
+      background: var(--color-primary);
       color: white;
       box-shadow: 0 4px 15px rgba(19, 29, 223, 0.3);
     }
     .tab-btn:hover:not(.active) {
       background: #f0f4ff;
-      color: #131ddf;
+      color: var(--color-primary);
     }
     
     .compare-content {
@@ -234,25 +234,25 @@ const seo = {
     }
     .compare-table th, .compare-table td {
       padding: 20px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--color-gray-100);
     }
     .compare-table th {
       font-size: 18px;
-      color: #111;
+      color: var(--color-dark);
       font-weight: 800;
     }
     .compare-table td {
       font-size: 15px;
-      color: #555;
+      color: var(--color-gray-500);
     }
     
     .kontrolo-col {
       background: #f0f4ff;
       border-radius: 8px;
-      color: #131ddf !important;
+      color: var(--color-primary) !important;
     }
     .competitor-col {
-      color: #888 !important;
+      color: var(--color-gray-500) !important;
     }
 
     @keyframes fadeIn {

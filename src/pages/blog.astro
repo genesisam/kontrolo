@@ -28,15 +28,24 @@ const seo = {
 </div>
 <h2 class="title-heading animate-on-scroll animate-fade-up integration-width">Mantente informado sobre las <span class="title-span">últimas tendencias</span></h2>
 </div>
-<p class="title-paragraph black">Nuestro blog ofrece información valiosa sobre gestión financiera, tendencias del sector y cómo sacar el máximo partido a nuestra plataforma.</p>
+<p class="title-paragraph black" style="margin-bottom: 40px;">Nuestro blog ofrece información valiosa sobre gestión financiera, tendencias del sector y cómo sacar el máximo partido a nuestra plataforma.</p>
+
+{/* SEARCH BAR (HOSTINGER STYLE) */}
+<div style="display: flex; width: 100%; max-width: 700px; margin: 0 auto; gap: 12px; flex-wrap: wrap; justify-content: center;">
+  <div style="flex-grow: 1; position: relative; min-width: 250px; width: 100%;">
+    <input type="text" id="blogSearchInput" placeholder="Buscar artículo, guía, tutorial..." style="width: 100%; padding: 18px 24px; border-radius: 50px; border: 1px solid var(--color-gray-200); font-size: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); outline: none; transition: all 0.2s;" class="resource-search-input" />
+  </div>
+  <button id="blogSearchBtn" class="kontrolo-btn-primary" style="padding: 16px 40px; border-radius: 50px; border: none; font-size: 16px; font-weight: 600; cursor: pointer;">Buscar</button>
+</div>
+
 </div>
 </div>
 </section>
 <section>
 <div class="w-layout-blockcontainer container w-container">
-<div class="div-block">
+<div class="div-block" id="blogGrid">
 {posts.map((post) => (
-<a class="blog-card w-inline-block" href={`/blog/${post.slug}`}>
+<a class="blog-card w-inline-block blog-item" href={`/blog/${post.slug}`} data-title={post.title?.toLowerCase() || ''} data-author={post.authorName?.toLowerCase() || ''} data-cat={post.categoryName?.toLowerCase() || ''}>
 <div class="blog-thumb"><OptimizedImage alt={post.title} class="cover-image" loading="lazy" src={post.imageUrl || 'images/gallery-img-04.jpg'} /></div>
 <div class="blog-content">
 <div class="blog-outer">
@@ -51,6 +60,10 @@ const seo = {
 </div>
 </a>
 ))}
+</div>
+<div id="emptyBlogState" style="display: none; text-align: center; padding: 60px 0; color: var(--color-gray-800); background: var(--color-gray-50); border-radius: 20px; border: 1px dashed var(--color-gray-300); margin-top: 20px;">
+  <h3 style="font-size: 24px; margin-bottom: 10px;">No encontramos artículos</h3>
+  <p>Intenta buscando con otras palabras clave.</p>
 </div>
 </div>
 </section>
@@ -100,5 +113,45 @@ const seo = {
     }
   }
 </style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('blogSearchInput');
+    const btn = document.getElementById('blogSearchBtn');
+    const items = document.querySelectorAll('.blog-item');
+    const emptyState = document.getElementById('emptyBlogState');
+
+    function performSearch() {
+      const term = input.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      items.forEach(item => {
+        const title = item.getAttribute('data-title') || '';
+        const author = item.getAttribute('data-author') || '';
+        const cat = item.getAttribute('data-cat') || '';
+
+        if (title.includes(term) || author.includes(term) || cat.includes(term)) {
+          item.style.display = 'flex'; // blog cards use flex in the template
+          visibleCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      if (emptyState) {
+        emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+
+    if (input) {
+      input.addEventListener('input', performSearch);
+      input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') performSearch();
+      });
+    }
+    if (btn) btn.addEventListener('click', performSearch);
+  });
+</script>
+
 </MainLayout>
 

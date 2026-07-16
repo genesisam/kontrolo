@@ -47,7 +47,7 @@ export default function CiiuSearch() {
   return (
     <div style={{ width: '100%', maxWidth: '900px', margin: '0 auto', fontFamily: '"General Sans", sans-serif' }}>
       
-      <div style={{ background: '#006642', color: '#fff', padding: '32px', borderRadius: '16px 16px 0 0', textAlign: 'center' }}>
+      <div style={{ background: '#006642', color: 'var(--color-white)', padding: '32px', borderRadius: '16px 16px 0 0', textAlign: 'center' }}>
         <h4 style={{ margin: '0 0 16px 0', fontSize: '24px', fontWeight: 600 }}>Buscador de Códigos CIIU</h4>
         <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
           <input 
@@ -60,30 +60,30 @@ export default function CiiuSearch() {
         </div>
       </div>
 
-      <div style={{ background: '#fff', padding: '32px', borderRadius: '0 0 16px 16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', minHeight: '400px' }}>
+      <div style={{ background: 'var(--color-white)', padding: '32px', borderRadius: '0 0 16px 16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', minHeight: '400px' }}>
         
         {filteredCodes.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '60px 0', color: '#888' }}>
+          <div style={{ textAlign: 'center', padding: '60px 0', color: 'var(--color-gray-500)' }}>
             <div style={{ fontSize: '40px', marginBottom: '16px' }}>🔍</div>
             <p style={{ fontSize: '16px' }}>No encontramos ningún código CIIU que coincida con tu búsqueda.</p>
           </div>
         ) : (
           <div style={{ display: 'grid', gap: '16px' }}>
             {filteredCodes.map((item, index) => (
-              <div key={index} style={{ display: 'flex', alignItems: 'center', padding: '20px', border: '1px solid #eaeaea', borderRadius: '12px', transition: 'all 0.2s', cursor: 'pointer' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#006642'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#eaeaea'}>
+              <div key={index} style={{ display: 'flex', alignItems: 'center', padding: '20px', border: '1px solid var(--color-gray-100)', borderRadius: '12px', transition: 'all 0.2s', cursor: 'pointer' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#006642'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-gray-100)'}>
                 <div style={{ background: '#eefcf5', color: '#006642', padding: '12px 20px', borderRadius: '8px', fontSize: '20px', fontWeight: 800, marginRight: '24px', minWidth: '100px', textAlign: 'center' }}>
                   {item.code}
                 </div>
                 <div>
-                  <h4 style={{ margin: '0 0 4px 0', fontSize: '16px', color: '#111' }}>{item.name}</h4>
-                  <span style={{ fontSize: '12px', background: '#f4f4f6', padding: '4px 8px', borderRadius: '4px', color: '#666' }}>{item.category}</span>
+                  <h4 style={{ margin: '0 0 4px 0', fontSize: '16px', color: 'var(--color-dark)' }}>{item.name}</h4>
+                  <span style={{ fontSize: '12px', background: 'var(--color-gray-50)', padding: '4px 8px', borderRadius: '4px', color: 'var(--color-gray-800)' }}>{item.category}</span>
                 </div>
               </div>
             ))}
           </div>
         )}
         
-        <div style={{ textAlign: 'center', marginTop: '32px', fontSize: '13px', color: '#888' }}>
+        <div style={{ textAlign: 'center', marginTop: '32px', fontSize: '13px', color: 'var(--color-gray-500)' }}>
           * Mostrando los {filteredCodes.length} códigos más buscados. Para consultar la lista completa (CIIU Rev. 4 A.C.), visita la página oficial de la Cámara de Comercio.
         </div>
       </div>

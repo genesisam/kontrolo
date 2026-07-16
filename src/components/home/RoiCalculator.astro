@@ -55,7 +55,7 @@
         </div>
 
         <div style="margin-top: 32px;">
-          <a href="/contacto" class="kontrolo-btn kontrolo-btn-primary" style="background-color: #131ddf; color: white; width: 100%; text-align: center; border:none; padding: 16px 28px; border-radius: 42px; text-decoration: none; font-weight: 600; display: block;">Quiero este ahorro en mi empresa</a>
+          <a href="/contacto" class="kontrolo-btn kontrolo-btn-primary" style="background-color: var(--color-primary); color: white; width: 100%; text-align: center; border:none; padding: 16px 28px; border-radius: 42px; text-decoration: none; font-weight: 600; display: block;">Quiero este ahorro en mi empresa</a>
         </div>
       </div>
     </div>
@@ -137,23 +137,29 @@
   }
   .roi-range {
     width: 100%;
-    accent-color: #131ddf;
+    accent-color: var(--color-primary);
     margin-bottom: 8px;
   }
   .roi-value {
     font-weight: 700;
-    color: #131ddf;
+    color: var(--color-primary);
     font-size: 18px;
     text-align: right;
   }
   .roi-select {
     width: 100%;
-    padding: 12px 16px;
+    padding: 12px 40px 12px 16px;
     border: 1px solid #cbd5e1;
     border-radius: 8px;
     font-size: 15px;
     outline: none;
     font-family: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: white;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M7 10L12 15L17 10' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
   }
   .result-box {
     background: rgba(255,255,255,0.05);
@@ -188,6 +194,12 @@
   @media (max-width: 768px) {
     .roi-wrapper {
       grid-template-columns: 1fr;
+    }
+    .roi-controls {
+      padding: 24px;
+    }
+    .roi-results {
+      padding: 24px;
     }
   }
 </style>

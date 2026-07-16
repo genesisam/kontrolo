@@ -87,7 +87,7 @@ const seo = {
       {headings.length > 0 && (
         <>
           <div class="toc-title">En este artículo</div>
-          <ul style="list-style: none; padding: 0; margin: 0; border-left: 1px solid #eee;">
+          <ul style="list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--color-gray-100);">
             {headings.map((h) => (
               <li style={`margin-bottom: 4px; padding-left: ${h.level === 3 ? '15px' : '0'};`}>
                 <a href={`#${h.slug}`} class="toc-link">
@@ -122,7 +122,7 @@ const seo = {
       {post.imageUrl ? (
         <OptimizedImage alt={post.title} class="main-image" src={post.imageUrl} />
       ) : (
-        <div class="main-image" style="display: flex; align-items: center; justify-content: center; background: #e9ecef; color: #888; height: 300px;">
+        <div class="main-image" style="display: flex; align-items: center; justify-content: center; background: #e9ecef; color: var(--color-gray-500); height: 300px;">
           Sin imagen de cabecera
         </div>
       )}
@@ -252,11 +252,11 @@ const seo = {
 
 <!-- Artículos Relacionados -->
 {relatedPosts.length > 0 && (
-<section class="section" style="background: #f9f9fb; border-top: 1px solid #eaeaea; padding: 60px 0; margin-top: 60px;">
+<section class="section" style="background: #f9f9fb; border-top: 1px solid var(--color-gray-100); padding: 60px 0; margin-top: 60px;">
   <div class="w-layout-blockcontainer container w-container">
     <div style="margin-bottom: 40px; text-align: center;">
-      <h3 style="font-size: 32px; font-weight: 700; color: #111;">Artículos Relacionados</h3>
-      <p style="color: #666;">Sigue explorando más contenido sobre {post.categoryName}</p>
+      <h3 style="font-size: 32px; font-weight: 700; color: var(--color-dark);">Artículos Relacionados</h3>
+      <p style="color: var(--color-gray-800);">Sigue explorando más contenido sobre {post.categoryName}</p>
     </div>
     
         <div class="div-block">
@@ -298,7 +298,7 @@ const seo = {
     padding: 20px;
     background: #f9f9fb;
     border-radius: 12px;
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--color-gray-100);
   }
 
   .back-btn {
@@ -306,27 +306,27 @@ const seo = {
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    color: #555;
+    color: var(--color-gray-500);
     font-weight: 500;
     margin-bottom: 24px;
     font-size: 14px;
     transition: color 0.2s;
   }
   .back-btn:hover {
-    color: #111;
+    color: var(--color-dark);
   }
 
   .toc-title {
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 16px;
-    color: #111;
+    color: var(--color-dark);
   }
 
   .toc-link {
     display: block;
     text-decoration: none;
-    color: #555;
+    color: var(--color-gray-500);
     font-size: 14px;
     line-height: 1.4;
     padding: 6px 0;
@@ -352,14 +352,14 @@ const seo = {
     font-size: 48px;
     line-height: 1.2;
     font-weight: 800;
-    color: #111;
+    color: var(--color-dark);
     margin-bottom: 16px;
     letter-spacing: -0.02em;
   }
 
   .meta-info {
     font-size: 14px;
-    color: #888;
+    color: var(--color-gray-500);
     margin-bottom: 40px;
   }
 
@@ -377,8 +377,8 @@ const seo = {
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    border-top: 1px solid #eaeaea;
-    border-bottom: 1px solid #eaeaea;
+    border-top: 1px solid var(--color-gray-100);
+    border-bottom: 1px solid var(--color-gray-100);
     margin-bottom: 40px;
   }
   .h-ai-share-buttons > div {
@@ -389,7 +389,7 @@ const seo = {
   .h-ai-share-buttons__description {
     font-size: 14px;
     font-weight: 600;
-    color: #555;
+    color: var(--color-gray-500);
   }
   .h-ai-share-buttons__icons {
     display: flex;
@@ -409,7 +409,7 @@ const seo = {
     text-decoration: none;
   }
   .h-ai-share-buttons__icons a:hover {
-    background: #e0e0e0;
+    background: var(--color-gray-200);
     transform: translateY(-2px);
   }
   .h-ai-share-buttons__tooltip {
@@ -417,8 +417,8 @@ const seo = {
     position: absolute;
     bottom: 100%;
     margin-bottom: 8px;
-    background: #111;
-    color: #fff;
+    background: var(--color-dark);
+    color: var(--color-white);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 12px;
@@ -453,14 +453,14 @@ const seo = {
     font-weight: 700;
     margin-top: 40px;
     margin-bottom: 16px;
-    color: #111;
+    color: var(--color-dark);
   }
   .richtext h3 {
     font-size: 24px;
     font-weight: 600;
     margin-top: 32px;
     margin-bottom: 12px;
-    color: #111;
+    color: var(--color-dark);
   }
   .richtext p {
     font-size: 18px;
@@ -488,7 +488,7 @@ const seo = {
     border-left: 4px solid #0056ff;
     padding-left: 20px;
     font-style: italic;
-    color: #555;
+    color: var(--color-gray-500);
     margin: 32px 0;
     background: #f9f9fb;
     padding: 16px 20px;

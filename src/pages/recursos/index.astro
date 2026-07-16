@@ -81,83 +81,70 @@ const seo = {
   <div class="page-wrap">
     
     {/* HERO HUB */}
-    <section class="section" style="padding-top: 160px; padding-bottom: 80px; background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);">
+    <section class="section recursos-hero-section">
       <div class="container w-container">
         <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-          <div style="display: inline-block; padding: 6px 16px; background: rgba(19, 29, 223, 0.1); color: #131ddf; border-radius: 100px; font-weight: 600; font-size: 14px; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px;">Centro de Recursos</div>
-          <h1 class="title-heading" style="font-size: 56px; line-height: 1.1; margin-bottom: 24px;">Herramientas para acelerar <br/><span style="color: #0056ff;">tu crecimiento empresarial</span></h1>
-          <p class="title-paragraph black" style="font-size: 20px; margin-bottom: 40px; color: #555;">Calculadoras interactivas, plantillas listas para usar y asistentes impulsados por IA diseñados para ahorrarte horas de trabajo operativo.</p>
+          <div class="subtitle">Centro de Recursos</div>
+          <h1 class="title-heading recursos-hero-title">Herramientas para acelerar <br/><span style="color: #0056ff;">tu crecimiento empresarial</span></h1>
+          <p class="title-paragraph black recursos-hero-desc">Calculadoras interactivas, plantillas listas para usar y asistentes impulsados por IA diseñados para ahorrarte horas de trabajo operativo.</p>
           
-          {/* SEARCH BAR MOCKUP */}
-          <div style="position: relative; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 50px; overflow: hidden;">
-            <input type="text" placeholder="¿Qué herramienta estás buscando hoy? Ej. Calculadora Nómina" style="width: 100%; padding: 20px 24px; padding-right: 60px; border: 2px solid transparent; outline: none; font-size: 16px; font-family: inherit; transition: all 0.3s ease;" class="resource-search-input" />
-            <div style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: #131ddf; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          {/* SEARCH BAR (HOSTINGER STYLE) */}
+          <div style="display: flex; width: 100%; max-width: 700px; margin: 0 auto; gap: 12px; flex-wrap: wrap; justify-content: center;">
+            <div style="flex-grow: 1; position: relative; min-width: 250px; width: 100%;">
+              <input type="text" id="resourceSearchInput" placeholder="Buscar calculadora, plantilla, guía..." style="width: 100%; padding: 18px 24px; border-radius: 50px; border: 1px solid var(--color-gray-200); font-size: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); outline: none; transition: all 0.2s;" class="resource-search-input" />
             </div>
+            <button id="resourceSearchBtn" class="kontrolo-btn-primary" style="padding: 16px 40px; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer;">Buscar</button>
           </div>
         </div>
       </div>
     </section>
 
-    {/* DESTACADOS */}
-    {featuredResources.length > 0 && (
-      <section class="section" style="padding: 80px 0; background: #fff;">
-        <div class="container w-container">
-          <h2 style="font-size: 32px; margin-bottom: 40px;">⭐ Herramientas Destacadas</h2>
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;">
-            {featuredResources.map((resource: any) => (
-              <ResourceCard 
-                title={resource.title} 
-                slug={resource.slug} 
-                description={resource.description} 
-                category={resource.category} 
-                imageUrl={resource.imageUrl} 
-                type={resource.resourceType}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-    )}
-
-    {/* TODOS LOS RECURSOS */}
-    <section class="section" style="padding: 80px 0 120px; background: #f8f9fa;">
+    {/* CATÁLOGO DE HERRAMIENTAS */}
+    <section class="section" style="padding: 80px 0; background: var(--color-white); min-height: 50vh;">
       <div class="container w-container">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
-          <h2 style="font-size: 32px; margin-bottom: 0;">Recientemente Añadidos</h2>
-          <div style="font-size: 15px; color: #666;">Mostrando {allResources.length} recursos</div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
+          <h2 style="font-size: 32px; margin-bottom: 0;">Catálogo de Herramientas</h2>
+          <div style="font-size: 15px; color: var(--color-gray-800);">{allResources.length} disponibles</div>
         </div>
         
         {allResources.length === 0 ? (
-          <div style="text-align: center; padding: 60px 0; color: #666; background: #fff; border-radius: 20px; border: 1px dashed #ccc;">
+          <div style="text-align: center; padding: 60px 0; color: var(--color-gray-800); background: var(--color-gray-50); border-radius: 20px; border: 1px dashed var(--color-gray-300);">
             <h3 style="font-size: 24px; margin-bottom: 10px;">Aún no hay recursos publicados.</h3>
             <p>Vuelve pronto para descubrir nuevas herramientas.</p>
           </div>
         ) : (
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;">
-            {allResources.map((resource: any) => (
-              <ResourceCard 
-                title={resource.title} 
-                slug={`/recurso/${resource.slug}`} 
-                description={resource.description} 
-                category={resource.category} 
-                imageUrl={resource.imageUrl}
-                type={resource.resourceType}
-              />
-            ))}
-          </div>
+          <>
+            <div id="resourcesGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;">
+              {allResources.map((resource: any) => (
+                <div class="resource-item" data-title={resource.title?.toLowerCase() || ''} data-desc={resource.description?.toLowerCase() || ''} data-cat={resource.category?.toLowerCase() || ''}>
+                  <ResourceCard 
+                    title={resource.title} 
+                    slug={resource.slug} 
+                    description={resource.description} 
+                    category={resource.category} 
+                    imageUrl={resource.imageUrl} 
+                    type={resource.resourceType}
+                  />
+                </div>
+              ))}
+            </div>
+            <div id="emptySearchState" style="display: none; text-align: center; padding: 60px 0; color: var(--color-gray-800); background: var(--color-gray-50); border-radius: 20px; border: 1px dashed var(--color-gray-300); margin-top: 20px;">
+              <h3 style="font-size: 24px; margin-bottom: 10px;">No encontramos resultados</h3>
+              <p>Intenta buscando con otras palabras o navega por las categorías.</p>
+            </div>
+          </>
         )}
       </div>
     </section>
 
     {/* GLOBAL CTA */}
-    <section class="section" style="background: #111; color: #fff; padding: 100px 20px;">
+    <section class="section" style="background: var(--color-dark); color: var(--color-white); padding: 100px 20px;">
       <div class="container w-container" style="text-align: center;">
-        <h2 style="font-size: 48px; margin-bottom: 24px; color: #fff; letter-spacing: -0.02em;">¿Listo para ir más allá de las plantillas?</h2>
-        <p style="font-size: 20px; color: #aaa; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Deja atrás el trabajo manual. Descubre cómo el ecosistema de Kontrolo automatiza tu facturación, nómina e inventario en un solo lugar.</p>
+        <h2 style="font-size: 48px; margin-bottom: 24px; color: var(--color-white); letter-spacing: -0.02em;">¿Listo para ir más allá de las plantillas?</h2>
+        <p style="font-size: 20px; color: var(--color-gray-500); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Deja atrás el trabajo manual. Descubre cómo el ecosistema de Kontrolo automatiza tu facturación, nómina e inventario en un solo lugar.</p>
         <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
           <a href="/software-erp" class="primary-button w-button" style="padding: 18px 40px; font-weight: 700; border-radius: 50px; font-size: 16px;">Conocer el ERP</a>
-          <a href="/contacto" class="secondary-button w-button" style="padding: 18px 40px; font-weight: 700; border-radius: 50px; background: transparent; border: 1px solid #333; color: #fff; font-size: 16px;">Agendar Demo</a>
+          <a href="/contacto" class="secondary-button w-button" style="padding: 18px 40px; font-weight: 700; border-radius: 50px; font-size: 16px;">Agendar Demo</a>
         </div>
       </div>
     </section>
@@ -165,9 +152,69 @@ const seo = {
   </div>
 
   <style>
+    .recursos-hero-title { font-size: 56px; line-height: 1.1; margin-bottom: 24px; }
+    .recursos-hero-desc { font-size: 20px; margin-bottom: 40px; color: var(--color-gray-500); }
+
+    @media (max-width: 991px) {
+      .recursos-hero-title { font-size: 44px; }
+    }
+    @media (max-width: 767px) {
+      .recursos-hero-title { font-size: 34px; line-height: 1.2; margin-bottom: 16px; }
+      .recursos-hero-desc { font-size: 16px; margin-bottom: 24px; }
+    }
+
     .resource-search-input:focus {
-      border-color: #131ddf !important;
+      border-color: var(--color-primary) !important;
       box-shadow: 0 0 0 4px rgba(19, 29, 223, 0.1);
     }
+    
+    .recursos-hero-section {
+      padding-top: 160px;
+      padding-bottom: 80px;
+      background: linear-gradient(180deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    }
+
+    @media (max-width: 767px) {
+      .recursos-hero-section { padding-top: 100px; padding-bottom: 40px; }
+    }
   </style>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('resourceSearchInput');
+      const btn = document.getElementById('resourceSearchBtn');
+      const items = document.querySelectorAll('.resource-item');
+      const emptyState = document.getElementById('emptySearchState');
+
+      function performSearch() {
+        const term = input.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        items.forEach(item => {
+          const title = item.getAttribute('data-title') || '';
+          const desc = item.getAttribute('data-desc') || '';
+          const cat = item.getAttribute('data-cat') || '';
+
+          if (title.includes(term) || desc.includes(term) || cat.includes(term)) {
+            item.style.display = 'block';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (emptyState) {
+          emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      }
+
+      if (input) {
+        input.addEventListener('input', performSearch);
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') performSearch();
+        });
+      }
+      if (btn) btn.addEventListener('click', performSearch);
+    });
+  </script>
 </MainLayout>

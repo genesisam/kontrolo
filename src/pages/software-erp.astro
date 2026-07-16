@@ -1,13 +1,16 @@
 ---
+import { sanityClient } from "sanity:client";
 import OptimizedImage from '../components/OptimizedImage.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import Testimonial from '../components/Testimonial.astro';
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 
+const pageData = await sanityClient.fetch('*[_type == "solutionPage" && slug.current == "software-erp"][0]');
+
 const seo = {
-  title: "Software ERP en la nube para empresas en Colombia | Kontrolo",
-  description: "Software ERP en la nube con facturación electrónica DIAN. Kontrolo organiza contabilidad, inventarios, compras y ventas en una sola plataforma.",
+  title: pageData?.seo?.metaTitle || "Software ERP en la nube para empresas en Colombia | Kontrolo",
+  description: pageData?.seo?.metaDescription || "Software ERP en la nube con facturación electrónica DIAN. Kontrolo organiza contabilidad, inventarios, compras y ventas en una sola plataforma.",
   structuredData: {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -23,15 +26,20 @@ const seo = {
 <MainLayout seo={seo}>
 <div class="page-wrap">
 <Hero 
-  label="SOFTWARE ERP"
-  titleHtml="El ERP en la Nube Ideal para <span class='kontrolo-primary-text'>Crecer sin Límites</span>"
-  subtitleHtml="Organiza toda tu empresa. Desde contabilidad y facturación DIAN, hasta compras, ventas y conciliación bancaria en tiempo real."
-  primaryButtonText="Conoce Nuestro ERP"
-  primaryButtonLink="/contacto"
+  label={pageData?.hero?.label || "SOFTWARE ERP"}
+  titleHtml={pageData?.hero?.headline || "El ERP en la Nube Ideal para <span class='kontrolo-primary-text'>Crecer sin Límites</span>"}
+  subtitleHtml={pageData?.hero?.subheadline || "Organiza toda tu empresa. Desde contabilidad y facturación DIAN, hasta compras, ventas y conciliación bancaria en tiempo real."}
+  primaryButtonText={pageData?.hero?.primaryButtonText || "Conoce Nuestro ERP"}
+  primaryButtonLink={pageData?.hero?.primaryButtonLink || "/contacto"}
 />
 
 <section class="section to-top">
 <div class="w-layout-blockcontainer container w-container">
+<div class="title-wrap" style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+  <div class="subtitle"><div class="caption">{pageData?.overview?.caption || "POTENCIA Y CONTROL"}</div></div>
+  <h2 class="title-heading animate-on-scroll animate-fade-up">{pageData?.overview?.title || "Control absoluto de tu negocio en tiempo real"}</h2>
+  <p class="title-paragraph" style="margin: 0 auto;">{pageData?.overview?.description || "Optimiza tus recursos y simplifica procesos complejos. Toma el control de cada aspecto financiero, operativo y comercial desde un solo lugar."}</p>
+</div>
 <div class="feature-outer feature-software-pms">
   <div class="feature-card animate-on-scroll animate-fade-up">
     <div class="feature-img"><OptimizedImage alt="Contabilidad y DIAN automatizados" src="/images/kontrol-card-erp-1.jpg" class="cover-image"/></div>
@@ -83,54 +91,28 @@ const seo = {
 <div class="section-inner">
 <div class="title-wrap" style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
 <div class="subtitle-black" style="justify-content: center;">
-<div class="caption">FUNCIONALIDADES DESTACADAS</div>
+<div class="caption">{pageData?.features?.caption || "FUNCIONALIDADES DESTACADAS"}</div>
 </div>
-<h2 class="title-heading animate-on-scroll animate-fade-up color-white">Descubre las potentes funciones del <span class="title-span" style="color: #4facfe !important;">software ERP en la nube Kontrolo</span></h2>
-<p class="title-paragraph" style="color: #a0aec0; margin-top: 15px;">Kontrolo ERP unifica contabilidad, ventas, compras, inventarios, nómina y facturación DIAN en una sola plataforma. Optimiza la gestión, reduce tareas manuales y facilita decisiones con datos actualizados en tiempo real.</p>
+<h2 class="title-heading animate-on-scroll animate-fade-up color-white">{pageData?.features?.title || "Descubre las potentes funciones del software ERP en la nube Kontrolo"}</h2>
+<p class="title-paragraph" style="color: #a0aec0; margin-top: 15px;">{pageData?.features?.description || "Kontrolo ERP unifica contabilidad, ventas, compras, inventarios, nómina y facturación DIAN en una sola plataforma. Optimiza la gestión, reduce tareas manuales y facilita decisiones con datos actualizados en tiempo real."}</p>
 </div>
 <div class="choose-wrap">
-  <div class="choose-card" >
-    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-17_02_50-1.png" class="choose-icon" alt="Automatización contable" />
-    <div class="data-inner animate-on-scroll animate-fade-up">
-      <h4 class="color-white" style="margin-bottom: 15px;">Automatización contable avanzada</h4>
-      <p>Ahorra horas de trabajo con asientos automáticos, cierre contable guiado y control tributario integrado. Kontrolo actualiza balances, estados financieros y retenciones de forma inmediata, reduciendo errores humanos.</p>
+  {(pageData?.features?.cards || [
+    { icon: '🧾', title: 'Automatización contable avanzada', description: 'Ahorra horas de trabajo con asientos automáticos, cierre contable guiado y control tributario integrado.' },
+    { icon: '🛒', title: 'Compras inteligentes y control de proveedores', description: 'Registra y aprueba órdenes de compra desde cualquier dispositivo.' },
+    { icon: '💼', title: 'Ventas y gestión comercial conectada', description: 'Convierte cotizaciones en facturas con un clic, controla descuentos, márgenes y cuentas por cobrar.' },
+    { icon: '💰', title: 'Tesorería y conciliación automática', description: 'Sincroniza tus bancos para realizar conciliaciones automáticas y proyecciones de flujo de caja.' },
+    { icon: '📦', title: 'Gestión de inventarios y trazabilidad completa', description: 'Administra existencias por bodega, lote o número de serie.' },
+    { icon: '📊', title: 'Reportes gerenciales y análisis estratégico', description: 'Visualiza métricas financieras, operativas y de rentabilidad en dashboards.' }
+  ]).map((card: any) => (
+    <div class="choose-card" >
+      <div class="emoji-icon" style="font-size: 24px; background: rgba(255,255,255,0.05); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; margin-bottom: 20px;">{card.icon}</div>
+      <div class="data-inner animate-on-scroll animate-fade-up">
+        <h4 class="color-white" style="margin-bottom: 15px;">{card.title}</h4>
+        <p>{card.description}</p>
+      </div>
     </div>
-  </div>
-  <div class="choose-card" >
-    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-17_06_26-1.png" class="choose-icon" alt="Compras inteligentes" />
-    <div class="data-inner animate-on-scroll animate-fade-up">
-      <h4 class="color-white" style="margin-bottom: 15px;">Compras inteligentes y control de proveedores</h4>
-      <p>Registra y aprueba órdenes de compra desde cualquier dispositivo. Evalúa proveedores, compara precios y recibe alertas automáticas cuando el inventario alcanza su nivel mínimo.</p>
-    </div>
-  </div>
-  <div class="choose-card" >
-    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_09_50-1.png" class="choose-icon" alt="Ventas y gestión comercial" />
-    <div class="data-inner animate-on-scroll animate-fade-up">
-      <h4 class="color-white" style="margin-bottom: 15px;">Ventas y gestión comercial conectada</h4>
-      <p>Convierte cotizaciones en facturas con un clic, controla descuentos, márgenes y cuentas por cobrar. Integra tu CRM y punto de venta (POS) para tener una visión completa de tus ventas y clientes en tiempo real.</p>
-    </div>
-  </div>
-  <div class="choose-card" >
-    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_12_37-1.png" class="choose-icon" alt="Tesorería" />
-    <div class="data-inner animate-on-scroll animate-fade-up">
-      <h4 class="color-white" style="margin-bottom: 15px;">Tesorería y conciliación automática</h4>
-      <p>Sincroniza tus bancos para realizar conciliaciones automáticas y proyecciones de flujo de caja. Supervisa pagos, anticipos y gastos con alertas en tiempo real y niveles de aprobación personalizados.</p>
-    </div>
-  </div>
-  <div class="choose-card" >
-    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_15_07-1.png" class="choose-icon" alt="Gestión de inventarios" />
-    <div class="data-inner animate-on-scroll animate-fade-up">
-      <h4 class="color-white" style="margin-bottom: 15px;">Gestión de inventarios y trazabilidad completa</h4>
-      <p>Administra existencias por bodega, lote o número de serie. Rastrea movimientos de entrada y salida, controla costos promedio y genera reportes de rotación e inventario valorizado.</p>
-    </div>
-  </div>
-  <div class="choose-card" >
-    <OptimizedImage src="/images/ChatGPT-Image-17-nov-2025-18_18_21-1.png" class="choose-icon" alt="Reportes gerenciales" />
-    <div class="data-inner animate-on-scroll animate-fade-up">
-      <h4 class="color-white" style="margin-bottom: 15px;">Reportes gerenciales y análisis estratégico</h4>
-      <p>Visualiza métricas financieras, operativas y de rentabilidad en dashboards configurables por usuario. Analiza desempeño por sede, área o producto y anticipa decisiones clave para mejorar la rentabilidad.</p>
-    </div>
-  </div>
+  ))}
 </div>
 </div>
 </div>
@@ -141,11 +123,11 @@ const seo = {
 <div class="title-wrap">
 <div class="title-inner">
 <div class="subtitle">
-<div class="caption">INTEGRACIONES erp</div>
+<div class="caption">{pageData?.integrations?.caption || "INTEGRACIONES ERP"}</div>
 </div>
-<h2 class="title-heading animate-on-scroll animate-fade-up integration-width">Integraciones contables <span class="title-span">sin fricción</span> con tu software ERP</h2>
+<h2 class="title-heading animate-on-scroll animate-fade-up integration-width">{pageData?.integrations?.title || "Integraciones contables sin fricción con tu software ERP"}</h2>
 </div>
-<p class="title-paragraph black">Kontrolo ERP se conecta con sistemas contables, bancos, DIAN, plataformas de pago, e-commerce y nómina para sincronizar transacciones, facturas e inventarios en tiempo real, sin procesos manuales ni integraciones complejas.</p>
+<p class="title-paragraph black">{pageData?.integrations?.description || "Kontrolo ERP se conecta con sistemas contables, bancos, DIAN, plataformas de pago, e-commerce y nómina para sincronizar transacciones, facturas e inventarios en tiempo real, sin procesos manuales ni integraciones complejas."}</p>
 </div>
 <div class="choose-wrap" >
 <div class="choose-card white-background"><OptimizedImage alt="Característica de software Kontrolo" loading="lazy" src="/images/WOMPI.svg" width="130"/>
@@ -181,13 +163,13 @@ const seo = {
 <div class="title-wrap">
 <div class="title-inner">
 <div class="subtitle bg-white">
-<div class="caption">COMIENZA HOY</div>
+<div class="caption">{pageData?.cta?.caption || "COMIENZA HOY"}</div>
 </div>
-<h2 class="title-heading animate-on-scroll animate-fade-up"><span class="title-span">Activa Kontrolo </span>y centraliza tu operación en la nube</h2>
+<h2 class="title-heading animate-on-scroll animate-fade-up">{pageData?.cta?.title || "Activa Kontrolo y centraliza tu operación en la nube"}</h2>
 </div>
-<p class="cta-paragraph">Transforma tu negocio con Kontrolo, la suite de gestión empresarial que integra PMS, ERP y POS con facturación electrónica DIAN, pagos y CRM. Automatiza procesos, reduce errores y toma decisiones con datos en tiempo real.</p>
+<p class="cta-paragraph">{pageData?.cta?.description || "Transforma tu negocio con Kontrolo, la suite de gestión empresarial que integra PMS, ERP y POS con facturación electrónica DIAN, pagos y CRM. Automatiza procesos, reduce errores y toma decisiones con datos en tiempo real."}</p>
 </div>
-<a class="primary-button w-button" href="#">Solicitar demo gratuita</a>
+<a class="primary-button w-button" href={pageData?.cta?.buttonLink || "/contacto"}>{pageData?.cta?.buttonText || "Solicitar demo gratuita"}</a>
 </div>
 </div>
 </section>

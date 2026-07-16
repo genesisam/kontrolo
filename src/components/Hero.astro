@@ -56,7 +56,19 @@ const {
         <div class="kontrolo-trust-badges">
           <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Facturación electrónica DIAN incluida</span>
           <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Sin permanencia ni letra pequeña</span>
-          <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg> Prueba gratis, sin tarjeta de crédito</span>
+          <span><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg> Prueba gratis, sin tarjeta</span>
+        </div>
+        
+        <div class="kontrolo-social-proof" style="margin-top: 30px; display: flex; align-items: center; gap: 12px;">
+          <div class="avatars" style="display: flex;">
+            <img src="/images/avatar-1.png" alt="Usuario" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid white; margin-left: 0; background: #e2e8f0; object-fit: cover;"/>
+            <img src="/images/avatar-2.png" alt="Usuario" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid white; margin-left: -12px; background: #cbd5e1; object-fit: cover;"/>
+            <img src="/images/avatar-3.png" alt="Usuario" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid white; margin-left: -12px; background: #94a3b8; object-fit: cover;"/>
+            <img src="/images/avatar-4.png" alt="Usuario" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid white; margin-left: -12px; background: #64748b; object-fit: cover;"/>
+          </div>
+          <div style="font-size: 13px; color: #475569; font-weight: 500;">
+            <strong style="color: #0f172a; font-weight: 700;">+500 empresas</strong> gestionan su negocio con Kontrolo
+          </div>
         </div>
       </div>
     </div>
@@ -135,7 +147,7 @@ const {
   }
 
   .kontrolo-primary-text {
-    color: #131ddf;
+    color: var(--color-primary);
   }
 
   .kontrolo-btn-group {
@@ -151,15 +163,19 @@ const {
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .kontrolo-btn-primary {
-    background-color: #131ddf;
+    background-color: var(--color-primary);
     color: white;
   }
 
   .kontrolo-btn-primary:hover {
-    background-color: #0e15a8;
+    background-color: var(--color-primary-hover);
   }
 
   .kontrolo-btn-outline {

@@ -80,14 +80,14 @@ export default function EmployeeCostCalculator() {
     <div style={{ width: '100%', maxWidth: '900px', margin: '0 auto', fontFamily: '"General Sans", sans-serif' }}>
       
       {/* HEADER */}
-      <div style={{ background: '#05192D', color: '#fff', padding: '24px', borderRadius: '16px 16px 0 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+      <div style={{ background: '#05192D', color: 'var(--color-white)', padding: '24px', borderRadius: '16px 16px 0 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
         <div>
-          <h4 style={{ margin: 0, fontSize: '18px', fontWeight: 600, color: '#fff' }}>Calculadora de Costo Laboral</h4>
+          <h4 style={{ margin: 0, fontSize: '18px', fontWeight: 600, color: 'var(--color-white)' }}>Calculadora de Costo Laboral</h4>
           <p style={{ margin: 0, opacity: 0.9, fontSize: '14px', color: '#a0aec0' }}>Descubre el costo real de un empleado para tu empresa en 2026.</p>
         </div>
       </div>
 
-      <div style={{ background: '#fff', padding: '32px', borderRadius: '0 0 16px 16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', display: 'grid', gridTemplateColumns: '1fr', gap: '32px' }}>
+      <div style={{ background: 'var(--color-white)', padding: '32px', borderRadius: '0 0 16px 16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', display: 'grid', gridTemplateColumns: '1fr', gap: '32px' }}>
         
         {/* PARTE SUPERIOR: INPUTS */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
@@ -95,17 +95,17 @@ export default function EmployeeCostCalculator() {
           {/* INPUT SALARIO */}
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <label style={{ fontSize: '14px', fontWeight: 600, color: '#111' }}>Salario Mensual</label>
+              <label style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-dark)' }}>Salario Mensual</label>
               <button 
                 onClick={() => setBaseSalary(SMMLV)}
-                style={{ background: '#eef2ff', border: 'none', color: '#131ddf', fontSize: '12px', fontWeight: 600, padding: '4px 10px', borderRadius: '100px', cursor: 'pointer' }}
+                style={{ background: '#eef2ff', border: 'none', color: 'var(--color-primary)', fontSize: '12px', fontWeight: 600, padding: '4px 10px', borderRadius: '100px', cursor: 'pointer' }}
               >
                 Mínimo 2026
               </button>
             </div>
             <div style={{ position: 'relative' }}>
-              <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#555' }}>$</span>
-              <input type="text" value={parsedSalary > 0 ? parsedSalary.toLocaleString('es-CO') : ''} onChange={handleNumChange} placeholder="1.750.905" style={{ width: '100%', padding: '16px 16px 16px 40px', borderRadius: '12px', border: '2px solid #e0e0e0', fontSize: '18px', outline: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box' }} onFocus={(e) => e.target.style.borderColor = '#131ddf'} onBlur={(e) => e.target.style.borderColor = '#e0e0e0'} />
+              <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-gray-500)' }}>$</span>
+              <input type="text" value={parsedSalary > 0 ? parsedSalary.toLocaleString('es-CO') : ''} onChange={handleNumChange} placeholder="1.750.905" style={{ width: '100%', padding: '16px 16px 16px 40px', borderRadius: '12px', border: '2px solid var(--color-gray-200)', fontSize: '18px', outline: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box' }} onFocus={(e) => e.target.style.borderColor = 'var(--color-primary)'} onBlur={(e) => e.target.style.borderColor = 'var(--color-gray-200)'} />
             </div>
             {hasTransportAux && (
               <div style={{ fontSize: '12px', color: '#006642', marginTop: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -117,33 +117,33 @@ export default function EmployeeCostCalculator() {
 
           {/* SELECTOR ARL & EXONERACION */}
           <div>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>Clase de Riesgo ARL</label>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: 'var(--color-dark)' }}>Clase de Riesgo ARL</label>
             <select 
               value={arlRate} 
               onChange={(e) => setArlRate(Number(e.target.value))} 
-              style={{ width: '100%', padding: '16px', borderRadius: '12px', border: '1px solid #e0e0e0', fontSize: '15px', outline: 'none', background: '#fff', cursor: 'pointer', marginBottom: '16px' }}
+              style={{ width: '100%', padding: '16px', borderRadius: '12px', border: '1px solid var(--color-gray-200)', fontSize: '15px', outline: 'none', background: 'var(--color-white)', cursor: 'pointer', marginBottom: '16px' }}
             >
               {ARL_RATES.map(arl => (
                 <option key={arl.level} value={arl.rate}>{arl.label} ({(arl.rate * 100).toFixed(3)}%)</option>
               ))}
             </select>
             
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#f8f9fa', padding: '12px 16px', borderRadius: '8px', border: '1px solid #eaeaea' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--color-gray-50)', padding: '12px 16px', borderRadius: '8px', border: '1px solid var(--color-gray-100)' }}>
               <div>
-                <div style={{ fontSize: '13px', fontWeight: 600, color: '#111' }}>Beneficio Art. 114-1 ET</div>
-                <div style={{ fontSize: '11px', color: '#666' }}>Exonera Salud, SENA e ICBF.</div>
+                <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-dark)' }}>Beneficio Art. 114-1 ET</div>
+                <div style={{ fontSize: '11px', color: 'var(--color-gray-800)' }}>Exonera Salud, SENA e ICBF.</div>
               </div>
               <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
                 <input 
                   type="checkbox" 
                   checked={apply114} 
                   onChange={(e) => setApply114(e.target.checked)} 
-                  style={{ width: '20px', height: '20px', accentColor: '#131ddf' }} 
+                  style={{ width: '20px', height: '20px', accentColor: 'var(--color-primary)' }} 
                 />
               </label>
             </div>
             {parsedSalary >= (SMMLV * 10) && (
-              <div style={{ fontSize: '11px', color: '#cf2e2e', marginTop: '6px' }}>
+              <div style={{ fontSize: '11px', color: 'var(--color-danger)', marginTop: '6px' }}>
                 * No aplicable para salarios {'>'} 10 SMMLV.
               </div>
             )}
@@ -154,55 +154,55 @@ export default function EmployeeCostCalculator() {
         {/* PARTE INFERIOR: RESUMEN Y DESGLOSE */}
         {parsedSalary > 0 && (
           <div>
-            <hr style={{ border: 'none', borderTop: '1px dashed #e0e0e0', margin: '0 0 32px 0' }} />
+            <hr style={{ border: 'none', borderTop: '1px dashed var(--color-gray-200)', margin: '0 0 32px 0' }} />
             
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px' }}>
               
               {/* COLUMNA DESGLOSE */}
               <div>
-                <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#111', marginBottom: '16px' }}>Desglose de Costos Asumidos</h3>
+                <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--color-dark)', marginBottom: '16px' }}>Desglose de Costos Asumidos</h3>
                 
                 {/* Seguridad Social */}
                 <div style={{ marginBottom: '16px' }}>
-                  <div style={{ fontSize: '12px', fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Seguridad Social</div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: '#555'}}>Pensión (12%)</span><span style={{fontWeight: 500}}>{formatCurrency(pension)}</span></div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: '#555'}}>ARL</span><span style={{fontWeight: 500}}>{formatCurrency(arl)}</span></div>
-                  {!isExempted && <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: '#555'}}>Salud (8.5%)</span><span style={{fontWeight: 500}}>{formatCurrency(salud)}</span></div>}
+                  <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--color-gray-500)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Seguridad Social</div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: 'var(--color-gray-500)'}}>Pensión (12%)</span><span style={{fontWeight: 500}}>{formatCurrency(pension)}</span></div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: 'var(--color-gray-500)'}}>ARL</span><span style={{fontWeight: 500}}>{formatCurrency(arl)}</span></div>
+                  {!isExempted && <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: 'var(--color-gray-500)'}}>Salud (8.5%)</span><span style={{fontWeight: 500}}>{formatCurrency(salud)}</span></div>}
                 </div>
 
                 {/* Parafiscales */}
                 <div style={{ marginBottom: '16px' }}>
-                  <div style={{ fontSize: '12px', fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Parafiscales</div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: '#555'}}>Caja de Compensación (4%)</span><span style={{fontWeight: 500}}>{formatCurrency(caja)}</span></div>
-                  {!isExempted && <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: '#555'}}>SENA (2%)</span><span style={{fontWeight: 500}}>{formatCurrency(sena)}</span></div>}
-                  {!isExempted && <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: '#555'}}>ICBF (3%)</span><span style={{fontWeight: 500}}>{formatCurrency(icbf)}</span></div>}
+                  <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--color-gray-500)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Parafiscales</div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: 'var(--color-gray-500)'}}>Caja de Compensación (4%)</span><span style={{fontWeight: 500}}>{formatCurrency(caja)}</span></div>
+                  {!isExempted && <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: 'var(--color-gray-500)'}}>SENA (2%)</span><span style={{fontWeight: 500}}>{formatCurrency(sena)}</span></div>}
+                  {!isExempted && <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: 'var(--color-gray-500)'}}>ICBF (3%)</span><span style={{fontWeight: 500}}>{formatCurrency(icbf)}</span></div>}
                 </div>
 
                 {/* Prestaciones Sociales */}
                 <div style={{ marginBottom: '16px' }}>
-                  <div style={{ fontSize: '12px', fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Prestaciones Sociales</div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: '#555'}}>Cesantías (8.33%)</span><span style={{fontWeight: 500}}>{formatCurrency(cesantias)}</span></div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: '#555'}}>Intereses de Cesantías (1%)</span><span style={{fontWeight: 500}}>{formatCurrency(intCesantias)}</span></div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: '#555'}}>Prima (8.33%)</span><span style={{fontWeight: 500}}>{formatCurrency(prima)}</span></div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: '#555'}}>Vacaciones (4.17%)</span><span style={{fontWeight: 500}}>{formatCurrency(vacaciones)}</span></div>
+                  <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--color-gray-500)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Prestaciones Sociales</div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: 'var(--color-gray-500)'}}>Cesantías (8.33%)</span><span style={{fontWeight: 500}}>{formatCurrency(cesantias)}</span></div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: 'var(--color-gray-500)'}}>Intereses de Cesantías (1%)</span><span style={{fontWeight: 500}}>{formatCurrency(intCesantias)}</span></div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: 'var(--color-gray-500)'}}>Prima (8.33%)</span><span style={{fontWeight: 500}}>{formatCurrency(prima)}</span></div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '6px' }}><span style={{color: 'var(--color-gray-500)'}}>Vacaciones (4.17%)</span><span style={{fontWeight: 500}}>{formatCurrency(vacaciones)}</span></div>
                 </div>
 
               </div>
 
               {/* COLUMNA TOTALES DESTACADOS */}
-              <div style={{ background: '#f8f9fa', borderRadius: '16px', padding: '24px', border: '1px solid #eaeaea', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div style={{ background: 'var(--color-gray-50)', borderRadius: '16px', padding: '24px', border: '1px solid var(--color-gray-100)', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 
                 {/* COSTO TOTAL MENSUAL */}
-                <div style={{ background: '#fff', padding: '20px', borderRadius: '12px', border: '2px solid #131ddf', boxShadow: '0 8px 20px rgba(19, 29, 223, 0.1)' }}>
-                  <div style={{ fontSize: '14px', color: '#131ddf', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>Costo Total Mensual</div>
-                  <div style={{ fontSize: '32px', fontWeight: 800, color: '#111', lineHeight: '1.2' }}>{formatCurrency(costoMensualTotal)}</div>
-                  <div style={{ fontSize: '13px', color: '#666', marginTop: '8px' }}>El empleado cuesta un <strong>{sobreCostoPct.toFixed(1)}% más</strong> que su salario base.</div>
+                <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: '12px', border: '2px solid var(--color-primary)', boxShadow: '0 8px 20px rgba(19, 29, 223, 0.1)' }}>
+                  <div style={{ fontSize: '14px', color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>Costo Total Mensual</div>
+                  <div style={{ fontSize: '32px', fontWeight: 800, color: 'var(--color-dark)', lineHeight: '1.2' }}>{formatCurrency(costoMensualTotal)}</div>
+                  <div style={{ fontSize: '13px', color: 'var(--color-gray-800)', marginTop: '8px' }}>El empleado cuesta un <strong>{sobreCostoPct.toFixed(1)}% más</strong> que su salario base.</div>
                 </div>
 
                 {/* COSTO TOTAL ANUAL */}
-                <div style={{ background: '#05192D', padding: '20px', borderRadius: '12px', color: '#fff' }}>
+                <div style={{ background: '#05192D', padding: '20px', borderRadius: '12px', color: 'var(--color-white)' }}>
                   <div style={{ fontSize: '14px', color: '#a0aec0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>Costo Total Anualizado</div>
-                  <div style={{ fontSize: '28px', fontWeight: 800, color: '#fff', lineHeight: '1.2' }}>{formatCurrency(costoAnualTotal)}</div>
+                  <div style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-white)', lineHeight: '1.2' }}>{formatCurrency(costoAnualTotal)}</div>
                   <div style={{ fontSize: '13px', color: '#a0aec0', marginTop: '8px', opacity: 0.8 }}>Proyección asumiendo 12 meses.</div>
                 </div>
 

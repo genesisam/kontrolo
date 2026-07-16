@@ -83,7 +83,7 @@ import OptimizedImage from '../OptimizedImage.astro';
     flex-direction: column;
     justify-content: space-between;
     padding: 32px 24px;
-    background: #111111;
+    background: var(--color-dark);
     border: 1px solid #222222;
     border-radius: 16px;
     transition: transform 0.3s ease, background 0.3s ease;
@@ -92,7 +92,7 @@ import OptimizedImage from '../OptimizedImage.astro';
   .suite-card:hover {
     background: #1a1a1a;
     transform: translateY(-5px);
-    border-color: #131ddf;
+    border-color: var(--color-primary);
   }
   .suite-icon-wrapper {
     font-size: 40px;
@@ -120,7 +120,7 @@ import OptimizedImage from '../OptimizedImage.astro';
   }
   .suite-microdato {
     background: rgba(19, 29, 223, 0.1);
-    border-left: 3px solid #131ddf;
+    border-left: 3px solid var(--color-primary);
     padding: 12px;
     border-radius: 0 8px 8px 0;
     font-size: 13px;
@@ -138,10 +138,10 @@ import OptimizedImage from '../OptimizedImage.astro';
     font-weight: 600;
     font-size: 15px;
     padding-bottom: 2px;
-    border-bottom: 2px solid #131ddf;
+    border-bottom: 2px solid var(--color-primary);
     transition: color 0.3s ease;
   }
   .suite-link:hover {
-    color: #131ddf;
+    color: var(--color-primary);
   }
 </style>

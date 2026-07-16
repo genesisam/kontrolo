@@ -1,4 +1,4 @@
-﻿---
+---
 import SEO from '../components/SEO.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -35,6 +35,84 @@ const { seo = {} } = Astro.props;
   <link href="/images/favicon.png" rel="shortcut icon" type="image/x-icon"/>
   <link href="/images/webclip.png" rel="apple-touch-icon"/>
         <style is:global>
+    :root {
+      /* Brand Colors */
+      --color-primary: #131ddf;
+      --color-primary-hover: #0e15a8;
+      --color-primary-light: #e7e8fc;
+      --color-secondary: #3898ec;
+      --color-dark: #01020e;
+      --color-dark-hover: #111;
+      
+      /* Grayscale (Consolidated) */
+      --color-gray-50: #fafafa;
+      --color-gray-100: #f5f5f5;
+      --color-gray-200: #e6e6e6;
+      --color-gray-300: #cccccc;
+      --color-gray-500: #999999;
+      --color-gray-800: #333333;
+      
+      /* UI Colors */
+      --color-danger: #ff7272;
+      --color-danger-light: #ffdede;
+      --color-success: #10b981;
+      --color-white: #ffffff;
+      
+      /* Radius */
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
+      
+      /* Transitions */
+      --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    /* === GLOBAL BUTTON STYLES === */
+    .primary-button, .kontrolo-btn-primary {
+      background-color: var(--color-primary) !important;
+      color: var(--color-white) !important;
+      transition: var(--transition-fast) !important;
+      border: 1px solid transparent !important;
+      box-shadow: 0 4px 14px rgba(19, 29, 223, 0.15) !important;
+    }
+    .primary-button:hover, .kontrolo-btn-primary:hover {
+      background-color: var(--color-primary-hover) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(19, 29, 223, 0.3) !important;
+    }
+    
+    .secondary-button, .kontrolo-btn-secondary {
+      background-color: transparent !important;
+      color: var(--color-white) !important;
+      transition: var(--transition-fast) !important;
+      border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    .secondary-button:hover, .kontrolo-btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      border-color: rgba(255, 255, 255, 0.8) !important;
+      transform: translateY(-2px) !important;
+    }
+    
+    /* Secondary Button on Light Backgrounds */
+    .section:not([style*="background: var(--color-dark)"]) .secondary-button,
+    .section:not([style*="background: var(--color-dark)"]) .kontrolo-btn-secondary {
+      color: var(--color-dark) !important;
+      border: 2px solid var(--color-gray-300) !important;
+    }
+    .section:not([style*="background: var(--color-dark)"]) .secondary-button:hover,
+    .section:not([style*="background: var(--color-dark)"]) .kontrolo-btn-secondary:hover {
+      background-color: var(--color-gray-50) !important;
+      border-color: var(--color-dark) !important;
+      color: var(--color-dark) !important;
+    }
+
     img { height: auto; }
     body, p, a, li, span, div {
       font-family: 'General Sans', sans-serif;
@@ -51,6 +129,65 @@ const { seo = {} } = Astro.props;
     .title-span {
       color: #131ddf !important; /* Kontrolo Blue */
     }
+
+    /* === UNIFIED BADGES & SUBTITLES === */
+    .subtitle, .subtitle-black, .dian-badge, .security-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 6px 16px !important;
+      border-radius: 100px !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      letter-spacing: 1px !important;
+      text-transform: uppercase !important;
+      margin: 0 0 24px 0 !important;
+      font-family: 'General Sans', sans-serif !important;
+      width: max-content !important;
+      max-width: 100% !important;
+      white-space: normal !important;
+      text-align: center !important;
+      height: auto !important;
+    }
+
+    .caption {
+      font-size: inherit !important;
+      font-weight: inherit !important;
+      letter-spacing: inherit !important;
+      text-transform: inherit !important;
+      color: inherit !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    /* Primary Style (Blue) - Default for .subtitle */
+    .subtitle, .subtitle.bg-white {
+      background: rgba(19, 29, 223, 0.1) !important;
+      color: var(--color-primary) !important;
+      border: 1px solid transparent !important;
+    }
+
+    /* Dark Style */
+    .subtitle-black {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: var(--color-white) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* Success Style (Green) - For Security */
+    .security-badge {
+      background: rgba(16, 185, 129, 0.1) !important;
+      color: var(--color-success) !important;
+      border: 1px solid rgba(16, 185, 129, 0.2) !important;
+    }
+
+    /* DIAN Style */
+    .dian-badge {
+      background: rgba(56, 152, 236, 0.15) !important;
+      color: var(--color-secondary) !important;
+      border: 1px solid rgba(56, 152, 236, 0.3) !important;
+    }
+
       /* Vanilla Animations */
     .animate-on-scroll {
       opacity: 0;
@@ -85,6 +222,106 @@ const { seo = {} } = Astro.props;
     }
     .faq-icon, .w-dropdown-toggle svg {
       transition: transform 0.3s ease;
+    }
+
+    /* === RESPONSIVE OVERRIDES === */
+    @media screen and (max-width: 767px) {
+      /* SINGLE COLUMN RULE */
+      .w-layout-grid,
+      .choose-wrap,
+      .feature-outer,
+      .feature-flex,
+      .data-wrap,
+      .footer-wrap {
+        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+      }
+      
+      .fill-block, .feature-card, .choose-card, .data-item, .nicho-card, .resource-card, .blog-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+
+      /* FIX BLOG/INDUSTRY CARDS */
+      .blog-card {
+        flex-direction: column !important;
+        height: auto !important;
+      }
+      .blog-thumb {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 200px !important;
+        aspect-ratio: auto !important;
+      }
+      .blog-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-top: 16px !important;
+      }
+
+      /* STANDARDIZE TITLES AND GAPS */
+      .title-heading, .kontrolo-hero-title, .recursos-hero-title {
+        font-size: 32px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 16px !important;
+      }
+      
+      .title-paragraph {
+        font-size: 16px !important;
+        line-height: 1.5 !important;
+      }
+
+      /* FIX CARDS PADDING & IMAGE HEIGHT */
+      .feature-card, .choose-card, .nicho-card, .resource-card {
+        padding: 24px !important;
+        gap: 16px !important;
+        box-sizing: border-box !important;
+      }
+
+      .feature-img, .about-img {
+        max-height: 250px !important;
+        height: auto !important;
+        width: 100% !important;
+        object-fit: cover !important;
+      }
+      
+      .cover-image {
+        max-height: none !important;
+        height: 100% !important;
+        width: 100% !important;
+        object-fit: cover !important;
+      }
+
+      /* SECTION PADDINGS & WHITESPACE FIX */
+      .section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .hero-section, .recursos-hero-section {
+        padding-top: 100px !important;
+        padding-bottom: 40px !important;
+      }
+
+      /* AVOID CUTOFF CONTENT */
+      * {
+        box-sizing: border-box !important;
+      }
+      
+      body {
+        overflow-x: hidden !important;
+        width: 100vw !important;
+      }
+      
+      .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        max-width: 100% !important;
+      }
     }
   </style>
 </head>

@@ -1,4 +1,5 @@
 ---
+import { sanityClient } from "sanity:client";
 import OptimizedImage from '../components/OptimizedImage.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import Testimonial from '../components/Testimonial.astro';
@@ -11,10 +12,13 @@ import RoiCalculator from '../components/home/RoiCalculator.astro';
 import SecuritySection from '../components/home/SecuritySection.astro';
 import PricingSection from '../components/home/PricingSection.astro';
 import BlogSection from '../components/home/BlogSection.astro';
+import Badge from '../components/ui/Badge.astro';
+
+const pageData = await sanityClient.fetch('*[_type == "homePage"][0]');
 
 const seo = {
-  title: "Kontrolo | PMS, ERP y POS en la nube para Colombia",
-  description: "Centraliza tu negocio con Kontrolo: suite en la nube de PMS, ERP y POS. Gestiona reservas, ventas, inventarios y contabilidad con DIAN, pagos e informes en tiempo real.",
+  title: pageData?.seo?.metaTitle || "Kontrolo | PMS, ERP y POS en la nube para Colombia",
+  description: pageData?.seo?.metaDescription || "Centraliza tu negocio con Kontrolo: suite en la nube de PMS, ERP y POS. Gestiona reservas, ventas, inventarios y contabilidad con DIAN, pagos e informes en tiempo real.",
   structuredData: {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -32,11 +36,11 @@ const seo = {
 <MainLayout seo={seo}>
 <Hero 
   label=""
-  titleHtml="Software PMS, ERP y POS en la nube para tu negocio en Colombia"
-  subtitleHtml="Reservas, ventas, inventario, contabilidad y facturación electrónica DIAN: todo tu negocio bajo Kontrolo. Para hoteles, restaurantes y comercios que quieren crecer sin enredos."
-  primaryButtonText="Prueba gratis 15 días"
+  titleHtml={pageData?.hero?.headline || "Software PMS, ERP y POS en la nube para tu negocio en Colombia"}
+  subtitleHtml={pageData?.hero?.subheadline || "Reservas, ventas, inventario, contabilidad y facturación electrónica DIAN: todo tu negocio bajo Kontrolo. Para hoteles, restaurantes y comercios que quieren crecer sin enredos."}
+  primaryButtonText={pageData?.hero?.primaryButtonText || "Prueba gratis 15 días"}
   primaryButtonLink="/registro"
-  secondaryButtonText="Agendar una demo"
+  secondaryButtonText={pageData?.hero?.secondaryButtonText || "Agendar una demo"}
   secondaryButtonLink="/contacto"
 />
 <div class="page-wrap">
@@ -92,7 +96,7 @@ const seo = {
 </style>
 
 <div class="brand-wrap" style="width: 100%; text-align: center; overflow: hidden;">
-<p style="opacity:1; margin-bottom: 10px; font-size: 13px; color: #64748b;">Más de 1 000 negocios en Colombia usan Kontrolo</p>
+<p style="opacity:1; margin-bottom: 10px; font-size: 13px; color: #64748b;">{pageData?.trustedBy || "Más de 1 000 negocios en Colombia usan Kontrolo"}</p>
 
 <div class="brand-slider">
   <div class="brand-track">
@@ -122,7 +126,7 @@ const seo = {
 </section>
 
 <!-- S4: Problema -->
-<ProblemSection />
+<ProblemSection problems={pageData?.problems} />
 
 <!-- S5: Suite -->
 <SuiteSection />
@@ -132,11 +136,11 @@ const seo = {
 <div class="title-wrap">
 <div class="title-inner">
 <div class="subtitle">
-<div class="caption">Resultados reales: automatización, control y crecimiento</div>
+<div class="caption">{pageData?.benefits?.caption || "Resultados reales: automatización, control y crecimiento"}</div>
 </div>
-<h2 class="title-heading animate-on-scroll animate-fade-up">Beneficios que transforman la <br/>‍<span class="title-span">gestión de tu negocio</span></h2>
+<h2 class="title-heading animate-on-scroll animate-fade-up">{pageData?.benefits?.title || "Beneficios que transforman la gestión de tu negocio"}</h2>
 </div>
-<p class="title-paragraph black">Kontrolo es la suite de software en la nube para hoteles, restaurantes y empresas en Colombia que centraliza tus operaciones, automatiza procesos y potencia la rentabilidad.</p>
+<p class="title-paragraph black">{pageData?.benefits?.description || "Kontrolo es la suite de software en la nube para hoteles, restaurantes y empresas en Colombia que centraliza tus operaciones, automatiza procesos y potencia la rentabilidad."}</p>
 </div>
 <div class="feature-outer">
 <div class="feature-card animate-on-scroll animate-fade-up">
@@ -213,9 +217,7 @@ const seo = {
 <div class="section-inner">
 <div class="title-wrap">
 <div class="title-inner">
-<div class="subtitle-black">
-<div class="caption">INTEGRACIONES Y ALIANZAS</div>
-</div>
+<Badge variant="black">INTEGRACIONES Y ALIANZAS</Badge>
 <h2 class="title-heading animate-on-scroll animate-fade-up integration">Integraciones <span class="title-span">sin fricción</span> con tus sistemas actuales<br/></h2>
 </div>
 <p class="title-paragraph">Kontrolo se integra de forma nativa con facturación DIAN, CRM, pasarelas de pago y sistemas bancarios. Además, ofrece conectividad con las principales OTAs, canales de venta y herramientas de análisis, convirtiéndose en una suite integral para hoteles, restaurantes y empresas que buscan crecer sin fricciones.</p>
@@ -536,18 +538,18 @@ const seo = {
 <div class="title-wrap" style="align-items: center;">
 <div class="title-inner" style="justify-content: center;">
 <div class="subtitle bg-white">
-<div class="caption">COMIENZA HOY</div>
+<div class="caption">{pageData?.cta?.caption || "COMIENZA HOY"}</div>
 </div>
-<h2 class="title-heading animate-on-scroll animate-fade-up">Deja de perder dinero y tiempo con <span class="title-span">sistemas que no se hablan</span></h2>
+<h2 class="title-heading animate-on-scroll animate-fade-up">{pageData?.cta?.title || "Deja de perder dinero y tiempo con sistemas que no se hablan"}</h2>
 </div>
-<p class="cta-paragraph" style="text-align: center;">Únete a más de 500 empresas en Colombia que ya facturan, controlan y crecen con Kontrolo.</p>
+<p class="cta-paragraph" style="text-align: center;">{pageData?.cta?.description || "Únete a más de 500 empresas en Colombia que ya facturan, controlan y crecen con Kontrolo."}</p>
 </div>
 <div style="display: flex; gap: 16px; justify-content: center; margin-top: 30px; flex-wrap: wrap;">
-  <a class="kontrolo-btn kontrolo-btn-primary" href="/registro" style="background-color: #131ddf; color: white; padding: 16px 32px; border-radius: 40px; font-weight: 600; text-decoration: none;">Prueba gratis 15 días</a>
-  <a class="kontrolo-btn kontrolo-btn-outline" href="/contacto" style="background-color: white; border: 1px solid #131ddf; color: #131ddf; padding: 16px 32px; border-radius: 40px; font-weight: 600; text-decoration: none;">Agendar demo (15 min)</a>
+  <a class="kontrolo-btn kontrolo-btn-primary" href="/registro" style="background-color: var(--color-primary); color: white; padding: 16px 32px; border-radius: 40px; font-weight: 600; text-decoration: none;">Prueba gratis 15 días</a>
+  <a class="kontrolo-btn kontrolo-btn-outline" href="/contacto" style="background-color: white; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 16px 32px; border-radius: 40px; font-weight: 600; text-decoration: none;">Agendar demo (15 min)</a>
 </div>
 <div style="margin-top: 24px; color: #64748b; font-size: 14px; font-weight: 600;">
-  ★★★★★ 4.9/5 en Capterra y G2
+  {pageData?.cta?.socialProof || "★★★★★ 4.9/5 en Capterra y G2"}
 </div>
 </div>
 </div>
