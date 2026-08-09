@@ -1,0 +1,276 @@
+---
+interface Props {
+  industryType: string; // 'erp' | 'pms' | 'pos'
+  industryName: string; // e.g. "Hoteles Boutique"
+}
+
+const { industryType, industryName } = Astro.props;
+
+type IndustryType = 'pms' | 'erp' | 'pos';
+
+const content: Record<IndustryType, {
+  intro: string;
+  whatIs: string;
+  howItWorks: string;
+  benefits: string[];
+  whoIsFor: string;
+  cta: string;
+}> = {
+  pms: {
+    intro: `El software PMS (Property Management System) de Kontrolo es la solución de gestión hotelera más completa para ${industryName} en Colombia. Centraliza reservas, check-in, check-out, housekeeping, facturación electrónica DIAN y reportes en una única plataforma en la nube, accesible desde cualquier dispositivo.`,
+    whatIs: `Un PMS para ${industryName} es el núcleo operativo de tu establecimiento. Permite gestionar la disponibilidad de habitaciones en tiempo real, automatizar la comunicación con huéspedes, integrarse con channel managers (Booking.com, Airbnb, Expedia) y generar reportes de ocupación, RevPAR y ADR de forma instantánea. Kontrolo lleva el PMS más allá: incluye módulo de facturación electrónica DIAN integrada, punto de venta para restaurante o bar, y control de inventarios.`,
+    howItWorks: `Con Kontrolo PMS para ${industryName}, tu equipo accede a un panel centralizado donde puede ver el estado de cada habitación, gestionar reservas directas o de OTAs, registrar consumos del huésped y emitir la factura electrónica al momento del check-out. Todo en cuestión de segundos y con trazabilidad completa.`,
+    benefits: [
+      `Reduce el tiempo de check-in y check-out en un 70% con procesos automatizados`,
+      `Integración directa con Booking.com, Expedia y Airbnb sin comisiones adicionales`,
+      `Facturación electrónica DIAN automática al momento del check-out`,
+      `Reportes de ocupación, RevPAR y ADR en tiempo real para tomar mejores decisiones`,
+      `Gestión de housekeeping y mantenimiento desde el celular`,
+      `Módulo de CRM para fidelizar huéspedes y aumentar reservas directas`,
+    ],
+    whoIsFor: `Kontrolo PMS está diseñado para ${industryName} en Colombia: hoteles boutique, hostales, apartahoteles, posadas, glamping, resorts y cualquier establecimiento de hospedaje que necesite gestionar reservas y cumplir con la facturación electrónica DIAN.`,
+    cta: `Si estás buscando un software de gestión hotelera PMS para ${industryName} que incluya facturación DIAN, point of sale y reportes avanzados en un solo lugar, Kontrolo es la solución que necesitas. Agenda una demo gratuita hoy.`,
+  },
+  erp: {
+    intro: `El software ERP (Enterprise Resource Planning) de Kontrolo es la plataforma de gestión empresarial en la nube diseñada para ${industryName} en Colombia. Integra contabilidad, inventarios, compras, nómina, tesorería y facturación electrónica DIAN en un único sistema, eliminando silos de información y procesos manuales.`,
+    whatIs: `Un ERP para ${industryName} centraliza todas las operaciones de tu empresa en una sola base de datos. Desde la compra de materias primas hasta la emisión de la factura electrónica al cliente, cada transacción queda registrada automáticamente en contabilidad, actualiza el inventario y alimenta los reportes financieros en tiempo real. Kontrolo ERP está adaptado a la normativa colombiana: NIIF, retenciones, IVA, ICA y facturación electrónica DIAN.`,
+    howItWorks: `Con Kontrolo ERP para ${industryName}, tu equipo de ventas registra un pedido, el sistema verifica el inventario, genera la orden de producción o compra si es necesario, y emite la factura electrónica DIAN en segundos. Contabilidad ve el asiento automáticamente y gerencia accede al estado financiero actualizado al instante.`,
+    benefits: [
+      `Facturación electrónica DIAN ilimitada sin costos adicionales por documento`,
+      `Contabilidad NIIF automatizada — cierra el mes en horas, no en días`,
+      `Control de inventarios en tiempo real con alertas de stock mínimo`,
+      `Módulo de compras con aprobaciones, órdenes de compra y seguimiento a proveedores`,
+      `Nómina electrónica integrada y liquidación automática de prestaciones`,
+      `Dashboards financieros con flujo de caja, P&L y balance general en tiempo real`,
+    ],
+    whoIsFor: `Kontrolo ERP está diseñado para ${industryName} en Colombia: empresas de manufactura, distribución, servicios, retail y comercio que necesitan centralizar operaciones, cumplir con la DIAN y tener visibilidad financiera completa sin manejar múltiples sistemas.`,
+    cta: `Si buscas un ERP en la nube para ${industryName} que incluya facturación electrónica DIAN, contabilidad NIIF y control de inventarios en un solo sistema, Kontrolo es la solución colombiana que necesitas. Agenda tu demo gratuita.`,
+  },
+  pos: {
+    intro: `El software POS (Punto de Venta) de Kontrolo es la solución de ventas en la nube diseñada para ${industryName} en Colombia. Gestiona ventas, caja, inventarios y facturación electrónica DIAN desde cualquier dispositivo, con sincronización en tiempo real y reportes avanzados para tomar mejores decisiones.`,
+    whatIs: `Un POS para ${industryName} va mucho más allá de una caja registradora. Kontrolo POS permite registrar ventas, gestionar múltiples métodos de pago (efectivo, tarjeta, transferencia), controlar el inventario automáticamente con cada venta, emitir facturas electrónicas DIAN y tiquetes de caja, y ver los reportes de ventas por producto, categoría, vendedor o turno. Todo en la nube, sin perder información.`,
+    howItWorks: `Con Kontrolo POS para ${industryName}, el cajero registra la venta en segundos, el sistema descuenta automáticamente del inventario, genera la factura electrónica o tiquete, y actualiza los reportes de ventas en tiempo real. Gerencia puede ver desde cualquier lugar cuánto se vendió, cuál es el producto estrella y cómo va el flujo de caja del día.`,
+    benefits: [
+      `Facturación electrónica DIAN y tiquetes POS desde el mismo sistema`,
+      `Control de inventarios automático con cada venta — sin conteos manuales`,
+      `Reportes de ventas por producto, categoría, turno y vendedor en tiempo real`,
+      `Gestión de múltiples cajas y sucursales desde un panel central`,
+      `Integración con básculas, lectores de código de barras e impresoras térmicas`,
+      `Módulo de fidelización de clientes y descuentos por cliente frecuente`,
+    ],
+    whoIsFor: `Kontrolo POS está diseñado para ${industryName} en Colombia: restaurantes, cafeterías, tiendas de retail, supermercados, panaderías, ferreterías y cualquier negocio que necesite gestionar ventas con facturación electrónica DIAN de forma ágil y confiable.`,
+    cta: `Si buscas un software POS para ${industryName} con facturación electrónica DIAN, control de inventarios y reportes avanzados en un solo sistema, Kontrolo es la solución que necesitas. Agenda tu demo gratuita hoy.`,
+  },
+};
+
+const softwareType = (industryType as IndustryType) in content ? (industryType as IndustryType) : 'erp';
+const c = content[softwareType];
+const softwareLabel = { pms: 'PMS', erp: 'ERP', pos: 'POS' }[softwareType];
+---
+
+<section class="section seo-text-section">
+  <div class="w-layout-blockcontainer container w-container">
+    <div class="seo-text-grid">
+
+      <!-- Columna izquierda: texto principal -->
+      <div class="seo-text-main">
+        <div class="subtitle bg-white" style="margin-bottom: 20px;">
+          <div class="caption">SOFTWARE {softwareLabel} COLOMBIA</div>
+        </div>
+        <h2 class="title-heading animate-on-scroll animate-fade-up">
+          Software {softwareLabel} para <span class="title-span">{industryName}</span> en Colombia
+        </h2>
+
+        <p class="seo-intro">{c.intro}</p>
+
+        <h3 class="seo-subheading">¿Qué es un software {softwareLabel} para {industryName}?</h3>
+        <p>{c.whatIs}</p>
+
+        <h3 class="seo-subheading">¿Cómo funciona Kontrolo {softwareLabel} para {industryName}?</h3>
+        <p>{c.howItWorks}</p>
+
+        <h3 class="seo-subheading">¿Para quién es Kontrolo {softwareLabel}?</h3>
+        <p>{c.whoIsFor}</p>
+
+        <div class="seo-cta-inline">
+          <p class="seo-cta-text">{c.cta}</p>
+          <a href="/contacto" class="primary-button w-button seo-cta-btn">Agendar demo gratuita</a>
+        </div>
+      </div>
+
+      <!-- Columna derecha: beneficios clave -->
+      <div class="seo-benefits-col">
+        <div class="seo-benefits-card">
+          <h3 class="seo-benefits-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Beneficios clave para {industryName}
+          </h3>
+          <ul class="seo-benefits-list">
+            {c.benefits.map((benefit) => (
+              <li class="seo-benefit-item">
+                <span class="benefit-check">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+          <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--color-gray-100);">
+            <div style="font-size: 13px; color: var(--color-gray-500); margin-bottom: 16px;">
+              ✓ Sin tarjeta de crédito &nbsp;·&nbsp; ✓ Configuración en 24h &nbsp;·&nbsp; ✓ Soporte en español
+            </div>
+            <a href="https://api.whatsapp.com/send/?phone=573166973362&text=Hola,+quiero+una+demo+de+Kontrolo+{softwareLabel}+para+{industryName}" 
+               target="_blank" rel="noopener noreferrer"
+               class="seo-whatsapp-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Consultar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .seo-text-section {
+    background: #f8fafc;
+    border-top: 1px solid var(--color-gray-100);
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+
+  .seo-text-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .seo-intro {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-gray-800);
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+
+  .seo-subheading {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+
+  .seo-text-main p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--color-gray-600);
+    margin-bottom: 16px;
+  }
+
+  .seo-cta-inline {
+    margin-top: 36px;
+    padding: 24px;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--color-gray-100);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+
+  .seo-cta-text {
+    font-size: 15px !important;
+    color: var(--color-gray-700) !important;
+    margin-bottom: 16px !important;
+    font-style: italic;
+  }
+
+  .seo-cta-btn {
+    width: auto !important;
+    display: inline-block !important;
+  }
+
+  /* Columna derecha — card de beneficios */
+  .seo-benefits-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid var(--color-gray-100);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 100px;
+  }
+
+  .seo-benefits-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .seo-benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .seo-benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--color-gray-700);
+    line-height: 1.5;
+  }
+
+  .benefit-check {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background: rgba(var(--color-primary-rgb, 0, 122, 255), 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    margin-top: 2px;
+  }
+
+  .seo-whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #25d366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.2s;
+    width: 100%;
+  }
+
+  .seo-whatsapp-btn:hover {
+    background: #128c7e;
+    color: white;
+  }
+
+  @media (max-width: 991px) {
+    .seo-text-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .seo-benefits-card {
+      position: static;
+    }
+  }
+</style>

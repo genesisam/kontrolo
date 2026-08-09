@@ -1,0 +1,220 @@
+---
+interface Props {
+  industryType: string; // 'erp' | 'pms' | 'pos'
+  industryName: string;
+}
+
+const { industryType, industryName } = Astro.props;
+
+type IndustryType = 'pms' | 'erp' | 'pos';
+
+type ComparisonRow = {
+  aspect: string;
+  without: string;
+  with: string;
+};
+
+const tables: Record<IndustryType, { title: string; rows: ComparisonRow[] }> = {
+  pms: {
+    title: `Gestión hotelera para ${industryName}: con y sin Kontrolo PMS`,
+    rows: [
+      { aspect: 'Reservas', without: 'Planilla Excel o cuaderno físico, propenso a errores y dobles reservas', with: 'Panel de disponibilidad en tiempo real con sincronización automática de OTAs' },
+      { aspect: 'Check-in / Check-out', without: 'Proceso manual de 10–15 minutos, filas y quejas de huéspedes', with: 'Check-in en menos de 2 minutos con asignación automática de habitación' },
+      { aspect: 'Facturación DIAN', without: 'Software externo, errores de digitación y riesgo de multas DIAN', with: 'Factura electrónica emitida automáticamente al momento del check-out' },
+      { aspect: 'Housekeeping', without: 'Comunicación por radio o WhatsApp, estados de habitación desactualizados', with: 'Estado de cada habitación actualizado desde el celular del ama de llaves' },
+      { aspect: 'Reportes', without: 'Consolidar datos manualmente al final del mes, sin visibilidad en tiempo real', with: 'RevPAR, ADR, ocupación y Revenue por categoría disponibles en tiempo real' },
+      { aspect: 'Channel Manager', without: 'Actualizar tarifas y disponibilidad manualmente en cada OTA — riesgo de overbooking', with: 'Sincronización automática con Booking.com, Expedia y Airbnb sin comisiones extra' },
+      { aspect: 'Costos operativos', without: 'Personal extra para tareas administrativas repetitivas', with: 'Reducción del 30% en costos operativos mediante automatización' },
+    ],
+  },
+  erp: {
+    title: `Gestión empresarial para ${industryName}: con y sin Kontrolo ERP`,
+    rows: [
+      { aspect: 'Facturación DIAN', without: 'Software separado, ingreso manual de datos, errores frecuentes y riesgo de sanciones', with: 'Factura electrónica DIAN ilimitada, integrada con ventas y contabilidad' },
+      { aspect: 'Contabilidad', without: 'Contador externo, cierre mensual tardío y sin visibilidad financiera inmediata', with: 'Asientos automáticos con cada transacción — balance actualizado al instante' },
+      { aspect: 'Inventarios', without: 'Conteos físicos periódicos, desabastecimiento frecuente y pérdidas por merma', with: 'Control en tiempo real con alertas de stock mínimo y trazabilidad por lote' },
+      { aspect: 'Compras', without: 'Órdenes de compra en papel o email, sin seguimiento ni aprobaciones formales', with: 'Flujo de aprobación digital, OC automatizadas y evaluación de proveedores' },
+      { aspect: 'Nómina', without: 'Liquidación manual en Excel con riesgo de errores en prestaciones y retenciones', with: 'Nómina electrónica UGPP integrada, cálculo automático de prestaciones sociales' },
+      { aspect: 'Reportes financieros', without: 'Información dispersa en varios sistemas — imposible tener P&L real en tiempo real', with: 'P&L, flujo de caja y balance general disponibles en el dashboard en segundos' },
+      { aspect: 'Cumplimiento tributario', without: 'Riesgo de errores en IVA, retenciones e ICA — multas y cierres fiscales', with: 'Configuración automática de impuestos según normativa colombiana vigente' },
+    ],
+  },
+  pos: {
+    title: `Punto de venta para ${industryName}: con y sin Kontrolo POS`,
+    rows: [
+      { aspect: 'Velocidad de venta', without: 'Caja lenta, errores de digitación y filas largas que alejan a los clientes', with: 'Venta en segundos con búsqueda por código de barras, nombre o categoría' },
+      { aspect: 'Facturación DIAN', without: 'Emitir facturas electrónicas por fuera, proceso lento y propenso a errores', with: 'Factura electrónica y tiquete POS generados automáticamente en la misma pantalla' },
+      { aspect: 'Control de inventario', without: 'Sin descuento automático — el inventario siempre está desactualizado', with: 'Cada venta descuenta en tiempo real del inventario con alertas de stock bajo' },
+      { aspect: 'Múltiples sucursales', without: 'Imposible ver ventas de todas las tiendas en un solo lugar', with: 'Panel central con ventas, caja y stock de todas las sucursales en tiempo real' },
+      { aspect: 'Métodos de pago', without: 'Solo efectivo o tarjeta — sin gestión de combinación de medios de pago', with: 'Efectivo, tarjeta, transferencia, QR y cobro mixto en una sola transacción' },
+      { aspect: 'Reportes de ventas', without: 'Conteo manual al cierre — sin saber qué productos venden más o cuál vendedor rinde más', with: 'Ranking de productos, análisis por turno y desempeño por vendedor en tiempo real' },
+      { aspect: 'Fidelización', without: 'Sin registro de clientes — cada comprador es anónimo, cero recompra incentivada', with: 'CRM integrado: historial de compras, puntos de fidelidad y descuentos automáticos' },
+    ],
+  },
+};
+
+const softwareType = (industryType as IndustryType) in tables ? (industryType as IndustryType) : 'erp';
+const table = tables[softwareType];
+---
+
+<section class="section comparison-section">
+  <div class="w-layout-blockcontainer container w-container">
+    <div style="text-align: center; margin-bottom: 48px;">
+      <div class="subtitle" style="justify-content: center; display: flex; margin-bottom: 16px;">
+        <div class="caption">COMPARATIVA</div>
+      </div>
+      <h2 class="title-heading animate-on-scroll animate-fade-up">{table.title}</h2>
+      <p class="title-paragraph black" style="max-width: 600px; margin: 0 auto;">
+        Descubre el impacto real de gestionar tu negocio con una plataforma integrada vs. métodos tradicionales.
+      </p>
+    </div>
+
+    <div class="comparison-table-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th class="col-aspect">Aspecto</th>
+            <th class="col-without">
+              <span class="th-badge without-badge">❌ Sin Kontrolo</span>
+            </th>
+            <th class="col-with">
+              <span class="th-badge with-badge">✅ Con Kontrolo</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map((row, i) => (
+            <tr class={i % 2 === 0 ? 'row-even' : 'row-odd'}>
+              <td class="td-aspect"><strong>{row.aspect}</strong></td>
+              <td class="td-without">{row.without}</td>
+              <td class="td-with">{row.with}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="comparison-cta">
+      <p>¿Listo para dejar atrás los procesos manuales?</p>
+      <a href="/contacto" class="primary-button w-button" style="width: auto; display: inline-block;">
+        Hablar con un asesor
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .comparison-section {
+    background: white;
+  }
+
+  .comparison-table-wrap {
+    overflow-x: auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    border: 1px solid var(--color-gray-100);
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+
+  .comparison-table thead tr {
+    background: var(--color-dark);
+  }
+
+  .comparison-table th {
+    padding: 18px 20px;
+    text-align: left;
+    font-weight: 600;
+    color: white;
+    font-size: 14px;
+  }
+
+  .col-aspect { width: 18%; }
+  .col-without { width: 41%; }
+  .col-with { width: 41%; }
+
+  .th-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .without-badge {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+  }
+
+  .with-badge {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
+  }
+
+  .comparison-table td {
+    padding: 16px 20px;
+    vertical-align: top;
+    line-height: 1.55;
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+
+  .td-aspect {
+    font-weight: 700;
+    color: var(--color-dark);
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .td-without {
+    color: #b91c1c;
+    background: rgba(254, 242, 242, 0.5);
+    font-size: 14px;
+  }
+
+  .td-with {
+    color: #15803d;
+    background: rgba(240, 253, 244, 0.5);
+    font-size: 14px;
+  }
+
+  .row-even td {
+    background-color: rgba(248, 250, 252, 0.6);
+  }
+
+  .row-even .td-without { background: rgba(254, 242, 242, 0.4); }
+  .row-even .td-with { background: rgba(240, 253, 244, 0.4); }
+
+  .comparison-cta {
+    text-align: center;
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .comparison-cta p {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    .comparison-table {
+      font-size: 13px;
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: 12px 14px;
+    }
+    .td-aspect {
+      font-size: 12px;
+    }
+    .col-aspect { width: 22%; }
+  }
+</style>

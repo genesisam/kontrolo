@@ -1,0 +1,89 @@
+---
+interface Props {
+  industryType?: string;
+}
+const { industryType = 'erp' } = Astro.props;
+
+const stats = [
+  { value: '500+', label: 'Empresas en Colombia', icon: '🏢' },
+  { value: '98%', label: 'Satisfacción de clientes', icon: '⭐' },
+  { value: '30%', label: 'Reducción en costos operativos', icon: '📉' },
+  { value: '24h', label: 'Configuración y puesta en marcha', icon: '⚡' },
+  { value: '100%', label: 'Cumplimiento DIAN garantizado', icon: '✅' },
+];
+---
+
+<section class="stats-banner-section">
+  <div class="w-layout-blockcontainer container w-container">
+    <div class="stats-banner-grid">
+      {stats.map((stat) => (
+        <div class="stat-item">
+          <div class="stat-icon">{stat.icon}</div>
+          <div class="stat-value">{stat.value}</div>
+          <div class="stat-label">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats-banner-section {
+    background: var(--color-dark);
+    padding: 60px 0;
+  }
+
+  .stats-banner-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    text-align: center;
+    flex: 1;
+    min-width: 140px;
+    padding: 0 12px;
+  }
+
+  .stat-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .stat-value {
+    font-size: 40px;
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, #ffffff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  @media (max-width: 767px) {
+    .stats-banner-grid {
+      justify-content: center;
+      gap: 32px;
+    }
+    .stat-item {
+      min-width: 130px;
+      flex: 0 0 calc(50% - 16px);
+    }
+    .stat-value {
+      font-size: 32px;
+    }
+  }
+</style>

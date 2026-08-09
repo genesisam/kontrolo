@@ -6,10 +6,28 @@ interface Faq {
 
 interface Props {
   faqs: Faq[];
+  industryName?: string;
 }
-const { faqs } = Astro.props;
+const { faqs, industryName = 'tu negocio' } = Astro.props;
+
+// Prepare JSON-LD
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": typeof faq.answer === 'string'
+        ? faq.answer
+        : (faq.answer as any)?.map((block: any) => block.children?.map((child: any) => child.text).join('')).join(' ') || ''
+    }
+  }))
+};
 ---
-<section class="section">
+
+<section class="section faq-niche-section">
   <div class="w-layout-blockcontainer container w-container">
     <div class="section-inner">
       <div class="title-wrap">
@@ -17,27 +35,40 @@ const { faqs } = Astro.props;
           <div class="subtitle">
             <div class="caption">FAQ</div>
           </div>
-          <h2 class="title-heading animate-on-scroll animate-fade-up integration-width">Preguntas Frecuentes</h2>
+          <h2 class="title-heading animate-on-scroll animate-fade-up integration-width">
+            Preguntas Frecuentes
+          </h2>
         </div>
-        <p class="title-paragraph black">Resuelve tus dudas. Si necesitas más información, nuestro equipo de soporte está disponible para asesorarte en todo momento.</p>
+        <p class="title-paragraph black">
+          Resuelve tus dudas sobre Kontrolo para {industryName}. ¿No encuentras lo que buscas? 
+          <a href="/contacto" style="color: var(--color-primary); font-weight: 600;">Habla con nuestro equipo</a>.
+        </p>
       </div>
+
       <div class="faq-wrap" style="display: block; max-width: 800px; margin: 0 auto;">
         <div class="faq-content" style="width: 100%;">
-          {faqs && faqs.map((faq) => (
+          {faqs && faqs.map((faq, index) => (
             <div class="faq w-dropdown" data-hover="false">
-              <div class="question-block w-dropdown-toggle">
-                <h6 class="heading-21" style="margin: 0; font-size: 16px;">{faq.question}</h6>
+              <div 
+                class="question-block w-dropdown-toggle"
+                aria-expanded="false"
+                aria-controls={`faq-niche-answer-${index}`}
+              >
+                <h3 class="heading-21" style="margin: 0; font-size: 16px; font-weight: 600;">{faq.question}</h3>
                 <div class="faq-icon">
                   <div class="vertical-line"></div>
                   <div class="horizontal-line"></div>
                 </div>
               </div>
-              <nav class="answer-block w-dropdown-list">
+              <nav 
+                class="answer-block w-dropdown-list" 
+                id={`faq-niche-answer-${index}`}
+              >
                 <div class="faq-answer">
                   <p>
-                    {typeof faq.answer === 'string' 
-                      ? faq.answer 
-                      : (faq.answer as any)?.map((block: any) => block.children?.map((child: any) => child.text).join('')).join('\\n')}
+                    {typeof faq.answer === 'string'
+                      ? faq.answer
+                      : (faq.answer as any)?.map((block: any) => block.children?.map((child: any) => child.text).join('')).join('\n')}
                   </p>
                 </div>
               </nav>
@@ -48,3 +79,6 @@ const { faqs } = Astro.props;
     </div>
   </div>
 </section>
+
+<!-- FAQPage JSON-LD for Google Rich Results -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

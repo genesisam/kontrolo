@@ -4,7 +4,10 @@ import { sanityClient } from "sanity:client";
 import HeroDynamic from '../../components/niches/HeroDynamic.astro';
 import TrustBar from '../../components/niches/TrustBar.astro';
 import PainPointsGrid from '../../components/niches/PainPointsGrid.astro';
+import SeoTextBlock from '../../components/niches/SeoTextBlock.astro';
 import FeatureZigZag from '../../components/niches/FeatureZigZag.astro';
+import StatsBanner from '../../components/niches/StatsBanner.astro';
+import BenefitsComparison from '../../components/niches/BenefitsComparison.astro';
 import TestimonialCarousel from '../../components/niches/TestimonialCarousel.astro';
 import FaqAccordion from '../../components/niches/FaqAccordion.astro';
 import StickyCtaBar from '../../components/niches/StickyCtaBar.astro';
@@ -36,7 +39,7 @@ export async function getStaticPaths() {
 
 const { niche, relatedNiches } = Astro.props;
 const seo = {
-  title: niche.seoTitle || niche.heroHeadline || 'Kontrolo',
+  title: niche.seoTitle || niche.heroHeadline || 'Kontrolo PMS',
   description: niche.seoDescription || niche.heroSubheadline,
   image: niche.heroImageUrl,
 };
@@ -53,12 +56,13 @@ const seo = {
     />
     <TrustBar />
     {niche.painPoints && niche.painPoints.length > 0 && <PainPointsGrid points={niche.painPoints} icons={niche.painPointsIcons} />}
+    <SeoTextBlock industryType="pms" industryName={niche.industryName} />
     {niche.features && niche.features.length > 0 && <FeatureZigZag features={niche.features} />}
+    <StatsBanner industryType="pms" />
+    <BenefitsComparison industryType="pms" industryName={niche.industryName} />
     {niche.testimonials && niche.testimonials.length > 0 && <TestimonialCarousel testimonials={niche.testimonials} />}
-    {niche.faqs && niche.faqs.length > 0 && <FaqAccordion faqs={niche.faqs} />}
-    
+    {niche.faqs && niche.faqs.length > 0 && <FaqAccordion faqs={niche.faqs} industryName={niche.industryName} />}
     {relatedNiches && relatedNiches.length > 0 && <RelatedNiches niches={relatedNiches} />}
-    
     <StickyCtaBar industryName={niche.industryName} />
   </div>
 </MainLayout>
